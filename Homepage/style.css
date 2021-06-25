@@ -111,6 +111,12 @@
   .navbar-dropdown {
     right: 0;
   }
+  
+  .navbar-item {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
   /* Footer */
   .footer {
     padding-bottom: 30px;
