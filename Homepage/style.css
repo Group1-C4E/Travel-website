@@ -108,6 +108,9 @@
     justify-content: center;
   }
   
+  .navbar-dropdown {
+    right: 0;
+  }
   /* Footer */
   .footer {
     padding-bottom: 30px;
