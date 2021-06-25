@@ -96,3 +96,36 @@
 .has-text-primary {
     color: #ffa200 !important;
 }
+
+/* Header */
+  .navbar {
+    padding-left: 250px;
+    padding-right: 250px;
+  }
+  
+  .navbar-start {
+    flex-grow: 1; 
+    justify-content: center;
+  }
+  
+  /* Footer */
+  .footer {
+    padding-bottom: 30px;
+  }
+  .socials-list p {
+    font-weight: bold;
+    font-size: 20px;
+  }
+  .footer-content {
+    display: flex;
+    justify-content: space-around;
+  }
+  #footer-bottom {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-right: 80px;
+  }
+  .footer-subcribe {
+    white-space: nowrap;
+  }
