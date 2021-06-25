@@ -73,7 +73,26 @@
     font-size: 16px;
     padding: 16px 32px;
   }
-  #service{
-      width: fit-content;
-      height: 300px;
-  }
+ #column {
+    display: flex;
+}
+
+#counter-section {
+    background-size: cover;
+    height: 100%;
+    padding-top: 130px;
+    padding-bottom: 120px;
+    text-align: center;
+}
+#counter-section .level .title {
+    font-size: 52px;
+    font-weight: bold;
+}
+#counter-section .level .heading {
+    font-size: 22px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.has-text-primary {
+    color: #ffa200 !important;
+}
