@@ -12,53 +12,60 @@
 
 <body>
     <div id="main">
-        <!-- Begin header -->
-        <div id="header">
-            <div class="navbar">
-                <div class="navbar-logo">
-                    <a href="#"><img src="#" alt="logo"></a>
-                </div>
-                <ul id="navbar-list">
-                    <li class="navbar-item">
-                        <a href="#">Home</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="">Place to go</a>
-                        <ul class="sub-menu">
-                            <li><a href="#north-vn">North Vietnam</a></li>
-                            <li><a href="#center-vn">Center Vietnam</a></li>
-                            <li><a href="#south-vn">South Vietnam</a></li>
-                        </ul>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="">Travel style</a>
-                        <ul class="sub-menu">
-                            <li><a href="#bearch">Bearch</a></li>
-                            <li><a href="#cultural">Cultural</a></li>
-                            <li><a href="#adventure">Adventure</a></li>
-                            <li><a href="#food">Food & Culinary</a></li>
-                            <li><a href="#luxury">Luxury</a></li>
-                            <li><a href="#discovery">Discovery</a></li>
-                        </ul>
-                    </li>
-                    <li class="navbar-item">
-                        <a href=""><i>Login</i></a>
-                    </li>
-                </ul>
-            </div>
-            <div id="header-slider">
-                <div class="text-slider">
-                    <h1 class="text-heading">Vietnam travel</h1>
-                    <p class="text-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis
-                        explicabo quasi aut labore repellendus. Iusto, eum similique nihil iure beatae quos earum quidem
-                        mollitia, excepturi totam voluptate hic facilis neque.</p>
-                </div>
-                <div id="search-slider">
-                    <input type="search" name="" class="search-input" placeholder="Where you want to go?">
-                    <button type="submit" class="input-btn"><i>icon</i></button>
-                </div>
-            </div>
-        </div>
+        <!-- Start header -->
+                <nav class="navbar">
+                    <!-- Start logo -->
+                    <div class="navbar-brand">
+                         <img src="https://www.travelvietnam.com/images/icons/TRAVELVIETNAM-500x500.png" alt="logo" width="90">
+                    </div> 
+                    <!-- End logo -->
+                    <!-- Start navbar-menu -->
+                    <div class="navbar-menu">
+                        <div class="navbar-start">
+                            <a class="navbar-item"><strong>Home</strong></a>
+                            
+                            <div class="navbar-item has-dropdown is-hoverable">
+                                <a class="navbar-link">
+                                    <strong>Place to go</strong>
+                                </a>
+                                <div class="navbar-dropdown">
+                                   <a class="navbar-item" href="#north-vn">North Vietnam</a>
+                                   <a class="navbar-item" href="#center-vn">Center Vietnam</a>
+                                   <a class="navbar-item" href="#south-vn">South Vietnam</a> 
+                                </div>
+                            </div>
+    
+                            <div class="navbar-item has-dropdown is-hoverable">
+                                <a class="navbar-link">
+                                    <strong>Travel Style</strong>
+                                </a>
+                                <div class="navbar-dropdown">
+                                   <a class="navbar-item" href="#bearch">Bearch</a>
+                                   <a class="navbar-item" href="#cultural">Culture</a>
+                                   <a class="navbar-item" href="#adventure">Adventure</a>
+                                   <a class="navbar-item" href="#food">Food & Culinary</a>
+                                   <a class="navbar-item" href="#luxury">Luxury</a>
+                                   <a class="navbar-item" href="#discovery">Discovery</a>   
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Start login-btn -->
+                        <div class="navbar-end">
+                            <div class="navbar-item">
+                                <div class="buttons">
+                                    <a class="button is-primary">
+                                        <strong>Sign up</strong>
+                                    </a>
+                                    <a class="button is-light">
+                                        <strong>Log in</strong>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End login-btn -->
+                    </div>
+                    <!-- End navbar-menu -->
+            </nav>
         <!-- End header -->
         <!-- Begin-content -->
         <div id="content">
@@ -548,36 +555,48 @@
     </div>
     <!-- End-content -->
     <!-- Begin Footer -->
-    <div id="footer">
-        <div id="footer-top">
-            <!-- Begin socials -->
+    <footer class="footer">
+        <!-- Begin footer content -->
+        <!-- Begin socials -->
+        <div class="footer-content">
             <div id="socials">
                 <div class="logo-footer">
-                    <img src="" alt="logo">
-                    <p>Folow us on</p>
-                    <div class="socials-list">
-                        <a href=""><i>facebook</i></a>
-                        <a href=""><i>instagram</i></a>
-                        <a href=""><i>youtube</i></a>
-                    </div>
-
-                </div>
-
+                    <img src="https://www.travelvietnam.com/images/icons/TRAVELVIETNAM-500x500.png" alt="logo" width="150">
+                </div>    
+                <div class="socials-list">
+                    <p>FOLLOW US ON</p>
+                    <a href=""><img src="https://img.icons8.com/fluent/48/000000/facebook-new.png"/></a>
+                    <a href=""><img src="https://img.icons8.com/fluent/48/000000/instagram-new.png"/></a>
+                    <a href=""><img src="https://img.icons8.com/color/48/000000/youtube--v1.png"/></a>
+                </div>    
+            </div>       
+        <!-- End socials -->
+            <div class="footer-link"><strong>Useful Links</strong>
+                <p><a>Blog</a></p>
+                <p><a>Contact</a></p>
+                <p><a>Home</a></p>
+                <p><a>About</a></p>
+                <p><a>Terms & Conditions</a></p>
             </div>
-            <!-- End socials -->
-            <!-- Begin footer content -->
-            <div class="footer-content"></div>
-            <div class="footer-content"></div>
-            <div class="footer-content"></div>
-            <!-- End footer content -->
+            <div class="footer-contact"><strong>Contact us</strong>
+                <p>Address:</p>
+                <p>42 Đường Phạm Hùng Phường Mễ Trì, Từ Liêm, Hà Nội</p>
+                <p>Phone number: 0886-440-194</p>
+                <p>Email: viettravel@gmail.com</p>
+            </div>
+            <div class="footer-subcribe"><strong>Subcribe us!<strong>
+                <div>
+                    <input class="input is-primary is-small" type="text" placeholder="Your email">
+                    <button class="button is-primary is-small">Submit</button>
+                </div>
+            </div>
         </div>
+    <!-- End footer content -->
         <div id="footer-bottom">
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur dolorum cumque quos provident
-                quis aperiam obcaecati dignissimos cum quae molestias quia, sequi velit enim eligendi id optio
-                minus. Inventore, possimus.</p>
+            <p><i>Copywright @2021. All Right Reserved</i></p>
         </div>
-    </div>
-    <!-- End Footer -->
+    </footer>
+    <!-- End Footer -->     
     </div>
 
     <script src="app.js"></script>
