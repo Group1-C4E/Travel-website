@@ -24,3 +24,24 @@ function showSlides(n) {
     slides[slideIndex - 1].style.display = "block";
     dots[slideIndex - 1].className += " active";
 }
+
+//Feedback slideshow
+let slideIndexFeedback = 0;
+showSlideFeedback();
+
+function showSlideFeedback() {
+  var i;
+  var slides = document.getElementsByClassName("feedback-user");
+  var dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlideFeedback, 4000); // Change image every 4 seconds
+}
