@@ -116,7 +116,19 @@
     padding-left: 40px;
     padding-right: 40px;
   }
+   
+  /* Feedback */
 
+  .feedback-content {
+    display: flex;
+    justify-content: space-around;
+    padding:100px;
+  }
+  
+  .feedback-user {
+    padding: 30px;
+  }
+    
   /* Footer */
   .footer {
     padding-bottom: 30px;
