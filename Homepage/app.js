@@ -32,7 +32,7 @@ showSlideFeedback();
 function showSlideFeedback() {
   var i;
   var slides = document.getElementsByClassName("feedback-user");
-  var dots = document.getElementsByClassName("dot");
+  var dots = document.getElementsByClassName("dot-feedback");
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";  
   }
