@@ -207,3 +207,11 @@
   .footer-subcribe {
     white-space: nowrap;
   }
+  /* Login */
+  #mypage-btn {
+    display: none;
+  }
+
+  #logout-btn {
+    display: none;
+  }
