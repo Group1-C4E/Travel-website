@@ -193,24 +193,38 @@
   .footer {
     padding-bottom: 30px;
   }
+
   .socials-list p {
     font-weight: bold;
     font-size: 20px;
   }
+
   .footer-content {
     display: flex;
     justify-content: space-around;
   }
+
   #footer-bottom {
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
     padding-right: 80px;
   }
+
   .footer-subcribe {
     white-space: nowrap;
   }
   /* Login */
+  #login-form {
+    justify-content: center;
+    align-items: center;
+  }
+
+  #signUp-form {
+    justify-content: center;
+    align-items: center;
+  }
+
   #mypage-btn {
     display: none;
   }
