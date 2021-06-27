@@ -57,7 +57,7 @@ loginBtn.addEventListener('click', openLoginForm);
 cancelLoginBtn.addEventListener('click', closeLoginForm);
 xLoginBtn.addEventListener('click', closeLoginForm);
 function openLoginForm() {
-    loginForm.style.display = "block";
+    loginForm.style.display = "flex";
 };
 function closeLoginForm() {
     loginForm.style.display = "none";
@@ -74,7 +74,7 @@ signUpBtn.addEventListener('click', openSignUpForm);
 cancelSignUpBtn.addEventListener('click', closeSignUpForm);
 xSignUpBtn.addEventListener('click', closeSignUpForm);
 function openSignUpForm() {
-    signUpForm.style.display = "block";
+    signUpForm.style.display = "flex";
 };
 function closeSignUpForm() {
     signUpForm.style.display = "none";
