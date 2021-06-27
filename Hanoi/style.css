@@ -1,0 +1,63 @@
+.navbar{
+    width: 100vw;
+    position: fixed;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .navbar #logo {
+    width: 65px;
+ }
+  .navbar-start {
+    flex-grow: 1; 
+    justify-content: center;
+  }
+  
+  .navbar-dropdown {
+    right: 0;
+  }
+  
+  .navbar-item {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+/* Banner */
+#banner {
+    width: 100%;
+    height: 100vh;
+    background: url(https://i.pinimg.com/originals/d0/5c/d9/d05cd9d63181f1c311bdd6ea41bb346c.jpg) no-repeat center;
+    background-size: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-family: cursive;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#banner .text-banner h1 {
+    font-size: 60px;
+}
+
+#banner .text-banner p{
+    font-size: 20px;
+}
+
+.weather-icon {
+    width: 150px;
+}
+.weather-state {
+    font-size: 30px;
+}
+.temperature {
+    font-size: 50px;
+    position: relative;
+}
+.temperature::after{
+    content: "o";
+    position: absolute;
+    font-size: 25px;
+}
