@@ -26,7 +26,7 @@ function showSlides(n) {
 }
 
 //Feedback slideshow
-let slideIndexFeedback = 0;
+let slideIndexFeedback = 1;
 showSlideFeedback(slideIndexFeedback);
 
 function showSlideFeedback() {
@@ -37,7 +37,7 @@ function showSlideFeedback() {
     slides[i].style.display = "none";  
   }
   slideIndexFeedback++;
-  if (slideIndexFeedback > slides.length) {slideIndex = 1}    
+  if (slideIndexFeedback > slides.length) {slideIndexFeedback = 1}    
   for (i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace(" active", "");
   }
