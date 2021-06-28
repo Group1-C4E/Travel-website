@@ -214,6 +214,12 @@
   .footer-subcribe {
     white-space: nowrap;
   }
+
+  .footer-contact{
+    max-width: 250px;
+    text-align: justify;
+
+  }
   /* Login */
   #login-form {
     justify-content: center;
