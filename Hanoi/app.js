@@ -52,6 +52,36 @@ feedback.addEventListener("click", (e) => {
     feedbackContent.style.display = "block"
 })
 
+// Feedback 
+let feedbackSection = document.getElementById("feedback-section");
+let inputFeedback = document.getElementById("input-fb");
+let btnFeedback = document.getElementById("btn-fb")
+inputFeedback.addEventListener("click",(e) => {
+    btnFeedback.style.display = "block";
+});
+
+inputFeedback.addEventListener("input",(e) => {
+    btnFeedback.removeAttribute("disabled")
+})
+
+let feedbackEl;
+btnFeedback.addEventListener("click",(e) => {
+    feedbackEl = `
+    <div class = "cmt">
+        <div class="user-cmt">
+        <figure class="image">
+        <img class="is-rounded avatar" src="https://2sao.vietnamnetjsc.vn/images/2020/07/07/15/13/Rose.jpg">
+            </figure>
+            <h2><strong>Rose</strong></h2>
+        </div>
+        <div>
+            <p>${inputFeedback.value}</p>
+        </div>
+    </div>`
+    feedbackSection .insertAdjacentHTML("afterbegin", feedbackEl)
+    btnFeedback.style.display = "none";
+    inputFeedback.value = "";
+});
 
 
 

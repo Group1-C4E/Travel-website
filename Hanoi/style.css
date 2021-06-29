@@ -6,6 +6,10 @@
   box-sizing: inherit; 
 }
 
+.clear {
+  clear: both;  /*dùng để fix lỗi không bao hết khi dùng float*/
+}
+
 /* Navbar */
 .navbar{
     width: 100vw;
@@ -114,10 +118,6 @@
 
 /*Gallery */
 
-.container {
-  width: 100%;
-}
-
 #gallery-content {
   display: none;
 }
@@ -186,19 +186,48 @@
 }
 
 /* Feedback */
+
 #feedback-content { 
   display: none;
-  width: 80vw;
+  width: 50vw;
   margin: 20px auto;
 }
 
-.feedback-form {
+.user-cmt {
   display: flex;
-  justify-content: center;
+  align-items: center;
 }
 
-.feedback-form input{
-  margin-right:10px ;
+.avatar {
+  padding: 10px;
+  max-width: 80px;
+}
+
+.feedback-section .cmt {
+  padding: 100px;
+}
+
+.feedback-form {
+  width: 50vw;
+}
+
+.cmt {
+  padding: 20px;
+  
+}
+
+.feedback-form textarea{
+  margin-bottom:10px ;
+}
+
+
+
+.feedback-form button {
+display: none;
+}
+
+#btn-fb {
+  float: right;
 }
   /* Footer */
 .footer {

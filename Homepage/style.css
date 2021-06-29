@@ -5,6 +5,11 @@ a{
 a:hover{
   color: #fca311;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
 .packages-caption .vertical-align{
   position: absolute;
   top: 80%;

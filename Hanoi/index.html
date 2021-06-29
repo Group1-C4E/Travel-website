@@ -21,14 +21,14 @@
                     <!-- Start navbar-menu -->
                     <div class="navbar-menu">
                         <div class="navbar-start">
-                            <a class="navbar-item"><strong>Home</strong></a>
+                            <a class="navbar-item" href="/Homepage/index.html"><strong>Home</strong></a>
                             
                             <div class="navbar-item has-dropdown is-hoverable">
                                 <a class="navbar-link">
                                     <strong>Place to go</strong>
                                 </a>
                                 <div class="navbar-dropdown">
-                                   <a class="navbar-item" href="#north-vn">North Vietnam</a>
+                                   <a class="navbar-item" href="/Homepage/index.html#north-vn">North Vietnam</a>
                                    <a class="navbar-item" href="#center-vn">Center Vietnam</a>
                                    <a class="navbar-item" href="#south-vn">South Vietnam</a> 
                                 </div>
@@ -39,7 +39,7 @@
                                     <strong>Travel Style</strong>
                                 </a>
                                 <div class="navbar-dropdown">
-                                   <a class="navbar-item" href="#bearch">Bearch</a>
+                                   <a class="navbar-item" href="#beach">Bearch</a>
                                    <a class="navbar-item" href="#cultural">Culture</a>
                                    <a class="navbar-item" href="#adventure">Adventure</a>
                                    <a class="navbar-item" href="#food">Food & Culinary</a>
@@ -199,10 +199,20 @@
             </div>
           </div>
           <!-- Begin feedback content -->
-          <div id="feedback-content">
+        <div id="feedback-content">
+              <h1><strong> Comment</strong></h1>
               <div class="feedback-form">
-                      <input class="input is-normal is-primary" type="text" placeholder="Enter your feedback">
-                      <button class="button is-normal is-primary is-outlined">Feedback</button>
+                  <div class="user-cmt">
+                      <figure class="image">
+                          <img class="is-rounded avatar" src="https://2sao.vietnamnetjsc.vn/images/2020/07/07/15/13/Rose.jpg">
+                      </figure>
+                      <h2><strong>Rose</strong></h2>
+                  </div>
+                      <textarea class="textarea is-small" id="input-fb" placeholder="Enter your feedback"></textarea>
+                      <button disabled class="button is-normal is-outlined" id="btn-fb">Feedback</button>
+                      <div class="clear"></div>
+              </div>
+                <div id="feedback-section">
               </div>
              
           </div>
