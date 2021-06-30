@@ -278,3 +278,10 @@ body{
 .title{
   color: #fca311;
 }
+
+#login-notice {
+  padding-top: 70px;
+}
+#modal-notice {
+  width: 400px;
+}

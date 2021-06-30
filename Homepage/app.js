@@ -85,6 +85,8 @@ let submitUser = document.getElementById('submit-user');
 let username = document.getElementById('username')
 let password = document.getElementById('password')
 let email = document.getElementById('email')
+let notice = document.getElementById('login-notice')
+let successBtn = document.getElementById('success-btn')
 submitUser.addEventListener('click', saveUserData);
 
 function saveUserData() {
@@ -96,13 +98,18 @@ function saveUserData() {
     //Lưu vào local storage
     localStorage.setItem('users', JSON.stringify(users));
     closeSignUpForm();
-    setTimeout(function(){ alert('Sign up success'); }, 1000);
-    
+    setTimeout(function(){ 
+        notice.style.display = "block" ;
+    }, 1000);
 }
+successBtn.addEventListener('click', function(){
+    notice.style.display = "none";
+});
 console.log(users);
 
+//Check login function in common.js
 //Check login function
-
+let loginUsers = [];
 let submitLogin = document.getElementById('submit-login');
 let usernameLogin = document.getElementById('login-username')
 let passwordLogin = document.getElementById('login-password')
@@ -112,16 +119,31 @@ function checkLogin() {
     let users = JSON.parse(userStr);
     console.log(users);
     if (users.some(user => user.username === usernameLogin.value && user.password === passwordLogin.value)){ 
+
         closeLoginForm();
         setTimeout(function(){ 
             alert('Login success');
-            hideLoginBtn();
-            showLogoutBtn();
+            saveLoginUser()
+            redirectMypage()   
+            //hideLoginBtn();
+            //showLogoutBtn();
         }, 1000);
         
     } else {
         alert('Wrong username/password');
     }
+}
+
+function redirectMypage() {
+    window.location.href="../MyPage/index.html"
+}
+//save login user data
+function saveLoginUser() {
+    loginUsers.push({
+        username: usernameLogin.value,
+    })
+    //Lưu vào local storage
+    localStorage.setItem('loginUsers', JSON.stringify(loginUsers));
 }
 function hideLoginBtn() {
     signUpBtn.style.display = "none"
@@ -133,14 +155,13 @@ function showLogoutBtn() {
     logoutBtn.style.display = "block"
     mypageBtn.style.display = "block";
 }
-
 //Logout
 logoutBtn.addEventListener('click', logout);
 function logout() {
     setTimeout(function(){ 
         alert('Logout success'); 
-        showLoginBtn();
-        hideLogoutBtn();
+        showLoginBtn()
+        hideLogoutBtn()
     }, 1000);    
 }
 function showLoginBtn() {
