@@ -278,3 +278,10 @@ body{
 .title{
   color: #fca311;
 }
+/* Search section */
+#locationsList {
+  padding-inline-start: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 20px;
+}
