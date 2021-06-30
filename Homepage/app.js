@@ -87,7 +87,16 @@ let password = document.getElementById('password')
 let email = document.getElementById('email')
 let notice = document.getElementById('login-notice')
 let successBtn = document.getElementById('success-btn')
-submitUser.addEventListener('click', saveUserData);
+submitUser.addEventListener('click', validateForm);
+function validateForm() { 
+    validatePassword();
+    validateEmail();
+    if (validatePassword() && validateEmail() ) {
+        saveUserData();
+    }
+        
+    
+};
 
 function saveUserData() {
     users.push({
@@ -135,7 +144,7 @@ function checkLogin() {
 }
 
 function redirectMypage() {
-    window.location.href="../MyPage/index.html"
+    window.location.href="/MyPage/index.html"
 }
 //save login user data
 function saveLoginUser() {
@@ -172,6 +181,7 @@ function hideLogoutBtn() {
     logoutBtn.style.display = "none"
     mypageBtn.style.display = "none";
 }
+/*
 // Search function section start
 const locationsList = document.getElementById('locationsList');
 const searchBar = document.getElementById('searchBar');
@@ -215,3 +225,42 @@ const displayLocations = (locations) => {
 
 loadLocations();
 // Search function section end
+*/
+//Check validate sign up
+function validateEmail() {
+   let emailValue = email.value;
+   if(emailValue == ""){
+      alert("Please input enail address!");  
+      return false;  
+    }
+    let atposition = emailValue.indexOf("@");
+    let dotposition = emailValue.lastIndexOf(".");
+    if (atposition < 1 || dotposition < (atposition + 2)|| (dotposition + 2) >= emailValue.length) {
+        alert("Please enter a valid e-mail address.");
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function validatePassword() {    
+    //check empty password field  
+    if(password.value == "") {  
+       alert("Please input password!");  
+       return false;  
+    }  
+     
+   //minimum password length validation  
+    if(password.value.length < 8) {  
+        alert("Password length must be at least 8 characters");  
+        return false;  
+    }  
+    
+  //maximum length of password validation  
+    if(password.value.length > 15) {  
+        alert("Password length must not exceed 15 characters");  
+        return false;  
+    } else {
+        return true;
+    }
+}
