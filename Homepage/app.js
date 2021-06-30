@@ -93,9 +93,7 @@ function validateForm() {
     validateEmail();
     if (validatePassword() && validateEmail() ) {
         saveUserData();
-    }
-        
-    
+    }   
 };
 
 function saveUserData() {
