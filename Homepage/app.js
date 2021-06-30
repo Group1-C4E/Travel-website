@@ -85,7 +85,16 @@ let submitUser = document.getElementById('submit-user');
 let username = document.getElementById('username')
 let password = document.getElementById('password')
 let email = document.getElementById('email')
-submitUser.addEventListener('click', saveUserData);
+let notice = document.getElementById('login-notice')
+let successBtn = document.getElementById('success-btn')
+submitUser.addEventListener('click', validateForm);
+function validateForm() { 
+    validatePassword();
+    validateEmail();
+    if (validatePassword() && validateEmail() ) {
+        saveUserData();
+    }   
+};
 
 function saveUserData() {
     users.push({
@@ -96,13 +105,18 @@ function saveUserData() {
     //Lưu vào local storage
     localStorage.setItem('users', JSON.stringify(users));
     closeSignUpForm();
-    setTimeout(function(){ alert('Sign up success'); }, 1000);
-    
+    setTimeout(function(){ 
+        notice.style.display = "block" ;
+    }, 1000);
 }
+successBtn.addEventListener('click', function(){
+    notice.style.display = "none";
+});
 console.log(users);
 
+//Check login function in common.js
 //Check login function
-
+let loginUsers = [];
 let submitLogin = document.getElementById('submit-login');
 let usernameLogin = document.getElementById('login-username')
 let passwordLogin = document.getElementById('login-password')
@@ -112,16 +126,31 @@ function checkLogin() {
     let users = JSON.parse(userStr);
     console.log(users);
     if (users.some(user => user.username === usernameLogin.value && user.password === passwordLogin.value)){ 
+
         closeLoginForm();
         setTimeout(function(){ 
             alert('Login success');
-            hideLoginBtn();
-            showLogoutBtn();
+            saveLoginUser()
+            redirectMypage()   
+            //hideLoginBtn();
+            //showLogoutBtn();
         }, 1000);
         
     } else {
         alert('Wrong username/password');
     }
+}
+
+function redirectMypage() {
+    window.location.href="/MyPage/index.html"
+}
+//save login user data
+function saveLoginUser() {
+    loginUsers.push({
+        username: usernameLogin.value,
+    })
+    //Lưu vào local storage
+    localStorage.setItem('loginUsers', JSON.stringify(loginUsers));
 }
 function hideLoginBtn() {
     signUpBtn.style.display = "none"
@@ -133,14 +162,13 @@ function showLogoutBtn() {
     logoutBtn.style.display = "block"
     mypageBtn.style.display = "block";
 }
-
 //Logout
 logoutBtn.addEventListener('click', logout);
 function logout() {
     setTimeout(function(){ 
         alert('Logout success'); 
-        showLoginBtn();
-        hideLogoutBtn();
+        showLoginBtn()
+        hideLogoutBtn()
     }, 1000);    
 }
 function showLoginBtn() {
@@ -150,4 +178,87 @@ function showLoginBtn() {
 function hideLogoutBtn() {
     logoutBtn.style.display = "none"
     mypageBtn.style.display = "none";
+}
+/*
+// Search function section start
+const locationsList = document.getElementById('locationsList');
+const searchBar = document.getElementById('searchBar');
+let locationsVi = [];
+
+searchBar.addEventListener('keyup', (e) => {
+    const searchString = e.target.value.toLowerCase();
+
+    const filteredLocations = locationsVi.filter((location) => {
+        return (
+            location.location_name.toLowerCase().includes(searchString) ||
+            location.region.toLowerCase().includes(searchString)
+        );
+    });
+    displayLocations(filteredLocations);
+});
+
+const loadLocations = async () => {
+    try {
+        const res = await fetch('#');
+        locationsVi = await res.json();
+        displayLocations(locationsVi);
+    } catch (err) {
+        console.error(err);
+    }
+};
+
+const displayLocations = (locations) => {
+    const htmlString = locations
+        .map((location) => {
+            return `
+            <li class="location">
+                <h2>${location.location_name}</h2>
+                <p>Region: ${location.region}</p>
+            </li>
+        `;
+        })
+        .join('');
+        locationsList.innerHTML = htmlString;
+};
+
+loadLocations();
+// Search function section end
+*/
+//Check validate sign up
+function validateEmail() {
+   let emailValue = email.value;
+   if(emailValue == ""){
+      alert("Please input enail address!");  
+      return false;  
+    }
+    let atposition = emailValue.indexOf("@");
+    let dotposition = emailValue.lastIndexOf(".");
+    if (atposition < 1 || dotposition < (atposition + 2)|| (dotposition + 2) >= emailValue.length) {
+        alert("Please enter a valid e-mail address.");
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function validatePassword() {    
+    //check empty password field  
+    if(password.value == "") {  
+       alert("Please input password!");  
+       return false;  
+    }  
+     
+   //minimum password length validation  
+    if(password.value.length < 8) {  
+        alert("Password length must be at least 8 characters");  
+        return false;  
+    }  
+    
+  //maximum length of password validation  
+    if(password.value.length > 15) {  
+        alert("Password length must not exceed 15 characters");  
+        return false;  
+    } else {
+        return true;
+    }
 }
