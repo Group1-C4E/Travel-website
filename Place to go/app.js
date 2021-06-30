@@ -4,19 +4,34 @@ let cityName = "Ha Noi";
 let weatherIcon = document.querySelector(".weather-icon");
 let weatherState = document.querySelector(".weather-state");
 let temperature = document.querySelector(".temperature");
+let banner = document.querySelector("#banner")
 
+//Fetch API Weather
 window.addEventListener("load", (e) => {
 fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${APP_ID}&units=metric`)
     .then(async res => {
-        let dataWeather = await res.json();
+        const dataWeather = await res.json();
         console.log(dataWeather);
-        weatherState.innerHTML = dataWeather.weather[0].description;
-        weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${dataWeather.weather[0].icon}@2x.png`)
-        temperature.innerHTML = Math.round(dataWeather.main.temp)
+        renderbanner(dataWeather)
     });
 });    
 
-//Change nav-2
+//Render weather banner     
+function renderbanner(dataWeather){
+    weatherState.innerHTML = dataWeather.weather[0].description;
+    weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${dataWeather.weather[0].icon}@2x.png`)
+    temperature.innerHTML = Math.round(dataWeather.main.temp)
+
+    if(dataWeather.weather[0].id < 800) {
+      banner.style.background = "url(https://img4.thuthuatphanmem.vn/uploads/2020/08/27/anh-nen-ha-noi_054023089.jpg) no-repeat center";
+  } else if(dataWeather.weather[0].id =800) {
+      banner.style.background = "url(https://i.pinimg.com/originals/d0/5c/d9/d05cd9d63181f1c311bdd6ea41bb346c.jpg) no-repeat center";
+  } else {
+       banner.style.background = "url(https://img4.thuthuatphanmem.vn/uploads/2020/08/27/anh-nen-dep-ve-ha-noi_054022808.jpg) no-repeat center";
+  }
+};
+
+//Render navbar-2
 let gallery = document.getElementById("gallery");
 let overview = document.getElementById("overview");
 let feedback = document.getElementById("feedback");
@@ -52,7 +67,7 @@ feedback.addEventListener("click", (e) => {
     feedbackContent.style.display = "block"
 })
 
-// Feedback 
+//Render Feedback 
 let feedbackSection = document.getElementById("feedback-section");
 let inputFeedback = document.getElementById("input-fb");
 let btnFeedback = document.getElementById("btn-fb")
