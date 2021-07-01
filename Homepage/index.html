@@ -110,16 +110,16 @@
         <!--Begin Login notice -->
         <div id="login-notice" class="modal">
             <div class="modal-card" id="modal-notice">
-                <section class="modal-card-body" >
+                <section class="modal-card-body">
                     <div class="field">
-                        <label class="label" >Sign up success!</label>
+                        <label class="label">Sign up success!</label>
                     </div>
                 </section>
                 <footer class="modal-card-foot">
                     <button class="button is-light" id="success-btn">OK</button>
                 </footer>
             </div>
-        </div>   
+        </div>
         <!--End Login notice -->
         <!-- End Login section -->
         <!-- Begin Signup section -->
@@ -158,17 +158,22 @@
         </div>
         <!-- End Signup section -->
         <!-- Begin Banner -->
-        <div id="banner">
+        <div id="banner" style="padding-top: 1em;">
             <div class="text-banner">
                 <h1>Vietnam Private & Guided Tours</h1>
                 <p>Smart Choice for Savvy Travellers</p>
             </div>
             <div class="input-banner" id="searchWrapper">
-                <input class="input is-medium" id="searchBar" type="text" placeholder="where do you want to go?">
-                <ul id="locationsList"></ul>
-                <button type="submit" class="button is-medium is-light">Search</button>
+                <input class="input is-medium" id="searchBar" type="text" placeholder="where do you want to go?"
+                    style="position: relative;">
+                <div class="modal" id="locationModal" style="position: absolute; top: 61%;">
+                    <div class="modal-card">
+                        <section class="modal-card-body">
+                            <ul id="locationsList"></ul>
+                        </section>
+                    </div>
+                </div>
             </div>
-
         </div>
 
         <!-- End Banner -->
@@ -185,7 +190,7 @@
                             the industry's</p>
                     </div>
                 </div>
-                <div class="container slideshowContainer mySlides" id = "north-vn">
+                <div class="container slideshowContainer mySlides" id="north-vn">
                     <div class="text">North</div>
                     <div class="columns">
                         <div class="column is-4">
@@ -212,6 +217,9 @@
                                     <figure class="image is-4by3">
                                         <img src="https://vietnam.travel/sites/default/files/styles/article_photo_large/public/2021-05/Nho%20Que%20river%20Vietnam%20Tourism.jpg?itok=o2vWqGcv"
                                             alt="HN">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
                                     </figure>
                                     <div class="packages-caption">
                                         <div class="vertical-align has-background-white">
@@ -227,6 +235,9 @@
                                     <figure class="image is-4by3">
                                         <img src="https://vietnam.travel/sites/default/files/inline-images/Seaplane%20on%20Ha%20Long%20Bay.jpg"
                                             alt="HN">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
                                     </figure>
                                     <div class="packages-caption">
                                         <div class="vertical-align has-background-white">
@@ -244,6 +255,9 @@
                                     <figure class="image is-4by3">
                                         <img src="https://vietnam.travel/sites/default/files/styles/article_photo_large/public/2019-01/Mai%20Chau%20Vietnam%20Travel-8.jpg?itok=id4uluE6"
                                             alt="HN">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
                                     </figure>
                                     <div class="packages-caption">
                                         <div class="vertical-align has-background-white">
@@ -259,6 +273,9 @@
                                     <figure class="image is-4by3">
                                         <img src="https://vietnam.travel/sites/default/files/styles/article_photo_large/public/2019-01/Ninh%20Binh%20Vietnam%20Travel-10.jpg?itok=FTWCXx0a"
                                             alt="HN">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
                                     </figure>
                                     <div class="packages-caption">
                                         <div class="vertical-align has-background-white">
@@ -274,6 +291,9 @@
                                     <figure class="image is-4by3">
                                         <img src="https://vietnam.travel/sites/default/files/styles/article_photo_large/public/2021-05/Herbal%20Bath%20Sapa%20Vietnam.jpg?itok=jfjRYmBL"
                                             alt="HN">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
                                     </figure>
                                     <div class="packages-caption">
                                         <div class="vertical-align has-background-white">
@@ -295,6 +315,9 @@
                                     <figure class="image is-4by3">
                                         <img src="https://vietnam.travel/sites/default/files/styles/top_banner/public/2021-05/things%20to%20do%20in%20Da%20Nang.jpg?itok=ZW-O1B_9"
                                             alt="Da Nang">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
                                     </figure>
                                     <div class="packages-caption">
                                         <div class="vertical-align has-background-white">
@@ -310,6 +333,9 @@
                                     <figure class="image is-4by3">
                                         <img src="https://vietnam.travel/sites/default/files/styles/top_banner/public/2020-04/What%20to%20do%20in%20Dalat-10.jpg?itok=j9yJc_hL"
                                             alt="Da Lat">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
                                     </figure>
                                     <div class="packages-caption">
                                         <div class="vertical-align has-background-white">
@@ -325,6 +351,9 @@
                                     <figure class="image is-4by3">
                                         <img src="https://360nomad.org/wp-content/uploads/2018/08/Hoi-An-Ancient-Town-boats.jpg"
                                             alt="Hoi An">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
                                     </figure>
                                     <div class="packages-caption">
                                         <div class="vertical-align has-background-white">
@@ -342,6 +371,9 @@
                                     <figure class="image is-4by3">
                                         <img src="https://vietnam.travel/sites/default/files/styles/top_banner/public/2021-05/Hue%20Travel%20Guide%20Vietnam%20Tourism_0.jpg?itok=0sc4Eg6k"
                                             alt="Hue">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
                                     </figure>
                                     <div class="packages-caption">
                                         <div class="vertical-align has-background-white">
@@ -357,6 +389,9 @@
                                     <figure class="image is-4by3">
                                         <img src="https://vietnam.travel/sites/default/files/inline-images/things%20to%20do%20in%20nha%20trang-5.jpg"
                                             alt="Nha Trang">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
                                     </figure>
                                     <div class="packages-caption">
                                         <div class="vertical-align has-background-white">
@@ -372,6 +407,9 @@
                                     <figure class="image is-4by3">
                                         <img src="https://vietnam.travel/sites/default/files/styles/article_photo_large/public/2017-11/things%20to%20do%20in%20phong%20nha-6.jpg?itok=2ibNdz2l"
                                             alt="Phong Nha">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
                                     </figure>
                                     <div class="packages-caption">
                                         <div class="vertical-align has-background-white">
@@ -393,6 +431,9 @@
                                     <figure class="image is-4by3">
                                         <img src="https://vietnam.travel/sites/default/files/inline-images/1016%20AJS%20Vietnam%20TAB%20Ho%20Chi%20Minh%20City-27.jpg"
                                             alt="Sai Gon">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
                                     </figure>
                                     <div class="packages-caption">
                                         <div class="vertical-align has-background-white">
@@ -408,6 +449,9 @@
                                     <figure class="image is-4by3">
                                         <img src="https://vietnam.travel/sites/default/files/styles/article_photo_large/public/2019-01/Con%20Dao%20Vietnam%20Travel-3.jpg?itok=ddyW1b4-"
                                             alt="Con Dao">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
                                     </figure>
                                     <div class="packages-caption">
                                         <div class="vertical-align has-background-white">
@@ -423,6 +467,9 @@
                                     <figure class="image is-4by3">
                                         <img src="https://vietnam.travel/sites/default/files/styles/article_photo_large/public/2021-05/Red%20Sand%20Dunes%20Mui%20Ne%20Vietnam.jpg?itok=pkbEB3ek"
                                             alt="Mui Ne">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
                                     </figure>
                                     <div class="packages-caption">
                                         <div class="vertical-align has-background-white">
@@ -440,6 +487,9 @@
                                     <figure class="image is-4by3">
                                         <img src="https://vietnam.travel/sites/default/files/styles/article_photo_large/public/2021-05/Can%20Tho%20Floating%20Markets%20Vietnam%20Tourism.jpg?itok=jUzAHw_w"
                                             alt="Can Tho">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
                                     </figure>
                                     <div class="packages-caption">
                                         <div class="vertical-align has-background-white">
@@ -455,6 +505,9 @@
                                     <figure class="image is-4by3">
                                         <img src="https://vietnam.travel/sites/default/files/styles/article_photo_large/public/2021-05/Ba%20Chua%20Xu%20Temple%20Vietnam%20Tourism.jpg?itok=2UeahfdX"
                                             alt="Chau Doc">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
                                     </figure>
                                     <div class="packages-caption">
                                         <div class="vertical-align has-background-white">
@@ -470,6 +523,9 @@
                                     <figure class="image is-4by3">
                                         <img src="https://vietnam.travel/sites/default/files/styles/article_photo_large/public/2019-01/Phu%20Quoc%20Vietnam%20Travel-3.jpg?itok=N1qm-ltH"
                                             alt="Phu Quoc">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
                                     </figure>
                                     <div class="packages-caption">
                                         <div class="vertical-align has-background-white">
