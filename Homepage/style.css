@@ -278,17 +278,12 @@ body{
 .title{
   color: #fca311;
 }
-<<<<<<< HEAD
-
-
-=======
 /* Search section */
 #locationsList {
   padding-inline-start: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   grid-gap: 20px;
->>>>>>> 96a096fd65bb43ab37a2afe1a5e9a47fe5272a3e
 }
 
 #login-notice {
@@ -296,3 +291,4 @@ body{
 }
 #modal-notice {
   width: 400px;
+}

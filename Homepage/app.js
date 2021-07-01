@@ -262,3 +262,46 @@ function validatePassword() {
         return true;
     }
 }
+// Search function section start
+const locationsList = document.getElementById('locationsList');
+const searchBar = document.getElementById('searchBar');
+let locationsVi = [];
+
+searchBar.addEventListener('keyup', (e) => {
+    const searchString = e.target.value.toLowerCase();
+
+    const filteredLocations = locationsVi.filter((location) => {
+        return (
+            location.location_name.toLowerCase().includes(searchString) ||
+            location.region.toLowerCase().includes(searchString)
+        );
+    });
+    displayLocations(filteredLocations);
+});
+
+const loadLocations = async () => {
+    try {
+        const res = await fetch('https://travel-website-search-fuction.herokuapp.com/travel');
+        locationsVi = await res.json();
+        displayLocations(locationsVi);
+    } catch (err) {
+        console.error(err);
+    }
+};
+
+const displayLocations = (locations) => {
+    const htmlString = locations
+        .map((location) => {
+            return `
+            <li class="location">
+                <h2>${location.location_name}</h2>
+                <p>Region: ${location.region}</p>
+            </li>
+        `;
+        })
+        .join('');
+        locationsList.innerHTML = htmlString;
+};
+
+loadLocations();
+// Search function section end
