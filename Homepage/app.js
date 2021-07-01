@@ -238,9 +238,7 @@ searchBar.addEventListener('keyup', (e) => {
     if (searchString && filteredLocations.length != 0) {
         displayLocations(filteredLocations);
         locationModal.classList.add('is-active');
-    }
-    else {
-        filteredLocations = []
+    } else {
         locationModal.classList.remove("is-active")
     }
 });
