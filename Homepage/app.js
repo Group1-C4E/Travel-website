@@ -234,11 +234,13 @@ searchBar.addEventListener('keyup', (e) => {
             location.region.toLowerCase().includes(searchString)
         );
     });
-    if (searchString) {
+    console.log(location);
+    if (searchString && filteredLocations.length != 0) {
         displayLocations(filteredLocations);
         locationModal.classList.add('is-active');
     }
     else {
+        filteredLocations = []
         locationModal.classList.remove("is-active")
     }
 });
