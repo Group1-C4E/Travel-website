@@ -170,7 +170,7 @@ searchBar.addEventListener('keyup', (e) => {
 
 const loadLocations = async () => {
     try {
-        const res = await fetch('#');
+        const res = await fetch('https://travel-website-search-fuction.herokuapp.com/travel');
         locationsVi = await res.json();
         displayLocations(locationsVi);
     } catch (err) {
