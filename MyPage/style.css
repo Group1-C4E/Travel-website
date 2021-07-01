@@ -1,0 +1,93 @@
+#signUp-btn {
+    display: none;
+}
+
+  #login-btn {
+    display: none;
+  }
+
+  a{
+    color: #14213d;
+  }
+  a:hover{
+    color: #fca311;
+  }
+  body{
+    font-family: 'Oswald', sans-serif;
+  }
+  .button.is-light {
+    background-color: #14213d;
+    border-color: transparent;
+    color: #fff;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Header */
+  
+  .navbar{
+    width: 100vw;
+    position: fixed;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .navbar #logo {
+    width: 65px;
+ }
+  .navbar-start {
+    flex-grow: 1; 
+    justify-content: center;
+  }
+  
+  .navbar-dropdown {
+    right: 0;
+  }
+  
+  .navbar-item {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+   /* Avatar */
+  .avatar-section {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 100px;
+    background-color: #e5e5e5;
+  }
+  .avatar-name {
+    padding-top: 20px
+  }
+  .tab {
+    padding-top: 20px
+  }
+  .tab a {
+      width: 160px;
+  }
+  
+  .my-account {
+    padding-left: 510px;
+    display: none;
+  }
+  .my-account-username {
+    padding-top: 30px
+  }
+  .my-account-email {
+    padding-top: 30px
+  }
+  #myPlace {
+      padding-top: 30px; 
+      padding-bottom: 50px;
+      padding-left: 50px;
+      padding-right: 50px;
+      display: flex;   
+      justify-content: space-evenly; 
+      display: none;
+  }
+  .card {
+      width: 300px;
+  }
