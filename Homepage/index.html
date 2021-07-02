@@ -93,11 +93,17 @@
                         <div class="control">
                             <input class="input" id="login-username" type="username" placeholder="Username">
                         </div>
+                        <div>
+                            <p id="user-login-err" style="color:red"></p>     
+                        </div>
                     </div>
                     <div class="field">
                         <label class="label">Password</label>
                         <div class="control">
                             <input class="input" id="login-password" type="password" placeholder="********">
+                        </div>
+                        <div>
+                            <p id="pw-login-err" style="color:red"></p>     
                         </div>
                     </div>
                 </section>
@@ -112,7 +118,7 @@
             <div class="modal-card" id="modal-notice">
                 <section class="modal-card-body">
                     <div class="field">
-                        <label class="label">Sign up success!</label>
+                        <p id="notice-text" class="label">Sign up success!</p>
                     </div>
                 </section>
                 <footer class="modal-card-foot">
@@ -132,21 +138,30 @@
                 </header>
                 <section class="modal-card-body">
                     <div class="field">
-                        <label class="label">Username</label>
+                        <label class="label">Username<span style="color:red">*</label>
                         <div class="control">
                             <input class="input" id="username" type="username" placeholder="Username">
                         </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">Password</label>
-                        <div class="control">
-                            <input class="input" id="password" type="password" placeholder="********">
+                        <div >
+                            <p id="username-err" style="color:red"></p>     
                         </div>
                     </div>
                     <div class="field">
-                        <label class="label">Email Address</label>
+                        <label class="label">Password<span style="color:red">*</span></label>
+                        <div class="control">
+                            <input class="input" id="password" type="password" placeholder="********">
+                        </div>
+                        <div>  
+                            <p id="password-err" style="color:red"></p>                   
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Email Address<span style="color:red">*</label>
                         <div class="control">
                             <input class="input" id="email" type="email" placeholder="e.g. alex@example.com">
+                        </div>
+                        <div>  
+                            <p id="email-err" style="color:red"></p>                                             
                         </div>
                     </div>
                 </section>

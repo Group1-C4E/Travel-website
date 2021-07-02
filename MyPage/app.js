@@ -1,10 +1,13 @@
 //Show username
 let usernameMypage = document.getElementById('username-mypage')
 let usernameMyaccount = document.getElementById('myaccount-username')
-function showUsername(){
+function getLoginUsers () {
     let loginUserStr = localStorage.getItem('loginUsers');
     let loginUsers = JSON.parse(loginUserStr);
     console.log(loginUsers);
+}
+function showUsername(){
+    getLoginUsers()
     usernameMypage.innerHTML = loginUsers[0].username;
     usernameMyaccount.innerHTML = "Username: " + loginUsers[0].username;
 }
@@ -68,3 +71,44 @@ function closeChangeUserModal(){
 };
 
 
+//Change user name
+let newUsername = document.getElementById('change-username');
+let cfUsername = document.getElementById('confirm-username');
+function validateUsername() {
+    if (newUsername.value == "") {
+        alert('Please input username');
+        return false
+    }
+    if (cfUsername.value == "") {
+        alert('Please input confirm username');
+        return false
+    } 
+    if (newUsername.value != cfUsername.value) {
+        alert('Wrong confirm username');
+        return false
+    } else {
+        return true
+    } 
+}
+function getUsers() {
+    let userStr = localStorage.getItem('users');
+    let users = JSON.parse(userStr);
+    console.log(users);
+}
+function changeUsername() {
+    //get users từ local storage
+    getUsers()
+    getLoginUsers();
+    let index = users.findIndex(x => x.username === loginUsers[0].username);
+    users[index].username = newUsername.value;
+    loginUsers[0].username = newUsername.value;
+    showUsername();
+}
+function changeUser() {
+    validateUsername();
+    if(validateUsername()){
+        changeUsername();
+    }
+}
+let submitBtn = document.getElementById('submit-change');
+submitBtn.addEventListener('click', changeUser);

@@ -89,9 +89,10 @@ let notice = document.getElementById('login-notice')
 let successBtn = document.getElementById('success-btn')
 submitUser.addEventListener('click', validateForm);
 function validateForm() {
+    validateUsername();
     validatePassword();
     validateEmail();
-    if (validatePassword() && validateEmail()) {
+    if (validateUsername() && validatePassword() && validateEmail()) {
         saveUserData();
     }
 };
@@ -120,7 +121,15 @@ let loginUsers = [];
 let submitLogin = document.getElementById('submit-login');
 let usernameLogin = document.getElementById('login-username')
 let passwordLogin = document.getElementById('login-password')
-submitLogin.addEventListener('click', checkLogin);
+let noticeText = document.getElementById('notice-text')
+submitLogin.addEventListener('click', validateLogin);
+function validateLogin(){
+    validateUserLogin();
+    validateUserPW();
+    if(validateUserLogin() && validateUserPW()) {
+        checkLogin()
+    }
+}
 function checkLogin() {
     let userStr = localStorage.getItem('users');
     let users = JSON.parse(userStr);
@@ -129,9 +138,10 @@ function checkLogin() {
 
         closeLoginForm();
         setTimeout(function () {
-            alert('Login success');
             saveLoginUser()
-            redirectMypage()
+            noticeText.innerHTML = "Login success";
+            notice.style.display = "block";
+            successBtn.addEventListener('click', redirectMypage)           
             //hideLoginBtn();
             //showLogoutBtn();
         }, 1000);
@@ -142,7 +152,7 @@ function checkLogin() {
 }
 
 function redirectMypage() {
-    window.location.href = "/MyPage/index.html"
+    window.location.href = "../MyPage/index.html"
 }
 //save login user data
 function saveLoginUser() {
@@ -181,43 +191,74 @@ function hideLogoutBtn() {
 }
 
 //Check validate sign up
+let usernameErr = document.getElementById('username-err');
+let passwordErr = document.getElementById('password-err');
+let emailErr = document.getElementById('email-err');
 function validateEmail() {
     let emailValue = email.value;
     if (emailValue == "") {
-        alert("Please input enail address!");
+        emailErr.innerHTML = "Please input email address!";
         return false;
     }
     let atposition = emailValue.indexOf("@");
     let dotposition = emailValue.lastIndexOf(".");
     if (atposition < 1 || dotposition < (atposition + 2) || (dotposition + 2) >= emailValue.length) {
-        alert("Please enter a valid e-mail address.");
+        emailErr.innerHTML = "Please enter a valid e-mail address!";
         return false;
     } else {
         return true;
     }
 }
-
+function validateUsername() {
+//check empty password field  
+    if (username.value == "") {
+    usernameErr.innerHTML = "Please input username!";
+    return false;
+    } else {
+    return true;
+    }
+}
 function validatePassword() {
     //check empty password field  
     if (password.value == "") {
-        alert("Please input password!");
+        passwordErr.innerHTML = "Please input password!";
         return false;
     }
 
     //minimum password length validation  
     if (password.value.length < 8) {
-        alert("Password length must be at least 8 characters");
+        passwordErr.innerHTML = "Password length must be at least 8 characters";
         return false;
     }
 
     //maximum length of password validation  
     if (password.value.length > 15) {
-        alert("Password length must not exceed 15 characters");
+        passwordErr.innerHTML = "Password length must not exceed 15 characters";
         return false;
     } else {
         return true;
     }
 }
+//Check validate login
+let userLoginErr = document.getElementById('user-login-err');
+let pwLoginErr = document.getElementById('pw-login-err');
+function validateUserLogin() { 
+        if (usernameLogin.value == "") {
+            userLoginErr.innerHTML = "Please input username!";
+        return false;
+        } else {
+        return true;
+        }
+    }
+function validateUserPW() { 
+        if (passwordLogin.value == "") {
+            pwLoginErr.innerHTML = "Please input password!";
+        return false;
+        } else {
+        return true;
+        }
+}
+
 // Search function section start
 const locationsList = document.getElementById('locationsList');
 const searchBar = document.getElementById('searchBar');
