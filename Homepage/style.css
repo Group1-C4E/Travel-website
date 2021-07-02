@@ -1,4 +1,8 @@
 /* Slide show */
+#slideSec{
+  background: url(https://vietnam.travel/themes/custom/vietnamtourism/images/bg-home-inspire.jpg) top no-repeat;
+  background-size: cover;
+}
 a{
   color: #14213d;
 }
@@ -278,6 +282,9 @@ body{
 }
 .title{
   color: #fca311;
+}
+footer{
+  background-color: #e5e5e5;
 }
 /* Search section */
 #locationsList {
