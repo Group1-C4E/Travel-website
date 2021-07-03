@@ -12,12 +12,12 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${APP
     .then(async res => {
         const dataWeather = await res.json();
         console.log(dataWeather);
-        renderbanner(dataWeather)
+        renderBanner(dataWeather)
     });
 });    
 
 //Render weather banner     
-function renderbanner(dataWeather){
+function renderBanner(dataWeather){
     weatherState.innerHTML = dataWeather.weather[0].description;
     weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${dataWeather.weather[0].icon}@2x.png`)
     temperature.innerHTML = Math.round(dataWeather.main.temp)
@@ -97,7 +97,5 @@ btnFeedback.addEventListener("click",(e) => {
     btnFeedback.style.display = "none";
     inputFeedback.value = "";
 });
-
-
 
 

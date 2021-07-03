@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ /* Apperance */
+ body{
+    font-family: 'Oswald', sans-serif;
+  }
+  .button.is-light {
+    background-color: #14213d;
+    border-color: transparent;
+    color: #fff;
+  }
+  .title{
+    color: #fca311;
+  }
+
+/* Header */
+  
+.navbar{
+    width: 100vw;
+    position: fixed;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .navbar #logo {
+    width: 65px;
+ }
+  .navbar-start {
+    flex-grow: 1; 
+    justify-content: center;
+  }
+  
+  .navbar-dropdown {
+    right: 0;
+  }
+  
+  .navbar-item {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+ /* Login */
+ #login-form {
+    justify-content: center;
+    align-items: center;
+  }
+
+  #signUp-form {
+    justify-content: center;
+    align-items: center;
+  }
+
+  #mypage-btn {
+    display: none;
+  }
+
+  #logout-btn {
+    display: none;
+  }
+
+  a{
+    color: #14213d;
+  }
+  a:hover{
+    color: #fca311;
+  }
+  
+html {
+    scroll-behavior: smooth;
+}

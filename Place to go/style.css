@@ -35,6 +35,38 @@
     padding-right: 40px;
   }
 
+    /* Login */
+    #login-form {
+      justify-content: center;
+      align-items: center;
+    }
+  
+    #signUp-form {
+      justify-content: center;
+      align-items: center;
+    }
+  
+    #mypage-btn {
+      display: none;
+    }
+  
+    #logout-btn {
+      display: none;
+    }
+
+  /* Apperance */
+  body{
+    font-family: 'Oswald', sans-serif;
+  }
+  .button.is-light {
+    background-color: #14213d;
+    border-color: transparent;
+    color: #fff;
+  }
+  .title{
+    color: #fca311;
+  }
+
 /* Banner */
 #banner {
     width: 100%;
@@ -44,8 +76,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #fff;
-    font-family: cursive;
+    color: #ffff;
     text-align: center;
 }
 
@@ -73,6 +104,12 @@
     font-size: 25px;
 }
 
+#banner .button {
+  background-color: #14213d;
+  color:#fca311;
+  border: none;
+  
+}
 /* Content */
 /* Overview */
 
@@ -225,8 +262,6 @@
   margin-bottom:10px ;
 }
 
-
-
 .feedback-form button {
 display: none;
 }
@@ -262,6 +297,14 @@ display: none;
 .footer-subcribe {
   white-space: nowrap;
 }
+
+#footer a{
+  color: #14213d;
+}
+#footer a:hover{
+  color: #fca311;
+}
+
 /* Login */
 #mypage-btn {
   display: none;
