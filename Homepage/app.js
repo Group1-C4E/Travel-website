@@ -179,6 +179,7 @@ function logout() {
         alert('Logout success');
         showLoginBtn()
         hideLogoutBtn()
+        clearLoginUser()
     }, 1000);
 }
 function showLoginBtn() {
@@ -189,7 +190,9 @@ function hideLogoutBtn() {
     logoutBtn.style.display = "none"
     mypageBtn.style.display = "none";
 }
-
+function clearLoginUser() {
+    localStorage.removeItem('loginUsers');
+};
 //Check validate sign up
 let usernameErr = document.getElementById('username-err');
 let passwordErr = document.getElementById('password-err');
@@ -310,3 +313,23 @@ loadLocations()
 
 
 // Search function section end
+
+//Check login
+function checkLoginUser() {
+    let loginUserStr = localStorage.getItem('loginUsers');
+    let loginUsers = JSON.parse(loginUserStr);
+    if (loginUsers === null) {
+        loginBtn.style.display = "block";
+        signUpBtn.style.display = "block";
+        logoutBtn.style.display = "none";
+        mypageBtn.style.display = "none";
+    } else {   
+        loginBtn.style.display = "none";
+        signUpBtn.style.display = "none";
+        logoutBtn.style.display = "block";
+        mypageBtn.style.display = "block";
+
+    }
+}
+checkLoginUser();
+mypageBtn.addEventListener('click', redirectMypage);
