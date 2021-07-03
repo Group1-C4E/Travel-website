@@ -30,20 +30,20 @@ let slideIndexFeedback = 1;
 showSlideFeedback(slideIndexFeedback);
 
 function showSlideFeedback() {
-  var i;
-  var slides = document.getElementsByClassName("feedback-user");
-  var dots = document.getElementsByClassName("dot-feedback");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  slideIndexFeedback++;
-  if (slideIndexFeedback > slides.length) {slideIndexFeedback = 1}    
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndexFeedback-1].style.display = "block";  
-  dots[slideIndexFeedback-1].className += " active";
-  setTimeout(showSlideFeedback, 4000); // Change image every 4 seconds
+    var i;
+    var slides = document.getElementsByClassName("feedback-user");
+    var dots = document.getElementsByClassName("dot-feedback");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slideIndexFeedback++;
+    if (slideIndexFeedback > slides.length) { slideIndexFeedback = 1 }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndexFeedback - 1].style.display = "block";
+    dots[slideIndexFeedback - 1].className += " active";
+    setTimeout(showSlideFeedback, 4000); // Change image every 4 seconds
 }
 
 //Show login modal
@@ -88,12 +88,13 @@ let email = document.getElementById('email')
 let notice = document.getElementById('login-notice')
 let successBtn = document.getElementById('success-btn')
 submitUser.addEventListener('click', validateForm);
-function validateForm() { 
+function validateForm() {
+    validateUsername();
     validatePassword();
     validateEmail();
-    if (validatePassword() && validateEmail() ) {
+    if (validateUsername() && validatePassword() && validateEmail()) {
         saveUserData();
-    }   
+    }
 };
 
 function saveUserData() {
@@ -105,11 +106,11 @@ function saveUserData() {
     //Lưu vào local storage
     localStorage.setItem('users', JSON.stringify(users));
     closeSignUpForm();
-    setTimeout(function(){ 
-        notice.style.display = "block" ;
+    setTimeout(function () {
+        notice.style.display = "block";
     }, 1000);
 }
-successBtn.addEventListener('click', function(){
+successBtn.addEventListener('click', function () {
     notice.style.display = "none";
 });
 console.log(users);
@@ -120,29 +121,38 @@ let loginUsers = [];
 let submitLogin = document.getElementById('submit-login');
 let usernameLogin = document.getElementById('login-username')
 let passwordLogin = document.getElementById('login-password')
-submitLogin.addEventListener('click', checkLogin);
+let noticeText = document.getElementById('notice-text')
+submitLogin.addEventListener('click', validateLogin);
+function validateLogin(){
+    validateUserLogin();
+    validateUserPW();
+    if(validateUserLogin() && validateUserPW()) {
+        checkLogin()
+    }
+}
 function checkLogin() {
     let userStr = localStorage.getItem('users');
     let users = JSON.parse(userStr);
     console.log(users);
-    if (users.some(user => user.username === usernameLogin.value && user.password === passwordLogin.value)){ 
+    if (users.some(user => user.username === usernameLogin.value && user.password === passwordLogin.value)) {
 
         closeLoginForm();
-        setTimeout(function(){ 
-            alert('Login success');
+        setTimeout(function () {
             saveLoginUser()
-            redirectMypage()   
+            noticeText.innerHTML = "Login success";
+            notice.style.display = "block";
+            successBtn.addEventListener('click', redirectMypage)           
             //hideLoginBtn();
             //showLogoutBtn();
         }, 1000);
-        
+
     } else {
         alert('Wrong username/password');
     }
 }
 
 function redirectMypage() {
-    window.location.href="/MyPage/index.html"
+    window.location.href = "/MyPage/index.html"
 }
 //save login user data
 function saveLoginUser() {
@@ -165,11 +175,11 @@ function showLogoutBtn() {
 //Logout
 logoutBtn.addEventListener('click', logout);
 function logout() {
-    setTimeout(function(){ 
-        alert('Logout success'); 
+    setTimeout(function () {
+        alert('Logout success');
         showLoginBtn()
         hideLogoutBtn()
-    }, 1000);    
+    }, 1000);
 }
 function showLoginBtn() {
     signUpBtn.style.display = "block"
@@ -179,92 +189,81 @@ function hideLogoutBtn() {
     logoutBtn.style.display = "none"
     mypageBtn.style.display = "none";
 }
-/*
-// Search function section start
-const locationsList = document.getElementById('locationsList');
-const searchBar = document.getElementById('searchBar');
-let locationsVi = [];
 
-searchBar.addEventListener('keyup', (e) => {
-    const searchString = e.target.value.toLowerCase();
-
-    const filteredLocations = locationsVi.filter((location) => {
-        return (
-            location.location_name.toLowerCase().includes(searchString) ||
-            location.region.toLowerCase().includes(searchString)
-        );
-    });
-    displayLocations(filteredLocations);
-});
-
-const loadLocations = async () => {
-    try {
-        const res = await fetch('https://travel-website-search-fuction.herokuapp.com/travel');
-        locationsVi = await res.json();
-        displayLocations(locationsVi);
-    } catch (err) {
-        console.error(err);
-    }
-};
-
-const displayLocations = (locations) => {
-    const htmlString = locations
-        .map((location) => {
-            return `
-            <li class="location">
-                <h2>${location.location_name}</h2>
-                <p>Region: ${location.region}</p>
-            </li>
-        `;
-        })
-        .join('');
-        locationsList.innerHTML = htmlString;
-};
-
-loadLocations();
-// Search function section end
-*/
 //Check validate sign up
+let usernameErr = document.getElementById('username-err');
+let passwordErr = document.getElementById('password-err');
+let emailErr = document.getElementById('email-err');
 function validateEmail() {
-   let emailValue = email.value;
-   if(emailValue == ""){
-      alert("Please input enail address!");  
-      return false;  
+    let emailValue = email.value;
+    if (emailValue == "") {
+        emailErr.innerHTML = "Please input email address!";
+        return false;
     }
     let atposition = emailValue.indexOf("@");
     let dotposition = emailValue.lastIndexOf(".");
-    if (atposition < 1 || dotposition < (atposition + 2)|| (dotposition + 2) >= emailValue.length) {
-        alert("Please enter a valid e-mail address.");
+    if (atposition < 1 || dotposition < (atposition + 2) || (dotposition + 2) >= emailValue.length) {
+        emailErr.innerHTML = "Please enter a valid e-mail address!";
         return false;
     } else {
         return true;
     }
 }
-
-function validatePassword() {    
+function validateUsername() {
+//check empty password field  
+    if (username.value == "") {
+    usernameErr.innerHTML = "Please input username!";
+    return false;
+    } else {
+    return true;
+    }
+}
+function validatePassword() {
     //check empty password field  
-    if(password.value == "") {  
-       alert("Please input password!");  
-       return false;  
-    }  
-     
-   //minimum password length validation  
-    if(password.value.length < 8) {  
-        alert("Password length must be at least 8 characters");  
-        return false;  
-    }  
-    
-  //maximum length of password validation  
-    if(password.value.length > 15) {  
-        alert("Password length must not exceed 15 characters");  
-        return false;  
+    if (password.value == "") {
+        passwordErr.innerHTML = "Please input password!";
+        return false;
+    }
+
+    //minimum password length validation  
+    if (password.value.length < 8) {
+        passwordErr.innerHTML = "Password length must be at least 8 characters";
+        return false;
+    }
+
+    //maximum length of password validation  
+    if (password.value.length > 15) {
+        passwordErr.innerHTML = "Password length must not exceed 15 characters";
+        return false;
     } else {
         return true;
     }
 }
+//Check validate login
+let userLoginErr = document.getElementById('user-login-err');
+let pwLoginErr = document.getElementById('pw-login-err');
+function validateUserLogin() { 
+        if (usernameLogin.value == "") {
+            userLoginErr.innerHTML = "Please input username!";
+        return false;
+        } else {
+        return true;
+        }
+    }
+function validateUserPW() { 
+        if (passwordLogin.value == "") {
+            pwLoginErr.innerHTML = "Please input password!";
+        return false;
+        } else {
+        return true;
+        }
+}
+
 // Search function section start
 const locationsList = document.getElementById('locationsList');
 const searchBar = document.getElementById('searchBar');
+const locationModal = document.getElementById('locationModal');
+
 let locationsVi = [];
 
 searchBar.addEventListener('keyup', (e) => {
@@ -276,14 +275,19 @@ searchBar.addEventListener('keyup', (e) => {
             location.region.toLowerCase().includes(searchString)
         );
     });
-    displayLocations(filteredLocations);
+    console.log(location);
+    if (searchString && filteredLocations.length != 0) {
+        displayLocations(filteredLocations);
+        locationModal.classList.add('is-active');
+    } else {
+        locationModal.classList.remove("is-active")
+    }
 });
 
 const loadLocations = async () => {
     try {
         const res = await fetch('https://travel-website-search-fuction.herokuapp.com/travel');
         locationsVi = await res.json();
-        displayLocations(locationsVi);
     } catch (err) {
         console.error(err);
     }
@@ -293,15 +297,16 @@ const displayLocations = (locations) => {
     const htmlString = locations
         .map((location) => {
             return `
-            <li class="location">
+            <li class="location" id="searchLocation">
                 <h2>${location.location_name}</h2>
                 <p>Region: ${location.region}</p>
             </li>
         `;
         })
         .join('');
-        locationsList.innerHTML = htmlString;
+    locationsList.innerHTML = htmlString;
 };
+loadLocations()
 
-loadLocations();
+
 // Search function section end

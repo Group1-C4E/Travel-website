@@ -1,4 +1,8 @@
 /* Slide show */
+#slideSec{
+  background: url(https://vietnam.travel/themes/custom/vietnamtourism/images/bg-home-inspire.jpg) top no-repeat;
+  background-size: cover;
+}
 a{
   color: #14213d;
 }
@@ -92,6 +96,7 @@ html {
   
   .card:hover .middle {
     opacity: 1;
+    cursor: pointer;
   }
 
   .card .text {
@@ -277,6 +282,9 @@ body{
 .title{
   color: #fca311;
 }
+footer{
+  background-color: #e5e5e5;
+}
 /* Search section */
 #locationsList {
   padding-inline-start: 0;
@@ -284,10 +292,23 @@ body{
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   grid-gap: 20px;
 }
-
+ul {
+  color: #14213d;
+}
+.modal-card,.modal-content {
+  margin: 0 auto;
+  max-height: calc(100vh - 40px);
+  width: 767px;
+}
+#searchLocation:hover{
+  cursor: pointer;
+  color: #fca311;
+}
+/* End section */
 #login-notice {
   padding-top: 70px;
 }
 #modal-notice {
   width: 400px;
 }
+

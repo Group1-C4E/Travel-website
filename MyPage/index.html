@@ -130,10 +130,10 @@
             </a>
         </div>
         <div class="my-account-email"id="change-email-btn">
-            <p>Email address:</p>
-            <a class="button is-light is-small">
+            <p id="myaccount-email">Email address:</p>
+            <!-- <a class="button is-light is-small">
                 Change email address
-            </a>
+            </a> -->
         </div>
     </div>
     <div id="myPlace">
@@ -201,11 +201,17 @@
                     <div class="control">
                         <input class="input" id="change-username" type="username" placeholder="Input new username">
                     </div>
+                    <div>
+                        <p id="new-username-err" style="color:red"></p>     
+                    </div>
                 </div>
                 <div class="field">
                     <label class="label">Confirm new username</label>
                     <div class="control">
                         <input class="input" id="confirm-username" type="username" placeholder="Confirm new username">
+                    </div>
+                    <div>
+                        <p id="confirm-username-err" style="color:red"></p>     
                     </div>
                 </div>
             </section>
