@@ -9,7 +9,7 @@ function getLoginUsers () {
 function showUsername(){
     let loginUserStr = localStorage.getItem('loginUsers');
     let loginUsers = JSON.parse(loginUserStr);
-    usernameMypage.innerHTML = loginUsers[0].username;
+    usernameMypage.innerHTML = "Welcome back, " +loginUsers[0].username;
     usernameMyaccount.innerHTML = "Username: " + loginUsers[0].username;
 }
 showUsername();
@@ -29,16 +29,19 @@ function showEmail(){
 showEmail();
 //Logout
 let logoutBtn = document.getElementById('logout-btn');
+let logoutNotice = document.getElementById('logout-notice');
+let successBtn = document.getElementById('success-btn');
 logoutBtn.addEventListener('click', logout);
+
 function logout() {
     setTimeout(function(){ 
-        alert('Logout success'); 
-        redirectHomepage();
+        logoutNotice.style.display = "block"; 
+        successBtn.addEventListener('click', redirectHomepage);
         clearLoginUser() 
     }, 1000);    
 }
 function redirectHomepage() {
-    window.location.href = "/Homepage/index.html";
+    window.location.href = "../Homepage/index.html";
 };
 function clearLoginUser() {
     localStorage.removeItem('loginUsers');

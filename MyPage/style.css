@@ -57,7 +57,7 @@
     align-items: center;
     flex-direction: column;
     padding-top: 100px;
-    background-color: #e5e5e5;
+    background-image: url("https://images.unsplash.com/photo-1561842951-2f960156a061?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");;
   }
   .avatar-name {
     padding-top: 20px
@@ -90,4 +90,12 @@
   }
   .card {
       width: 300px;
+  }
+
+  /* Logout */
+  #logout-notice {
+    display: none;
+  }
+  #modal-notice {
+    width: 400px;
   }

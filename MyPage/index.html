@@ -105,11 +105,11 @@
     <div class="avatar-section">
         <div class="avatar-image">
             <figure class="image is-128x128">
-                <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+                <img class="is-rounded" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80">
               </figure>
         </div>
         <div class="avatar-name">
-            <p id="username-mypage">Username</p>
+            <p id="username-mypage" style="color:white; font-size: 30px;">Username</p>
         </div>
         <div class="tab">
             <a class="button is-light" id="myAccount-btn">
@@ -121,6 +121,20 @@
         </div>
     </div>
     <!-- End avatar section -->
+    <!--Begin Login notice -->
+    <div id="logout-notice" class="modal">
+        <div class="modal-card" id="modal-notice">
+            <section class="modal-card-body">
+                <div class="field">
+                    <p id="notice-text" class="label">Logout success!</p>
+                </div>
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button is-light" id="success-btn">OK</button>
+            </footer>
+        </div>
+    </div>
+    <!--End Login notice -->
     <!-- Begin content -->
     <div class="my-account" id="myAccount">
         <div class="my-account-username">

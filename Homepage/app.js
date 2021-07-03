@@ -152,7 +152,7 @@ function checkLogin() {
 }
 
 function redirectMypage() {
-    window.location.href = "/MyPage/index.html"
+    window.location.href = "../MyPage/index.html"
 }
 //save login user data
 function saveLoginUser() {
