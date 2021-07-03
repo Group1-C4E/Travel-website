@@ -17,6 +17,18 @@
     color: #fca311;
   }
 
+  a{
+    color: #14213d;
+  }
+  a:hover{
+    color: #fca311;
+  }
+  
+html {
+    scroll-behavior: smooth;
+}
+
+
 /* Header */
   
 .navbar{
@@ -62,13 +74,194 @@
     display: none;
   }
 
-  a{
+ /* Banner */
+ #banner {
+    width: 100%;
+    height: 100vh;
+    background: url(https://images.hdqwalls.com/wallpapers/nature-beach-wallpaper.jpg) no-repeat center;
+    background-size: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffff;
+  }
+
+  #banner .text-banner h1 {
+    font-size: 60px;
+  }
+  #banner .text-banner p {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  #banner input {
+    width: 50vw;
+    margin-top: 20px;
+    font-family: 'Oswald', sans-serif;
+  }
+
+  #banner button {
+    margin-top: 20px;
+    font-family: 'Oswald', sans-serif;
+  }
+
+/* Content */
+/* Overview */
+  
+  #overview-content {
+    display: block;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: justify;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  #overview-content iframe,
+  #overview-content img {
+      width: 100%;
+      height: 400px;
+      margin: 10px 0px;
+  }
+  
+  #overview-content h2{
+    font-size: 22px;
+    line-height: 29px;
+    opacity: 0.8;
+  }
+  
+  #overview-content p{
+    margin: 15px 0px;
+  }
+  
+  #overview-content strong{
+    color: #128aa8;
+  }
+  
+  #overview-content h1{
+    font-size: 30px;
+    line-height: 29px;
+    letter-spacing: 1px;
+  }
+  
+  /*Gallery */
+  
+  #gallery-content {
+    display: none;
+    width: 90vw;
+    margin: 20px auto;
+  }
+  
+  .gallery-img {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 5vw);
+    grid-gap: 0.5rem; 
+    margin: 0.5rem auto; 
+  }
+  
+  .gallery__img:hover {
+    transform: scale(1.2);
+  }
+  
+  .gallery__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block; 
+    transition: transform ease 0.5s;
+  }
+  
+  .gallery__item--1 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+  
+  }
+  
+  .gallery__item--2 {
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 3;
+  
+  }
+  
+  .gallery__item--3 {
+    grid-column-start: 5;
+    grid-column-end: 9;
+    grid-row-start: 1;
+    grid-row-end: 6;
+  
+  }
+  
+  .gallery__item--4 {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 3;
+    grid-row-end: 6;
+  
+  }
+  
+  .gallery__item--5 {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 6;
+    grid-row-end: 9;
+  
+  }
+  
+  .gallery__item--6 {
+    grid-column-start: 5;
+    grid-column-end: 9;
+    grid-row-start: 6;
+    grid-row-end: 9;
+  }
+  
+    /* Footer */
+  .footer {
+    padding-bottom: 30px;
+  }
+  .socials-list p {
+    font-weight: bold;
+    font-size: 20px;
+  }
+  .footer-content {
+    display: flex;
+    justify-content: space-around;
+  }
+  #footer-bottom {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-right: 80px;
+  }
+  
+  .footer-contact{
+    max-width: 250px;
+    text-align: justify;
+  
+  }
+  
+  .footer-subcribe {
+    white-space: nowrap;
+  }
+  
+  #footer a{
     color: #14213d;
   }
-  a:hover{
+  #footer a:hover{
     color: #fca311;
   }
   
-html {
-    scroll-behavior: smooth;
-}
+  /* Login */
+  #mypage-btn {
+    display: none;
+  }
+  
+  #logout-btn {
+    display: none;
+  }
+  
+

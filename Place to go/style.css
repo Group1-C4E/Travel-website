@@ -1,10 +1,33 @@
-*,
-*::after,
-*::before {
+* {
   margin: 0;
   padding: 0;
-  box-sizing: inherit; 
+  box-sizing: border-box;
 }
+
+/* Apperance */
+body{
+  font-family: 'Oswald', sans-serif;
+}
+.button.is-light {
+  background-color: #14213d;
+  border-color: transparent;
+  color: #fff;
+}
+.title{
+  color: #fca311;
+}
+
+a{
+  color: #14213d;
+}
+a:hover{
+  color: #fca311;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 
 .clear {
   clear: both;  /*dùng để fix lỗi không bao hết khi dùng float*/
@@ -54,19 +77,6 @@
       display: none;
     }
 
-  /* Apperance */
-  body{
-    font-family: 'Oswald', sans-serif;
-  }
-  .button.is-light {
-    background-color: #14213d;
-    border-color: transparent;
-    color: #fff;
-  }
-  .title{
-    color: #fca311;
-  }
-
 /* Banner */
 #banner {
     width: 100%;
@@ -112,10 +122,6 @@
 }
 /* Content */
 /* Overview */
-
-#gallery-content {
-  display: none;
-}
 
 #overview-content {
   display: block;

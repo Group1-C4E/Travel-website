@@ -1,156 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HANOI</title>
+    <title>Place to go</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Source+Sans+Pro&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="icon" href="/assets/Vietnam Travel.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="/assets/fontawesome-free-5.15.3-web/css/all.css">
-    <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
     <div id="main">
-      <!-- Start header -->
-      <nav class="navbar">
-        <!-- Start logo -->
-        <div class="navbar-brand">
-            <img src="/assets/Vietnam Travel.png" alt="logo" id="logo">
-        </div>
-        <!-- End logo -->
-        <!-- Start navbar-menu -->
-        <div class="navbar-menu">
-            <div class="navbar-start">
-                <a class="navbar-item"><strong>Home</strong></a>
-
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        <strong>Place to go</strong>
-                    </a>
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item" href="/Homepage/index.html#north-vietnam">North Vietnam</a>
-                        <a class="navbar-item" href="#center-vn">Center Vietnam</a>
-                        <a class="navbar-item" href="#south-vn">South Vietnam</a>
-                    </div>
-                </div>
-
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        <strong>Travel Style</strong>
-                    </a>
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item" href="#bearch">Bearch</a>
-                        <a class="navbar-item" href="#cultural">Culture</a>
-                        <a class="navbar-item" href="#adventure">Adventure</a>
-                        <a class="navbar-item" href="#food">Food & Culinary</a>
-                        <a class="navbar-item" href="#luxury">Luxury</a>
-                        <a class="navbar-item" href="#discovery">Discovery</a>
-                    </div>
-                </div>
+        <!-- Start header -->
+        <nav class="navbar">
+            <!-- Start logo -->
+            <div class="navbar-brand">
+                <img src="/assets/Vietnam Travel.png" alt="logo" id="logo">
             </div>
-            <!-- Start login-btn -->
-            <div class="navbar-end">
-                <div class="navbar-item">
-                    <div class="buttons">
-                        <a class="button is-light" id="signUp-btn">
-                            <strong>Sign up</strong>
+            <!-- End logo -->
+            <!-- Start navbar-menu -->
+            <div class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item"><strong>Home</strong></a>
+
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                            <strong>Place to go</strong>
                         </a>
-                        <a class="button is-light" id="login-btn">
-                            <strong>Log in</strong>
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item" href="#north-vn">North Vietnam</a>
+                            <a class="navbar-item" href="#center-vn">Center Vietnam</a>
+                            <a class="navbar-item" href="#south-vn">South Vietnam</a>
+                        </div>
+                    </div>
+
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                            <strong>Travel Style</strong>
                         </a>
-                        <a class="button is-light" id="mypage-btn">
-                            <strong>My Page</strong>
-                        </a>
-                        <a class="button is-light" id="logout-btn">
-                            <strong>Log out</strong>
-                        </a>
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item" href="#bearch">Bearch</a>
+                            <a class="navbar-item" href="#cultural">Culture</a>
+                            <a class="navbar-item" href="#adventure">Adventure</a>
+                            <a class="navbar-item" href="#food">Food & Culinary</a>
+                            <a class="navbar-item" href="#luxury">Luxury</a>
+                            <a class="navbar-item" href="#discovery">Discovery</a>
+                        </div>
                     </div>
                 </div>
+                <!-- Start login-btn -->
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a class="button is-light" id="signUp-btn">
+                                <strong>Sign up</strong>
+                            </a>
+                            <a class="button is-light" id="login-btn">
+                                <strong>Log in</strong>
+                            </a>
+                            <a class="button is-light" id="mypage-btn">
+                                <strong>My Page</strong>
+                            </a>
+                            <a class="button is-light" id="logout-btn">
+                                <strong>Log out</strong>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End login-btn -->
             </div>
-            <!-- End login-btn -->
+            <!-- End navbar-menu -->
+        </nav>
+        <!-- Begin Login section -->
+        <!--  Login form -->
+        <div id="login-form" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Login</p>
+                    <button class="delete" id="xLogin-btn" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <div class="field">
+                        <label class="label">Username</label>
+                        <div class="control">
+                            <input class="input" id="login-username" type="username" placeholder="Username">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Password</label>
+                        <div class="control">
+                            <input class="input" id="login-password" type="password" placeholder="********">
+                        </div>
+                    </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-light" id="submit-login">Login</button>
+                    <button class="button" id="cancelLogin-btn">Cancel</button>
+                </footer>
+            </div>
         </div>
-        <!-- End navbar-menu -->
-    </nav>
-    <!-- Begin Login section -->
-    <!--  Login form -->
-    <div id="login-form" class="modal">
-        <div class="modal-background"></div>
-        <div class="modal-card">
-            <header class="modal-card-head">
-                <p class="modal-card-title">Login</p>
-                <button class="delete" id="xLogin-btn" aria-label="close"></button>
-            </header>
-            <section class="modal-card-body">
-                <div class="field">
-                    <label class="label">Username</label>
-                    <div class="control">
-                        <input class="input" id="login-username" type="username" placeholder="Username">
+        <!--Begin Login notice -->
+        <div id="login-notice" class="modal">
+            <div class="modal-card" id="modal-notice">
+                <section class="modal-card-body" >
+                    <div class="field">
+                        <label class="label" >Sign up success!</label>
                     </div>
-                </div>
-                <div class="field">
-                    <label class="label">Password</label>
-                    <div class="control">
-                        <input class="input" id="login-password" type="password" placeholder="********">
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-light" id="success-btn">OK</button>
+                </footer>
+            </div>
+        </div>   
+        <!--End Login notice -->
+        <!-- End Login section -->
+        <!-- Begin Signup section -->
+        <div id="signUp-form" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Sign up</p>
+                    <button class="delete" id="xSignUp-btn" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <div class="field">
+                        <label class="label">Username</label>
+                        <div class="control">
+                            <input class="input" id="username" type="username" placeholder="Username">
+                        </div>
                     </div>
-                </div>
-            </section>
-            <footer class="modal-card-foot">
-                <button class="button is-light" id="submit-login">Login</button>
-                <button class="button" id="cancelLogin-btn">Cancel</button>
-            </footer>
+                    <div class="field">
+                        <label class="label">Password</label>
+                        <div class="control">
+                            <input class="input" id="password" type="password" placeholder="********">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Email Address</label>
+                        <div class="control">
+                            <input class="input" id="email" type="email" placeholder="e.g. alex@example.com">
+                        </div>
+                    </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-light" id="submit-user">Sign up</button>
+                    <button class="button" id="cancelSignUp-btn">Cancel</button>
+                </footer>
+            </div>
         </div>
-    </div>
-    <!--Begin Login notice -->
-    <div id="login-notice" class="modal">
-        <div class="modal-card" id="modal-notice">
-            <section class="modal-card-body" >
-                <div class="field">
-                    <label class="label" >Sign up success!</label>
-                </div>
-            </section>
-            <footer class="modal-card-foot">
-                <button class="button is-light" id="success-btn">OK</button>
-            </footer>
-        </div>
-    </div>   
-    <!--End Login notice -->
-    <!-- End Login section -->
-    <!-- Begin Signup section -->
-    <div id="signUp-form" class="modal">
-        <div class="modal-background"></div>
-        <div class="modal-card">
-            <header class="modal-card-head">
-                <p class="modal-card-title">Sign up</p>
-                <button class="delete" id="xSignUp-btn" aria-label="close"></button>
-            </header>
-            <section class="modal-card-body">
-                <div class="field">
-                    <label class="label">Username</label>
-                    <div class="control">
-                        <input class="input" id="username" type="username" placeholder="Username">
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label">Password</label>
-                    <div class="control">
-                        <input class="input" id="password" type="password" placeholder="********">
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label">Email Address</label>
-                    <div class="control">
-                        <input class="input" id="email" type="email" placeholder="e.g. alex@example.com">
-                    </div>
-                </div>
-            </section>
-            <footer class="modal-card-foot">
-                <button class="button is-light" id="submit-user">Sign up</button>
-                <button class="button" id="cancelSignUp-btn">Cancel</button>
-            </footer>
-        </div>
-    </div>
-    <!-- End Signup section -->
+        <!-- End Signup section -->
     <!-- Begin Banner -->
     <div id="banner">
         <div class="text-banner">
