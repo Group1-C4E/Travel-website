@@ -86,7 +86,6 @@
       padding-right: 50px;
       display: flex;   
       justify-content: space-evenly; 
-      display: none;
   }
   .card {
       width: 300px;

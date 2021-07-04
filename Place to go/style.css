@@ -320,13 +320,17 @@ display: none;
   display: none;
 }
 
-#heart-btn {
-  display: none;
-}
-
 #login-notice {
   padding-top: 70px;
 }
 #modal-notice {
   width: 400px;
 }
+/* Heart icon */
+#heart-btn {
+  display: none;
+}
+#heart-btn :active {
+  transform: translateY(4px);
+}
+

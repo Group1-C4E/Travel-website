@@ -138,3 +138,30 @@ function changeUser() {
 let submitBtn = document.getElementById('submit-change');
 submitBtn.addEventListener('click', changeUser);
 
+//Show favorite places
+function showFavoritePlaces() {
+    let favoritePlacesStr = localStorage.getItem('favoritePlaces');
+    let favoritePlaces = JSON.parse(favoritePlacesStr);
+    let loginUserStr = localStorage.getItem('loginUsers');
+    let loginUsers = JSON.parse(loginUserStr);
+    if (favoritePlaces === null) {
+        myPlace.insertAdjacentHTML('afterbegin', `<p>There is no favorite place to display</p>`);
+    } else {
+        let index = favoritePlaces.findIndex(x => x.username === loginUsers[0].username);
+        console.log(index);
+        myPlace.insertAdjacentHTML('afterbegin', 
+        `<div class="card">
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img src=${favoritePlaces[index].image} alt="Placeholder image">
+                </figure>
+            </div>
+            <div class="card-content">
+                <div class="content" style="display: flex; justify-content:center">
+                    <a href="#" style ="font-size: 20px">${favoritePlaces[index].location}</a> 
+                </div>
+            </div>
+        </div>`);
+    }    
+}
+showFavoritePlaces()
