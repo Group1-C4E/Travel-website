@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="/assets/Vietnam Travel.png" type="image/gif" sizes="16x16">
-    <link rel="stylesheet" href="/assets/fontawesome-free-5.15.3-web/css/all.css">
+    <link rel="stylesheet" href="../assets/fontawesome-free-5.15.3-web/css/all.css">
 
 </head>
 
@@ -94,11 +94,17 @@
                         <div class="control">
                             <input class="input" id="login-username" type="username" placeholder="Username">
                         </div>
+                        <div>
+                            <p id="user-login-err" style="color:red"></p>     
+                        </div>
                     </div>
                     <div class="field">
                         <label class="label">Password</label>
                         <div class="control">
                             <input class="input" id="login-password" type="password" placeholder="********">
+                        </div>
+                        <div>
+                            <p id="pw-login-err" style="color:red"></p>     
                         </div>
                     </div>
                 </section>
@@ -113,7 +119,7 @@
             <div class="modal-card" id="modal-notice">
                 <section class="modal-card-body" >
                     <div class="field">
-                        <label class="label" >Sign up success!</label>
+                        <label id="notice-text" class="label" >Sign up success!</label>
                     </div>
                 </section>
                 <footer class="modal-card-foot">
@@ -133,21 +139,30 @@
                 </header>
                 <section class="modal-card-body">
                     <div class="field">
-                        <label class="label">Username</label>
+                        <label class="label">Username<span style="color:red">*</label>
                         <div class="control">
                             <input class="input" id="username" type="username" placeholder="Username">
                         </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">Password</label>
-                        <div class="control">
-                            <input class="input" id="password" type="password" placeholder="********">
+                        <div >
+                            <p id="username-err" style="color:red"></p>     
                         </div>
                     </div>
                     <div class="field">
-                        <label class="label">Email Address</label>
+                        <label class="label">Password<span style="color:red">*</span></label>
+                        <div class="control">
+                            <input class="input" id="password" type="password" placeholder="********">
+                        </div>
+                        <div>  
+                            <p id="password-err" style="color:red"></p>                   
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Email Address<span style="color:red">*</label>
                         <div class="control">
                             <input class="input" id="email" type="email" placeholder="e.g. alex@example.com">
+                        </div>
+                        <div>  
+                            <p id="email-err" style="color:red"></p>                                             
                         </div>
                     </div>
                 </section>
@@ -169,8 +184,8 @@
             <p class="weather-state"></p>
             <p class="temperature"></p>
         </div>
-        <button class="button">
-            <i class="fas fa-heart"></i>
+        <button class="button" id="heart-btn">
+            <i class="fas fa-heart" style="color: white" id="heart-icon"></i>
         </button>
     </div>
     <!-- End Banner -->
