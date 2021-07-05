@@ -31,7 +31,7 @@ let realLocation;
 if(locationName == "Thành Phố Hồ Chí Minh"){
     realLocation = "Sài Gòn" 
 } else if(locationName == "Con Son"){
-    realLocation = "Côn đảo"
+    realLocation = "Côn Đảo"
 } else if(locationName == "Phan Thiet"){
     realLocation = "Mũi Né"
 } else if(locationName == "Cho Dok"){
@@ -49,12 +49,10 @@ function renderBanner(dataWeather){
     weatherState.innerHTML = dataWeather.weather[0].description;
     weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${dataWeather.weather[0].icon}@2x.png`)
     temperature.innerHTML = Math.round(dataWeather.main.temp)
-    cityName.innerHTML = realLocation;
-    
     if(dataWeather.weather[0].id < 800) {
       banner.style.background = "url(https://img4.thuthuatphanmem.vn/uploads/2020/08/27/anh-nen-ha-noi_054023089.jpg) no-repeat center";
   } else if(dataWeather.weather[0].id = 800) {
-      banner.style.background = "url(https://i.pinimg.com/originals/d0/5c/d9/d05cd9d63181f1c311bdd6ea41bb346c.jpg) no-repeat center";
+      banner.style.background = "url(https://wallpaperbat.com/img/75446-free-stock-photo-of-vietnamese-hanoi.jpg) no-repeat center";
   } else {
        banner.style.background = "url(https://img4.thuthuatphanmem.vn/uploads/2020/08/27/anh-nen-dep-ve-ha-noi_054022808.jpg) no-repeat center";
   }
@@ -136,11 +134,12 @@ async function getDetailPost(location){
 
 async function renderPost(){
     const post = await getDetailPost(realLocation);
+
     //render Location-Name
     cityName.innerHTML = realLocation;
 
     //render Sub-location-Name
-    let subCityName = post.subname; 
+    let subCityName = post.subName; 
     let subCityNamehtml = JSON.parse(subCityName);
     console.log(subCityNamehtml);
     document.querySelector(".sub-city-name").innerHTML = subCityNamehtml; 
@@ -148,8 +147,8 @@ async function renderPost(){
     // render overview
     let overview = post.overview;
     let overviewhtml = JSON.parse(overview);
-    console.log(overviewhtml);
     document.getElementById("overview-content").innerHTML = overviewhtml;
+
     // render gallery 
     let gallery = post.gallery;
     let galleryhtml = JSON.parse(gallery);
