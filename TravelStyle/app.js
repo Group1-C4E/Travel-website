@@ -33,3 +33,11 @@ places.addEventListener("click", (e) => {
     overviewContent.style.display = "none"
     placesContent.style.display = "block"
 })
+
+
+//loadingpage
+let loading = document.getElementById("loading-page");
+window.addEventListener("load",loadingPage)
+function loadingPage(){
+    loading.style.display = "none"
+}

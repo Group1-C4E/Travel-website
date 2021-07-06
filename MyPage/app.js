@@ -165,3 +165,10 @@ function showFavoritePlaces() {
     }    
 }
 showFavoritePlaces()
+
+//loadingpage
+let loading = document.getElementById("loading-page");
+window.addEventListener("load",loadingPage)
+function loadingPage(){
+    loading.style.display = "none"
+}

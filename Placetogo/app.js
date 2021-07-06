@@ -25,6 +25,7 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${locationName}&appid=$
     });
 });    
 
+
 // render LocationName 
 
 let realLocation;
@@ -51,10 +52,8 @@ function renderBanner(dataWeather){
     temperature.innerHTML = Math.round(dataWeather.main.temp)
     if(dataWeather.weather[0].id < 800) {
       banner.style.background = "url(https://img4.thuthuatphanmem.vn/uploads/2020/08/27/anh-nen-ha-noi_054023089.jpg) no-repeat center";
-  } else if(dataWeather.weather[0].id = 800) {
-      banner.style.background = "url(https://wallpaperbat.com/img/75446-free-stock-photo-of-vietnamese-hanoi.jpg) no-repeat center";
   } else {
-       banner.style.background = "url(https://img4.thuthuatphanmem.vn/uploads/2020/08/27/anh-nen-dep-ve-ha-noi_054022808.jpg) no-repeat center";
+      banner.style.background = "url(https://wallpaperbat.com/img/75446-free-stock-photo-of-vietnamese-hanoi.jpg) no-repeat center";
   }
 };
 
@@ -134,7 +133,6 @@ async function getDetailPost(location){
 
 async function renderPost(){
     const post = await getDetailPost(realLocation);
-
     //render Location-Name
     cityName.innerHTML = realLocation;
 
@@ -430,3 +428,10 @@ function checkHeartBtn() {
     }
 }
 checkHeartBtn();
+
+//loadingpage
+let loading = document.getElementById("loading-page");
+window.addEventListener("load",loadingPage)
+function loadingPage(){
+    loading.style.display = "none"
+}
