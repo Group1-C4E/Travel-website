@@ -161,7 +161,7 @@ html {
    /* Banner */
    #banner {
      width: 100%;
-     height: 100vh;
+     height: 102vh;
      background: url(https://www.bookaway.com/blog/wp-content/uploads/2019/09/Hoi-An-Vietnam.jpg) no-repeat center;
      background-size: 100%;
      display: flex;
@@ -301,10 +301,7 @@ ul {
   max-height: calc(100vh - 40px);
   width: 767px;
 }
-#searchLocation:hover{
-  cursor: pointer;
-  color: #fca311;
-}
+
 /* End section */
 #login-notice {
   padding-top: 70px;
