@@ -49,7 +49,7 @@ html {
 .prev, .next {
     cursor: pointer;
     position: absolute;
-    top: 182.5%;
+    top: 161.5%;
     width: auto;
     padding: 16px;
     margin-top: -22px;
