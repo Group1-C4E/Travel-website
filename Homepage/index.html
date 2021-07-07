@@ -22,14 +22,16 @@
         <!-- Start header -->
         <nav class="navbar">
             <!-- Start logo -->
-            <div class="navbar-brand">
-                <img src="/assets/Vietnam Travel.png" alt="logo" id="logo">
-            </div>
+            <a href="../Homepage/index.html">
+                <div class="navbar-brand">
+                    <img src="/assets/Vietnam Travel.png" alt="logo" id="logo">
+                </div>
+            </a>
             <!-- End logo -->
             <!-- Start navbar-menu -->
             <div class="navbar-menu">
                 <div class="navbar-start">
-                    <a class="navbar-item"><strong>Home</strong></a>
+                    <a class="navbar-item" href="../Homepage/index.html"><strong>Home</strong></a>
 
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link">
@@ -95,7 +97,7 @@
                             <input class="input" id="login-username" type="username" placeholder="Username">
                         </div>
                         <div>
-                            <p id="user-login-err" style="color:red"></p>     
+                            <p id="user-login-err" style="color:red"></p>
                         </div>
                     </div>
                     <div class="field">
@@ -104,7 +106,7 @@
                             <input class="input" id="login-password" type="password" placeholder="********">
                         </div>
                         <div>
-                            <p id="pw-login-err" style="color:red"></p>     
+                            <p id="pw-login-err" style="color:red"></p>
                         </div>
                     </div>
                 </section>
@@ -143,8 +145,8 @@
                         <div class="control">
                             <input class="input" id="username" type="username" placeholder="Username">
                         </div>
-                        <div >
-                            <p id="username-err" style="color:red"></p>     
+                        <div>
+                            <p id="username-err" style="color:red"></p>
                         </div>
                     </div>
                     <div class="field">
@@ -152,8 +154,8 @@
                         <div class="control">
                             <input class="input" id="password" type="password" placeholder="********">
                         </div>
-                        <div>  
-                            <p id="password-err" style="color:red"></p>                   
+                        <div>
+                            <p id="password-err" style="color:red"></p>
                         </div>
                     </div>
                     <div class="field">
@@ -161,8 +163,8 @@
                         <div class="control">
                             <input class="input" id="email" type="email" placeholder="e.g. alex@example.com">
                         </div>
-                        <div>  
-                            <p id="email-err" style="color:red"></p>                                             
+                        <div>
+                            <p id="email-err" style="color:red"></p>
                         </div>
                     </div>
                 </section>
@@ -182,9 +184,9 @@
             <div class="input-banner" id="searchWrapper">
                 <input class="input is-medium" id="searchBar" type="text" placeholder="where do you want to go?"
                     style="position: relative;">
-                <div class="modal" id="locationModal" style="position: absolute; top: 61%;">
+                <div class="modal" id="locationModal" style="position: absolute; top: 63%;">
                     <div class="modal-card">
-                        <section class="modal-card-body">
+                        <section class="modal-card-body" style="border-radius: 2px">
                             <ul id="locationsList"></ul>
                         </section>
                     </div>
@@ -202,9 +204,8 @@
             <div class="container has-text-centered p-b-25">
                 <div class="column is-8 is-offset-2">
                     <h2 class="title">PLACES TO GO</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                        been
-                        the industry's</p>
+                    <p>There’s more to Vietnam than the traditional image of rice paddies and conical hats. Here you’ll
+                        find a country bursting with energy and forward motion.</p>
                 </div>
             </div>
             <div class="container slideshowContainer mySlides" id="north-vn">
@@ -216,9 +217,11 @@
                                 <figure class="image is-4by3">
                                     <img src="https://vietnam.travel/sites/default/files/inline-images/One%20Pillar%20Pagoda%20Hanoi.jpg"
                                         alt="HN">
-                                    <div class="middle">
-                                        <div class="text">More</div>
-                                    </div>
+                                    <a href="/Placetogo/index.html?location=Hà Nội">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
+                                    </a>
                                 </figure>
                                 <div class="packages-caption">
                                     <div class="vertical-align has-background-white">
@@ -234,9 +237,11 @@
                                 <figure class="image is-4by3">
                                     <img src="https://vietnam.travel/sites/default/files/styles/article_photo_large/public/2021-05/Nho%20Que%20river%20Vietnam%20Tourism.jpg?itok=o2vWqGcv"
                                         alt="HN">
-                                    <div class="middle">
-                                        <div class="text">More</div>
-                                    </div>
+                                    <a href="/Placetogo/index.html?location=Hà Giang">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
+                                    </a>
                                 </figure>
                                 <div class="packages-caption">
                                     <div class="vertical-align has-background-white">
@@ -252,9 +257,11 @@
                                 <figure class="image is-4by3">
                                     <img src="https://vietnam.travel/sites/default/files/inline-images/Seaplane%20on%20Ha%20Long%20Bay.jpg"
                                         alt="HN">
-                                    <div class="middle">
-                                        <div class="text">More</div>
-                                    </div>
+                                    <a href="/Placetogo/index.html?location=Hạ Long">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
+                                    </a>
                                 </figure>
                                 <div class="packages-caption">
                                     <div class="vertical-align has-background-white">
@@ -272,9 +279,11 @@
                                 <figure class="image is-4by3">
                                     <img src="https://vietnam.travel/sites/default/files/styles/article_photo_large/public/2019-01/Mai%20Chau%20Vietnam%20Travel-8.jpg?itok=id4uluE6"
                                         alt="HN">
-                                    <div class="middle">
-                                        <div class="text">More</div>
-                                    </div>
+                                    <a href="/Placetogo/index.html?location=Mai Châu">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
+                                    </a>
                                 </figure>
                                 <div class="packages-caption">
                                     <div class="vertical-align has-background-white">
@@ -290,9 +299,11 @@
                                 <figure class="image is-4by3">
                                     <img src="https://vietnam.travel/sites/default/files/styles/article_photo_large/public/2019-01/Ninh%20Binh%20Vietnam%20Travel-10.jpg?itok=FTWCXx0a"
                                         alt="HN">
-                                    <div class="middle">
-                                        <div class="text">More</div>
-                                    </div>
+                                    <a href="/Placetogo/index.html?location=Ninh Bình">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
+                                    </a>
                                 </figure>
                                 <div class="packages-caption">
                                     <div class="vertical-align has-background-white">
@@ -308,9 +319,11 @@
                                 <figure class="image is-4by3">
                                     <img src="https://vietnam.travel/sites/default/files/styles/article_photo_large/public/2021-05/Herbal%20Bath%20Sapa%20Vietnam.jpg?itok=jfjRYmBL"
                                         alt="HN">
-                                    <div class="middle">
-                                        <div class="text">More</div>
-                                    </div>
+                                    <a href="/Placetogo/index.html?location=SaPa">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
+                                    </a>
                                 </figure>
                                 <div class="packages-caption">
                                     <div class="vertical-align has-background-white">
@@ -332,9 +345,11 @@
                                 <figure class="image is-4by3">
                                     <img src="https://vietnam.travel/sites/default/files/styles/top_banner/public/2021-05/things%20to%20do%20in%20Da%20Nang.jpg?itok=ZW-O1B_9"
                                         alt="Da Nang">
-                                    <div class="middle">
-                                        <div class="text">More</div>
-                                    </div>
+                                    <a href="/Placetogo/index.html?location=Đà Nẵng">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
+                                    </a>
                                 </figure>
                                 <div class="packages-caption">
                                     <div class="vertical-align has-background-white">
@@ -350,9 +365,11 @@
                                 <figure class="image is-4by3">
                                     <img src="https://vietnam.travel/sites/default/files/styles/top_banner/public/2020-04/What%20to%20do%20in%20Dalat-10.jpg?itok=j9yJc_hL"
                                         alt="Da Lat">
-                                    <div class="middle">
-                                        <div class="text">More</div>
-                                    </div>
+                                    <a href="/Placetogo/index.html?location=Đà Lạt">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
+                                    </a>
                                 </figure>
                                 <div class="packages-caption">
                                     <div class="vertical-align has-background-white">
@@ -368,9 +385,11 @@
                                 <figure class="image is-4by3">
                                     <img src="https://360nomad.org/wp-content/uploads/2018/08/Hoi-An-Ancient-Town-boats.jpg"
                                         alt="Hoi An">
-                                    <div class="middle">
-                                        <div class="text">More</div>
-                                    </div>
+                                    <a href="/Placetogo/index.html?location=Hội An">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
+                                    </a>
                                 </figure>
                                 <div class="packages-caption">
                                     <div class="vertical-align has-background-white">
@@ -388,9 +407,11 @@
                                 <figure class="image is-4by3">
                                     <img src="https://vietnam.travel/sites/default/files/styles/top_banner/public/2021-05/Hue%20Travel%20Guide%20Vietnam%20Tourism_0.jpg?itok=0sc4Eg6k"
                                         alt="Hue">
-                                    <div class="middle">
-                                        <div class="text">More</div>
-                                    </div>
+                                    <a href="/Placetogo/index.html?location=Huế">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
+                                    </a>
                                 </figure>
                                 <div class="packages-caption">
                                     <div class="vertical-align has-background-white">
@@ -406,9 +427,11 @@
                                 <figure class="image is-4by3">
                                     <img src="https://vietnam.travel/sites/default/files/inline-images/things%20to%20do%20in%20nha%20trang-5.jpg"
                                         alt="Nha Trang">
-                                    <div class="middle">
-                                        <div class="text">More</div>
-                                    </div>
+                                    <a href="/Placetogo/index.html?location=Nha Trang">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
+                                    </a>
                                 </figure>
                                 <div class="packages-caption">
                                     <div class="vertical-align has-background-white">
@@ -424,9 +447,11 @@
                                 <figure class="image is-4by3">
                                     <img src="https://vietnam.travel/sites/default/files/styles/article_photo_large/public/2017-11/things%20to%20do%20in%20phong%20nha-6.jpg?itok=2ibNdz2l"
                                         alt="Phong Nha">
-                                    <div class="middle">
-                                        <div class="text">More</div>
-                                    </div>
+                                    <a href="/Placetogo/index.html?location=Đồng Hới">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
+                                    </a>
                                 </figure>
                                 <div class="packages-caption">
                                     <div class="vertical-align has-background-white">
@@ -448,9 +473,11 @@
                                 <figure class="image is-4by3">
                                     <img src="https://vietnam.travel/sites/default/files/inline-images/1016%20AJS%20Vietnam%20TAB%20Ho%20Chi%20Minh%20City-27.jpg"
                                         alt="Sai Gon">
-                                    <div class="middle">
-                                        <div class="text">More</div>
-                                    </div>
+                                    <a href="/Placetogo/index.html?location=Thành Phố Hồ Chí Minh">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
+                                    </a>
                                 </figure>
                                 <div class="packages-caption">
                                     <div class="vertical-align has-background-white">
@@ -466,9 +493,11 @@
                                 <figure class="image is-4by3">
                                     <img src="https://vietnam.travel/sites/default/files/styles/article_photo_large/public/2019-01/Con%20Dao%20Vietnam%20Travel-3.jpg?itok=ddyW1b4-"
                                         alt="Con Dao">
-                                    <div class="middle">
-                                        <div class="text">More</div>
-                                    </div>
+                                    <a href="/Placetogo/index.html?location=Con Son">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
+                                    </a>
                                 </figure>
                                 <div class="packages-caption">
                                     <div class="vertical-align has-background-white">
@@ -484,9 +513,11 @@
                                 <figure class="image is-4by3">
                                     <img src="https://vietnam.travel/sites/default/files/styles/article_photo_large/public/2021-05/Red%20Sand%20Dunes%20Mui%20Ne%20Vietnam.jpg?itok=pkbEB3ek"
                                         alt="Mui Ne">
-                                    <div class="middle">
-                                        <div class="text">More</div>
-                                    </div>
+                                    <a href="/Placetogo/index.html?location=Phan Thiet">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
+                                    </a>
                                 </figure>
                                 <div class="packages-caption">
                                     <div class="vertical-align has-background-white">
@@ -504,9 +535,11 @@
                                 <figure class="image is-4by3">
                                     <img src="https://vietnam.travel/sites/default/files/styles/article_photo_large/public/2021-05/Can%20Tho%20Floating%20Markets%20Vietnam%20Tourism.jpg?itok=jUzAHw_w"
                                         alt="Can Tho">
-                                    <div class="middle">
-                                        <div class="text">More</div>
-                                    </div>
+                                    <a href="/Placetogo/index.html?location=Cần Thơ">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
+                                    </a>
                                 </figure>
                                 <div class="packages-caption">
                                     <div class="vertical-align has-background-white">
@@ -522,9 +555,11 @@
                                 <figure class="image is-4by3">
                                     <img src="https://vietnam.travel/sites/default/files/styles/article_photo_large/public/2021-05/Ba%20Chua%20Xu%20Temple%20Vietnam%20Tourism.jpg?itok=2UeahfdX"
                                         alt="Chau Doc">
-                                    <div class="middle">
-                                        <div class="text">More</div>
-                                    </div>
+                                    <a href="/Placetogo/index.html?location=Cho Dok">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
+                                    </a>
                                 </figure>
                                 <div class="packages-caption">
                                     <div class="vertical-align has-background-white">
@@ -540,9 +575,11 @@
                                 <figure class="image is-4by3">
                                     <img src="https://vietnam.travel/sites/default/files/styles/article_photo_large/public/2019-01/Phu%20Quoc%20Vietnam%20Travel-3.jpg?itok=N1qm-ltH"
                                         alt="Phu Quoc">
-                                    <div class="middle">
-                                        <div class="text">More</div>
-                                    </div>
+                                    <a href="/Placetogo/index.html?location=Duong Gjong">
+                                        <div class="middle">
+                                            <div class="text">More</div>
+                                        </div>
+                                    </a>
                                 </figure>
                                 <div class="packages-caption">
                                     <div class="vertical-align has-background-white">
@@ -580,8 +617,8 @@
         <div class="container has-text-centered p-b-25">
             <div class="column is-8 is-offset-2">
                 <h2 class="title">TRAVEL STYLE</h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                    been the industry's</p>
+                <p style="margin-bottom: 1rem;">Vietnam is a wonderfully diverse country, with so many fascinating
+                    places to go. These outstanding experiences are a great place to start planning your trip.</p>
             </div>
         </div>
         <div class="slider-list">
@@ -591,10 +628,10 @@
                         <div class="card">
                             <div class="card-image">
                                 <div class="image is-2by1">
-                                    <figure>
+                                    <a href="/TravelStyle/index.html?style=beach"><figure>
                                         <img src="https://beach.vn/wp-content/uploads/2020/06/ccimage-shutterstock_286439354.jpg"
                                             alt="">
-                                    </figure>
+                                    </figure></a>
                                     <div class="packages-caption">
                                         <div class="vertical-align has-background-white">
                                             <a href="/TravelStyle/index.html?style=beach">BEACH</a>
@@ -608,10 +645,10 @@
                         <div class="card">
                             <div class="card-image">
                                 <div class="image is-1by1">
-                                    <figure>
+                                    <a href="/TravelStyle/index.html?style=cutural"><figure>
                                         <img src="https://vietnam.travel/sites/default/files/styles/large/public/2021-05/Thang%20Long%20citadel%20travel%20guide_0.jpg?itok=srg7Tj4t"
                                             alt="">
-                                    </figure>
+                                    </figure></a>
                                     <div class="packages-caption">
                                         <div class="vertical-align has-background-white">
                                             <a href="/TravelStyle/index.html?style=cutural">CUTURAL</a>
@@ -625,10 +662,10 @@
                         <div class="card">
                             <div class="card-image">
                                 <div class="image is-1by1">
-                                    <figure>
+                                    <a href="/TravelStyle/index.html?style=luxury"><figure>
                                         <img src="https://vietnam.travel/sites/default/files/styles/large/public/2020-05/best%20coffee%20houses%20vietnam.jpg?itok=d4dIZqfB"
                                             alt="">
-                                    </figure>
+                                    </figure></a>
                                     <div class="packages-caption">
                                         <div class="vertical-align has-background-white">
                                             <a href="/TravelStyle/index.html?style=luxury">LUXURY</a>
@@ -645,10 +682,10 @@
                         <div class="card">
                             <div class="card-image">
                                 <div class="image is-1by1">
-                                    <figure>
+                                    <a href="/TravelStyle/index.html?style=food"><figure>
                                         <img src="https://vietnam.travel/sites/default/files/styles/large/public/2021-02/fish%20sauce%20vietnamese%20cooking_0.jpg?itok=e7WTIJcs"
                                             alt="">
-                                    </figure>
+                                    </figure></a>
                                     <div class="packages-caption">
                                         <div class="vertical-align has-background-white">
                                             <a href="/TravelStyle/index.html?style=food">FOOD</a>
@@ -662,10 +699,10 @@
                         <div class="card">
                             <div class="card-image">
                                 <div class="image is-2by1">
-                                    <figure>
+                                    <a href="/TravelStyle/index.html?style=adventure"><figure>
                                         <img src="https://vietnam.travel/sites/default/files/styles/top_banner/public/2021-05/Adventure%20travels%20in%20Vietnam.jpg?itok=YNRtFQLB"
                                             alt="">
-                                    </figure>
+                                    </figure></a>
                                     <div class="packages-caption">
                                         <div class="vertical-align has-background-white">
                                             <a href="/TravelStyle/index.html?style=adventure">ADVENTURE</a>
@@ -679,10 +716,10 @@
                         <div class="card">
                             <div class="card-image">
                                 <div class="image is-1by1">
-                                    <figure>
+                                    <a href="/TravelStyle/index.html?style=discovery"><figure>
                                         <img src="https://vietnam.travel/sites/default/files/styles/large/public/2021-02/Vietnam%20Rice%20terraces_-2.jpg?itok=oRefmx2L"
                                             alt="">
-                                    </figure>
+                                    </figure></a>
                                     <div class="packages-caption">
                                         <div class="vertical-align has-background-white">
                                             <a href="/TravelStyle/index.html?style=discovery">DISCOVERY</a>

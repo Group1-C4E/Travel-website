@@ -300,10 +300,12 @@ const displayLocations = (locations) => {
     const htmlString = locations
         .map((location) => {
             return `
-            <li class="location" id="searchLocation">
+           <a href="${location.url}">
+            <li class="location">
                 <h2>${location.location_name}</h2>
                 <p>Region: ${location.region}</p>
             </li>
+            </a>
         `;
         })
         .join('');

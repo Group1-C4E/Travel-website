@@ -21,12 +21,13 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${locationName}&appid=$
     .then(async res => {
         const dataWeather = await res.json();
         console.log(dataWeather);
-        renderBanner(dataWeather)
+        renderWeather(dataWeather);
+        renderPost(dataWeather)
     });
 });    
 
 
-// render LocationName 
+//Real LocationName 
 
 let realLocation;
 if(locationName == "Thành Phố Hồ Chí Minh"){
@@ -46,15 +47,10 @@ if(locationName == "Thành Phố Hồ Chí Minh"){
 };
 
 //Render weather banner     
-function renderBanner(dataWeather){
+function renderWeather(dataWeather){
     weatherState.innerHTML = dataWeather.weather[0].description;
     weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${dataWeather.weather[0].icon}@2x.png`)
     temperature.innerHTML = Math.round(dataWeather.main.temp)
-    if(dataWeather.weather[0].id < 800) {
-      banner.style.background = "url(https://img4.thuthuatphanmem.vn/uploads/2020/08/27/anh-nen-ha-noi_054023089.jpg) no-repeat center";
-  } else {
-      banner.style.background = "url(https://wallpaperbat.com/img/75446-free-stock-photo-of-vietnamese-hanoi.jpg) no-repeat center";
-  }
 };
 
 //Render navbar-2
@@ -131,10 +127,25 @@ async function getDetailPost(location){
     return posts[0];
 }
 
-async function renderPost(){
+let imgbanner
+
+async function renderPost(dataWeather){
+
     const post = await getDetailPost(realLocation);
+
+    //render Image Banner 
+    let imgBanner = post.banner;
+    if(dataWeather.weather[0].id < 800) {
+        banner.style.background = `url(${imgBanner.rain}) no-repeat center`;
+    } else {
+        banner.style.background = `url(${imgBanner.sunny}) no-repeat center`;
+    };
+    
     //render Location-Name
     cityName.innerHTML = realLocation;
+
+    //render title
+    document.title = realLocation;
 
     //render Sub-location-Name
     let subCityName = post.subName; 
@@ -151,8 +162,10 @@ async function renderPost(){
     let gallery = post.gallery;
     let galleryhtml = JSON.parse(gallery);
     document.getElementById("gallery-content").innerHTML = galleryhtml;
-}
-renderPost();
+
+};
+
+
 //Show login modal
 let loginBtn = document.getElementById('login-btn');
 let loginForm = document.getElementById('login-form');

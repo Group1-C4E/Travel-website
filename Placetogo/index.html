@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Place to go</title>
+    <title></title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Source+Sans+Pro&display=swap"
@@ -23,14 +23,16 @@
         <!-- Start header -->
         <nav class="navbar">
             <!-- Start logo -->
-            <div class="navbar-brand">
-                <img src="/assets/Vietnam Travel.png" alt="logo" id="logo">
-            </div>
+            <a href="../Homepage/index.html">
+                <div class="navbar-brand">
+                    <img src="/assets/Vietnam Travel.png" alt="logo" id="logo">
+                </div>
+            </a>
             <!-- End logo -->
             <!-- Start navbar-menu -->
             <div class="navbar-menu">
                 <div class="navbar-start">
-                    <a class="navbar-item"><strong>Home</strong></a>
+                    <a class="navbar-item" href="../Homepage/index.html"><strong>Home</strong></a>
 
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link">
@@ -96,7 +98,7 @@
                             <input class="input" id="login-username" type="username" placeholder="Username">
                         </div>
                         <div>
-                            <p id="user-login-err" style="color:red"></p>     
+                            <p id="user-login-err" style="color:red"></p>
                         </div>
                     </div>
                     <div class="field">
@@ -105,7 +107,7 @@
                             <input class="input" id="login-password" type="password" placeholder="********">
                         </div>
                         <div>
-                            <p id="pw-login-err" style="color:red"></p>     
+                            <p id="pw-login-err" style="color:red"></p>
                         </div>
                     </div>
                 </section>
@@ -118,16 +120,16 @@
         <!--Begin Login notice -->
         <div id="login-notice" class="modal">
             <div class="modal-card" id="modal-notice">
-                <section class="modal-card-body" >
+                <section class="modal-card-body">
                     <div class="field">
-                        <label id="notice-text" class="label" >Sign up success!</label>
+                        <label id="notice-text" class="label">Sign up success!</label>
                     </div>
                 </section>
                 <footer class="modal-card-foot">
                     <button class="button is-light" id="success-btn">OK</button>
                 </footer>
             </div>
-        </div>   
+        </div>
         <!--End Login notice -->
         <!-- End Login section -->
         <!-- Begin Signup section -->
@@ -144,8 +146,8 @@
                         <div class="control">
                             <input class="input" id="username" type="username" placeholder="Username">
                         </div>
-                        <div >
-                            <p id="username-err" style="color:red"></p>     
+                        <div>
+                            <p id="username-err" style="color:red"></p>
                         </div>
                     </div>
                     <div class="field">
@@ -153,8 +155,8 @@
                         <div class="control">
                             <input class="input" id="password" type="password" placeholder="********">
                         </div>
-                        <div>  
-                            <p id="password-err" style="color:red"></p>                   
+                        <div>
+                            <p id="password-err" style="color:red"></p>
                         </div>
                     </div>
                     <div class="field">
@@ -162,8 +164,8 @@
                         <div class="control">
                             <input class="input" id="email" type="email" placeholder="e.g. alex@example.com">
                         </div>
-                        <div>  
-                            <p id="email-err" style="color:red"></p>                                             
+                        <div>
+                            <p id="email-err" style="color:red"></p>
                         </div>
                     </div>
                 </section>
@@ -174,200 +176,237 @@
             </div>
         </div>
         <!-- End Signup section -->
-    <!-- Begin Banner -->
-    <div id="banner">
-        <div class="text-banner">
-            <h1 class="city-name"></h1>
-            <p class="sub-city-name"></p>
+        <!-- Begin Banner -->
+        <div id="banner">
+            <div class="text-banner">
+                <h1 class="city-name"></h1>
+                <p class="sub-city-name"></p>
+            </div>
+            <div class="weather-place">
+                <img src="" alt="weather-icon" class="weather-icon">
+                <p class="weather-state"></p>
+                <p class="temperature"></p>
+            </div>
+            <button class="button" id="heart-btn">
+                <i class="fas fa-heart" style="color: white" id="heart-icon"></i>
+            </button>
         </div>
-        <div class="weather-place">
-            <img src="" alt="weather-icon" class="weather-icon"> 
-            <p class="weather-state"></p>
-            <p class="temperature"></p>
+        <!-- End Banner -->
+        <!-- Begin content -->
+        <div class="tabs is-centered">
+            <ul>
+                <li class="is-active" id="overview"><a>OVERVIEW</a></li>
+                <li id="gallery"><a>GALLERY</a></li>
+                <li id="feedback"><a>FEEDBACK</a></li>
+            </ul>
         </div>
-        <button class="button" id="heart-btn">
-            <i class="fas fa-heart" style="color: white" id="heart-icon"></i>
-        </button>
-    </div>
-    <!-- End Banner -->
-    <!-- Begin content -->
-    <div class="tabs is-centered">
-        <ul>
-          <li class="is-active" id="overview"><a>OVERVIEW</a></li>
-          <li id="gallery"><a>GALLERY</a></li>
-          <li id="feedback"><a>FEEDBACK</a></li>
-        </ul>
-      </div>
-      <div class="content-place">
-          <!-- Begin overview content -->
-          <div id="overview-content">
-            <h2>
-                Phú Quốc's pure white beaches, clear waters, and laid-back vibes have earned it a spot in the hearts of many travellers. Days here are spent on the sand, while nights are for feasting on fresh seafood and stargazing. Vietnam's largest island is home to a beautiful coastline. The An Thoi islands offer some of the country's best snorkelling and diving, and Phú Quốc's northern roads run through lush forest and branch off onto a handful of do-it-yourself hiking trails, inviting you to explore on your own.
-            </h2>
-            <img src="https://c0.wallpaperflare.com/preview/250/875/677/vietnam-thanh-ph%E1%BB%91-phu-qu%E1%BB%91c-sea-sense-resort-sky.jpg" alt="img">
-            <h1>
-                <strong>Top things to do in Phú Quốc</strong>
-            </h1>
-            <p>
-                <strong>
-                    Stay on the beach
-                <strong>    
-            </p>
-            <p>
-                Toward the island's southern coast, Bãi Sao is famous for its scenery and comes with the added adventure of navigating Phú Quốc's dirt roads. Further north, you'll find more secluded shores, from Ông Lang beach to the long, empty stretch of Bãi Dài.
-            </p>
-            <p>
-                <strong>
-                    See a slice of local life
-                </strong>
-            </p>  
-            <p>
-                To get a better sense of local life on Phú Quốc, pay a visit to Dinh Cậu, a modest temple on Long Beach. Visit fish sauce factories in Dương Đông, and poke around the fishing villages and floating restaurants on the north of the island.
-            </p>
-            <p>
-                <strong>
-                    Unwind in a beach bar
-                </strong>
-            </p>
-            <p>
-                Get ready to party: Phú Quốc is home to some amazing beach bars. INK 360 surprises patrons with avant-garde design, Sailing Club spoils diners with delicious fusion cuisine, and Rock Island Club serves up gorgeous sea views.
-            </p>
-            <p>
-                <strong>
-                    Visit the floating village
-                </strong>
-            </p>
-            <p>
-                Get ready to party: Phú Quốc is home to some amazing beach bars. INK 360 surprises patrons with avant-garde design, Sailing Club spoils diners with delicious fusion cuisine, and Rock Island Club serves up gorgeous sea views.
-            </p>
-            <p>
-                <strong>
-                    Go island-hopping
-                </strong>
-            </p>
-            <p>
-                The An Thới Archipelago is Phú Quốc’s crown jewel. These islands are blessed with sunny, sandy beaches and brilliant blue water, so clear you can snorkel, scuba, and swim to your heart’s content. Try a boat tour to locate your favourite.
-            </p>
-            <iframe src="https://www.youtube.com/embed/__5mr_Xtb30" allowfullscreen></iframe>
-            <h3>
-                <strong>Phu Quoc Weather</strong>
-            </h3>
-            <p>
-                The best time to visit Phú Quốc Island is between November and March, as the temperatures are pleasant and the skies are clear. Expect a mix of sun and rain if you visit from April to June. From July to October, the rainy season takes hold, bringing heavy downpours and cooler temperatures.
-            </p>
-            <h3>
-                <strong>Phu Quoc Transport</strong>
-            </h3>
-            <p>
-                Short and direct daily flights to Phú Quốc International Airport depart from Ho Chi Minh City, Đà Nẵng and Hanoi. Other options for visiting include high-speed boats travelling between the island and the Mekong Delta towns of Rạch Giá and Hà Tiên. Travelling around Vietnam’s largest island is relatively easy, with plenty of taxis readily available. Ride-hailing apps and tours by private car can also be a great option for visitors. Tours by boat through An Thới Archipelago are a must-do to go snorkelling and island hopping.
-            </p>
-        </div>
-          <!-- Begin gallery content -->
-            <div id="gallery-content">      
+        <div class="content-place">
+            <!-- Begin overview content -->
+            <div id="overview-content">
+                <h2>
+                    Phú Quốc's pure white beaches, clear waters, and laid-back vibes have earned it a spot in the hearts
+                    of many travellers. Days here are spent on the sand, while nights are for feasting on fresh seafood
+                    and stargazing. Vietnam's largest island is home to a beautiful coastline. The An Thoi islands offer
+                    some of the country's best snorkelling and diving, and Phú Quốc's northern roads run through lush
+                    forest and branch off onto a handful of do-it-yourself hiking trails, inviting you to explore on
+                    your own.
+                </h2>
+                <img src="https://c0.wallpaperflare.com/preview/250/875/677/vietnam-thanh-ph%E1%BB%91-phu-qu%E1%BB%91c-sea-sense-resort-sky.jpg"
+                    alt="img">
+                <h1>
+                    <strong>Top things to do in Phú Quốc</strong>
+                </h1>
+                <p>
+                    <strong>
+                        Stay on the beach
+                        <strong>
+                </p>
+                <p>
+                    Toward the island's southern coast, Bãi Sao is famous for its scenery and comes with the added
+                    adventure of navigating Phú Quốc's dirt roads. Further north, you'll find more secluded shores, from
+                    Ông Lang beach to the long, empty stretch of Bãi Dài.
+                </p>
+                <p>
+                    <strong>
+                        See a slice of local life
+                    </strong>
+                </p>
+                <p>
+                    To get a better sense of local life on Phú Quốc, pay a visit to Dinh Cậu, a modest temple on Long
+                    Beach. Visit fish sauce factories in Dương Đông, and poke around the fishing villages and floating
+                    restaurants on the north of the island.
+                </p>
+                <p>
+                    <strong>
+                        Unwind in a beach bar
+                    </strong>
+                </p>
+                <p>
+                    Get ready to party: Phú Quốc is home to some amazing beach bars. INK 360 surprises patrons with
+                    avant-garde design, Sailing Club spoils diners with delicious fusion cuisine, and Rock Island Club
+                    serves up gorgeous sea views.
+                </p>
+                <p>
+                    <strong>
+                        Visit the floating village
+                    </strong>
+                </p>
+                <p>
+                    Get ready to party: Phú Quốc is home to some amazing beach bars. INK 360 surprises patrons with
+                    avant-garde design, Sailing Club spoils diners with delicious fusion cuisine, and Rock Island Club
+                    serves up gorgeous sea views.
+                </p>
+                <p>
+                    <strong>
+                        Go island-hopping
+                    </strong>
+                </p>
+                <p>
+                    The An Thới Archipelago is Phú Quốc’s crown jewel. These islands are blessed with sunny, sandy
+                    beaches and brilliant blue water, so clear you can snorkel, scuba, and swim to your heart’s content.
+                    Try a boat tour to locate your favourite.
+                </p>
+                <iframe src="https://www.youtube.com/embed/__5mr_Xtb30" allowfullscreen></iframe>
+                <h3>
+                    <strong>Phu Quoc Weather</strong>
+                </h3>
+                <p>
+                    The best time to visit Phú Quốc Island is between November and March, as the temperatures are
+                    pleasant and the skies are clear. Expect a mix of sun and rain if you visit from April to June. From
+                    July to October, the rainy season takes hold, bringing heavy downpours and cooler temperatures.
+                </p>
+                <h3>
+                    <strong>Phu Quoc Transport</strong>
+                </h3>
+                <p>
+                    Short and direct daily flights to Phú Quốc International Airport depart from Ho Chi Minh City, Đà
+                    Nẵng and Hanoi. Other options for visiting include high-speed boats travelling between the island
+                    and the Mekong Delta towns of Rạch Giá and Hà Tiên. Travelling around Vietnam’s largest island is
+                    relatively easy, with plenty of taxis readily available. Ride-hailing apps and tours by private car
+                    can also be a great option for visitors. Tours by boat through An Thới Archipelago are a must-do to
+                    go snorkelling and island hopping.
+                </p>
+            </div>
+            <!-- Begin gallery content -->
+            <div id="gallery-content">
                 <div class="gallery-img">
                     <figure class="gallery__item gallery__item--1">
-                        <img src="https://c1.wallpaperflare.com/preview/548/90/482/sunrise-phu-quoc-island-ocean.jpg" alt="Gallery image 1" class="gallery__img">
+                        <img src="https://c1.wallpaperflare.com/preview/548/90/482/sunrise-phu-quoc-island-ocean.jpg"
+                            alt="Gallery image 1" class="gallery__img">
                     </figure>
                     <figure class="gallery__item gallery__item--2">
-                        <img src="https://c0.wallpaperflare.com/preview/959/864/871/vietnam-phu-quoc-beach-sunset.jpg" alt="Gallery image 2" class="gallery__img">
+                        <img src="https://c0.wallpaperflare.com/preview/959/864/871/vietnam-phu-quoc-beach-sunset.jpg"
+                            alt="Gallery image 2" class="gallery__img">
                     </figure>
                     <figure class="gallery__item gallery__item--3">
-                        <img src="https://c1.wallpaperflare.com/preview/106/581/235/phu-quoc-vietnam-cable-car-hon-thom.jpg" alt="Gallery image 3" class="gallery__img">
+                        <img src="https://c1.wallpaperflare.com/preview/106/581/235/phu-quoc-vietnam-cable-car-hon-thom.jpg"
+                            alt="Gallery image 3" class="gallery__img">
                     </figure>
                     <figure class="gallery__item gallery__item--4">
-                        <img src="https://c1.wallpaperflare.com/preview/358/482/356/vietnam-travel-phu-quoc-nature-island.jpg" alt="Gallery image 4" class="gallery__img">
+                        <img src="https://c1.wallpaperflare.com/preview/358/482/356/vietnam-travel-phu-quoc-nature-island.jpg"
+                            alt="Gallery image 4" class="gallery__img">
                     </figure>
                     <figure class="gallery__item gallery__item--5">
-                        <img src="https://c1.wallpaperflare.com/preview/73/371/630/phu-quoc-island-viet-nam-ocean.jpg" alt="Gallery image 5" class="gallery__img">
+                        <img src="https://c1.wallpaperflare.com/preview/73/371/630/phu-quoc-island-viet-nam-ocean.jpg"
+                            alt="Gallery image 5" class="gallery__img">
                     </figure>
                     <figure class="gallery__item gallery__item--6">
-                        <img src="https://c1.wallpaperflare.com/preview/180/1005/96/the-beach-vietnam-sour-knife.jpg" alt="Gallery image 6" class="gallery__img">
+                        <img src="https://c1.wallpaperflare.com/preview/180/1005/96/the-beach-vietnam-sour-knife.jpg"
+                            alt="Gallery image 6" class="gallery__img">
                     </figure>
                 </div>
                 <div class="gallery-img">
                     <figure class="gallery__item gallery__item--1">
-                        <img src="https://c0.wallpaperflare.com/preview/318/455/732/vietnam-phu-quoc-sea-beach.jpg" alt="Gallery image 1" class="gallery__img">
-                    </figure>    
+                        <img src="https://c0.wallpaperflare.com/preview/318/455/732/vietnam-phu-quoc-sea-beach.jpg"
+                            alt="Gallery image 1" class="gallery__img">
+                    </figure>
                     <figure class="gallery__item gallery__item--2">
-                        <img src="https://c1.wallpaperflare.com/preview/660/767/819/beach-ocean-landscape-sunset.jpg" alt="Gallery image 2" class="gallery__img">
+                        <img src="https://c1.wallpaperflare.com/preview/660/767/819/beach-ocean-landscape-sunset.jpg"
+                            alt="Gallery image 2" class="gallery__img">
                     </figure>
                     <figure class="gallery__item gallery__item--3">
-                        <img src="https://c1.wallpaperflare.com/preview/122/988/842/phu-quoc-island-viet-nam-ocean.jpg" alt="Gallery image 3" class="gallery__img">
+                        <img src="https://c1.wallpaperflare.com/preview/122/988/842/phu-quoc-island-viet-nam-ocean.jpg"
+                            alt="Gallery image 3" class="gallery__img">
                     </figure>
                     <figure class="gallery__item gallery__item--4">
-                        <img src="https://cdn3.ivivu.com/2015/06/du-lich-chau-doc-ivivu.com-17.jpg" alt="Gallery image 4" class="gallery__img">
+                        <img src="https://cdn3.ivivu.com/2015/06/du-lich-chau-doc-ivivu.com-17.jpg"
+                            alt="Gallery image 4" class="gallery__img">
                     </figure>
                     <figure class="gallery__item gallery__item--5">
-                        <img src="https://c4.wallpaperflare.com/wallpaper/480/966/517/twilight-phu-quoc-island-wallpaper-preview.jpg" alt="Gallery image 5" class="gallery__img">
+                        <img src="https://c4.wallpaperflare.com/wallpaper/480/966/517/twilight-phu-quoc-island-wallpaper-preview.jpg"
+                            alt="Gallery image 5" class="gallery__img">
                     </figure>
                     <figure class="gallery__item gallery__item--6">
-                        <img src="https://c1.wallpaperflare.com/preview/472/685/174/sunset-dawn-pier-breakwater.jpg" alt="Gallery image 6" class="gallery__img">
+                        <img src="https://c1.wallpaperflare.com/preview/472/685/174/sunset-dawn-pier-breakwater.jpg"
+                            alt="Gallery image 6" class="gallery__img">
                     </figure>
                 </div>
             </div>
-          <!-- Begin feedback content -->
-        <div id="feedback-content">
-              <h1><strong> Comment</strong></h1>
-              <div class="feedback-form">
-                  <div class="user-cmt">
-                      <figure class="image">
-                          <img class="is-rounded avatar" src="https://2sao.vietnamnetjsc.vn/images/2020/07/07/15/13/Rose.jpg">
-                      </figure>
-                      <h2><strong>Rose</strong></h2>
-                  </div>
-                      <textarea class="textarea is-small" id="input-fb" placeholder="Enter your feedback"></textarea>
-                      <button disabled class="button is-normal is-outlined" id="btn-fb">Feedback</button>
-                      <div class="clear"></div>
-              </div>
+            <!-- Begin feedback content -->
+            <div id="feedback-content">
+                <h1><strong> Comment</strong></h1>
+                <div class="feedback-form">
+                    <div class="user-cmt">
+                        <figure class="image">
+                            <img class="is-rounded avatar"
+                                src="https://2sao.vietnamnetjsc.vn/images/2020/07/07/15/13/Rose.jpg">
+                        </figure>
+                        <h2><strong>Rose</strong></h2>
+                    </div>
+                    <textarea class="textarea is-small" id="input-fb" placeholder="Enter your feedback"></textarea>
+                    <button disabled class="button is-normal is-outlined" id="btn-fb">Feedback</button>
+                    <div class="clear"></div>
+                </div>
                 <div id="feedback-section">
-              </div>
-             
-          </div>
-      </div>
-    <!-- End Content -->
-     <!-- Begin Footer -->
-     <footer class="footer">
-         <!-- Begin footer content -->
-        <!-- Begin socials -->
-        <div class="footer-content">
-            <div id="socials">
-                <div class="logo-footer">
-                    <img src="/assets/Vietnam Travel.png" alt="logo" width="150">
                 </div>
-                <div class="socials-list">
-                    <p>FOLLOW US ON</p>
-                    <a href=""><img src="https://img.icons8.com/fluent/48/000000/facebook-new.png" /></a>
-                    <a href=""><img src="https://img.icons8.com/fluent/48/000000/instagram-new.png" /></a>
-                    <a href=""><img src="https://img.icons8.com/color/48/000000/youtube--v1.png" /></a>
-                </div>
-            </div>
-            <!-- End socials -->
-            <div class="footer-link"><strong>Useful Links</strong>
-                <p><a>Blog</a></p>
-                <p><a>Contact</a></p>
-                <p><a>Home</a></p>
-                <p><a>About</a></p>
-                <p><a>Terms & Conditions</a></p>
-            </div>
-            <div class="footer-contact"><strong>Contact us</strong>
-                <p>Address:</p>
-                <p>42 Đường Phạm Hùng Phường Mễ Trì, Từ Liêm, Hà Nội</p>
-                <p>Phone number: 0886-440-194</p>
-                <p>Email: viettravel@gmail.com</p>
-            </div>
-            <div class="footer-subcribe"><strong>Subcribe us!<strong>
-                        <div>
-                            <input class="input is-light is-small" type="text" placeholder="Your email">
-                            <button class="button is-light is-small">Submit</button>
-                        </div>
+
             </div>
         </div>
-        <!-- End footer content -->
-        <div id="footer-bottom">
-            <p><i>Copywright @2021. All Right Reserved</i></p>
-        </div>
-    </footer>
-    <!-- End Footer -->     
-    <script src="app.js"></script>
+        <!-- End Content -->
+        <!-- Begin Footer -->
+        <footer class="footer">
+            <!-- Begin footer content -->
+            <!-- Begin socials -->
+            <div class="footer-content">
+                <div id="socials">
+                    <div class="logo-footer">
+                        <img src="/assets/Vietnam Travel.png" alt="logo" width="150">
+                    </div>
+                    <div class="socials-list">
+                        <p>FOLLOW US ON</p>
+                        <a href=""><img src="https://img.icons8.com/fluent/48/000000/facebook-new.png" /></a>
+                        <a href=""><img src="https://img.icons8.com/fluent/48/000000/instagram-new.png" /></a>
+                        <a href=""><img src="https://img.icons8.com/color/48/000000/youtube--v1.png" /></a>
+                    </div>
+                </div>
+                <!-- End socials -->
+                <div class="footer-link"><strong>Useful Links</strong>
+                    <p><a>Blog</a></p>
+                    <p><a>Contact</a></p>
+                    <p><a>Home</a></p>
+                    <p><a>About</a></p>
+                    <p><a>Terms & Conditions</a></p>
+                </div>
+                <div class="footer-contact"><strong>Contact us</strong>
+                    <p>Address:</p>
+                    <p>42 Đường Phạm Hùng Phường Mễ Trì, Từ Liêm, Hà Nội</p>
+                    <p>Phone number: 0886-440-194</p>
+                    <p>Email: viettravel@gmail.com</p>
+                </div>
+                <div class="footer-subcribe"><strong>Subcribe us!<strong>
+                            <div>
+                                <input class="input is-light is-small" type="text" placeholder="Your email">
+                                <button class="button is-light is-small">Submit</button>
+                            </div>
+                </div>
+            </div>
+            <!-- End footer content -->
+            <div id="footer-bottom">
+                <p><i>Copywright @2021. All Right Reserved</i></p>
+            </div>
+        </footer>
+        <!-- End Footer -->
+        <script src="app.js"></script>
 </body>
+
 </html>
