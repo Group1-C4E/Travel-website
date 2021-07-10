@@ -154,7 +154,6 @@ console.log(users);
 
 //Check login function in common.js
 //Check login function
-let loginUsers = [];
 let submitLogin = document.getElementById("submit-login");
 let usernameLogin = document.getElementById("login-username");
 let passwordLogin = document.getElementById("login-password");
@@ -172,16 +171,19 @@ async function checkLogin() {
 
   let res = await fetch("https://webtravel-server.herokuapp.com/users");
   users = await res.json();
+
   if (
       users.some((user) =>
         user.username === usernameLogin.value &&
         user.password === passwordLogin.value)) 
       {
-      let loginUser = {
-        username: usernameLogin.value,
-        password: passwordLogin.value
-      }
-      addLoginUser(loginUser)
+      console.log(users)
+      let loginUser =  users.find((user) =>
+      user.username === usernameLogin.value &&
+      user.password === passwordLogin.value)
+      console.log(loginUser);
+
+      addLoginUser(loginUser.id,loginUser.username,loginUser.password)
       closeLoginForm();
       noticeText.innerHTML = "Login success";
       notice.style.display = "block";
@@ -192,23 +194,11 @@ async function checkLogin() {
     alert("Wrong username/password");
   }
 }
-
-function addLoginUser(data) {
-  let options = {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json",
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
-  };
-  fetch("https://webtravel-server.herokuapp.com/loginUsers", options)
-    .then(function (response) {
-      return response.json();
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+ 
+function addLoginUser(id, username, password) {
+  localStorage.setItem('id',id)
+  localStorage.setItem('username',username);
+  localStorage.setItem('password',password);
 }
 
 function redirectMypage() {
@@ -235,27 +225,13 @@ function logout() {
     showLoginBtn();
     hideLogoutBtn();
     clearLoginUser();
-    removeLoginUser();
+    // removeLoginUser();
   }, 1000);
 }
 
-function removeLoginUser(){
-  let options = {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
-  };
-
-  fetch(`https://webtravel-server.herokuapp.com/loginUsers/1`, options)
-    .then(function(response){
-      response.json();
-    })
-    .catch(err=>{
-      console.log(err)
-    })
-}
+// function removeLoginUser(){
+//  localStorage.removeItem(loginUser)
+// }
 
 function showLoginBtn() {
   signUpBtn.style.display = "block";
@@ -397,23 +373,23 @@ loadLocations();
 // Search function section end
 
 //Check login
-async function checkLoginUser() {
-  const res = await fetch("https://webtravel-server.herokuapp.com/loginUsers");
-  let loginUsers = await res.json();
-  console.log(loginUsers)
-  if (loginUsers.length === 0) {
-    loginBtn.style.display = "block";
-    signUpBtn.style.display = "block";
-    logoutBtn.style.display = "none";
-    mypageBtn.style.display = "none";
-  } else {
-    loginBtn.style.display = "none";
-    signUpBtn.style.display = "none";
-    logoutBtn.style.display = "block";
-    mypageBtn.style.display = "block";
-  }
-}
-checkLoginUser();
+// async function checkLoginUser() {
+//   const res = await fetch("https://webtravel-server.herokuapp.com/loginUsers");
+//   let loginUsers = await res.json();
+//   console.log(loginUsers)
+//   if (loginUsers.length === 0) {
+//     loginBtn.style.display = "block";
+//     signUpBtn.style.display = "block";
+//     logoutBtn.style.display = "none";
+//     mypageBtn.style.display = "none";
+//   } else {
+//     loginBtn.style.display = "none";
+//     signUpBtn.style.display = "none";
+//     logoutBtn.style.display = "block";
+//     mypageBtn.style.display = "block";
+//   }
+// }
+// checkLoginUser();
 mypageBtn.addEventListener("click", redirectMypage);
 
 //loadingpage
