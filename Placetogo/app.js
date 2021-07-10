@@ -1,5 +1,4 @@
 
-
 // Weather
 function getCityName(){
 const urlParams = new URLSearchParams(window.location.search);
@@ -236,20 +235,24 @@ function validateLogin(){
         checkLogin()
     }
 }
+
 async function checkLogin() {
 
     let res = await fetch("https://webtravel-server.herokuapp.com/users");
     users = await res.json();
+  
     if (
         users.some((user) =>
           user.username === usernameLogin.value &&
           user.password === passwordLogin.value)) 
         {
-        let loginUser = {
-          username: usernameLogin.value,
-          password: passwordLogin.value
-        }
-        addLoginUser(loginUser)
+        console.log(users)
+        let loginUser =  users.find((user) =>
+        user.username === usernameLogin.value &&
+        user.password === passwordLogin.value)
+        console.log(loginUser);
+  
+        addLoginUser(loginUser.id,loginUser.username,loginUser.password,loginUser.email)
         closeLoginForm();
         noticeText.innerHTML = "Login success";
         notice.style.display = "block";
@@ -260,30 +263,18 @@ async function checkLogin() {
       alert("Wrong username/password");
     }
   }
-  
 
 function redirectMypage() {
     window.location.href = "../MyPage/index.html"
 }
 
 //save login user data
-function addLoginUser(data) {
-  let options = {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json",
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
-  };
-  fetch("https://webtravel-server.herokuapp.com/loginUsers", options)
-    .then(function (response) {
-      return response.json();
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-}
+function addLoginUser(id, username, password, email) {
+    localStorage.setItem('id', id)
+    localStorage.setItem('username', username);
+    localStorage.setItem('password', password);
+    localStorage.setItem('email', email)
+  }
 
 function hideLoginBtn() {
     signUpBtn.style.display = "none"
@@ -304,25 +295,12 @@ function logout() {
     alert("Logout success");
     showLoginBtn();
     hideLogoutBtn();
-    removeLoginUser();
+    clearLoginUser()
   }, 1000);
 }
-function removeLoginUser(){
-    let options = {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-    };
 
-    fetch(`https://webtravel-server.herokuapp.com/loginUsers/1`, options)
-      .then(function(response){
-        response.json();
-      })
-      .catch(err=>{
-        console.log(err)
-      })
+function clearLoginUser() {
+    localStorage.clear()
   }
 
 function showLoginBtn() {
@@ -407,19 +385,17 @@ function validateUserPW() {
 let heartBtn = document.getElementById('heart-btn');
 
 async function checkLoginUser() {
-    let res = await fetch("https://webtravel-server.herokuapp.com/loginUsers");
-    let loginUsers = await res.json()
-    console.log(loginUsers)
-    if (loginUsers.length === 0) {
+    console.log(localStorage)
+    if (localStorage.length === 0) {
       loginBtn.style.display = "block";
       signUpBtn.style.display = "block";
-      hideLogoutBtn();
-      heartBtn.style.display = "none";
+      logoutBtn.style.display = "none";
+      mypageBtn.style.display = "none";
     } else {
-      hideLoginBtn();
+      loginBtn.style.display = "none";
+      signUpBtn.style.display = "none";
       logoutBtn.style.display = "block";
       mypageBtn.style.display = "block";
-      heartBtn.style.display = "block";
     }
   }
   checkLoginUser();

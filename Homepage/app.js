@@ -183,7 +183,7 @@ async function checkLogin() {
       user.password === passwordLogin.value)
       console.log(loginUser);
 
-      addLoginUser(loginUser.id,loginUser.username,loginUser.password)
+      addLoginUser(loginUser.id,loginUser.username,loginUser.password, loginUser.email)
       closeLoginForm();
       noticeText.innerHTML = "Login success";
       notice.style.display = "block";
@@ -195,10 +195,11 @@ async function checkLogin() {
   }
 }
  
-function addLoginUser(id, username, password) {
-  localStorage.setItem('id',id)
-  localStorage.setItem('username',username);
-  localStorage.setItem('password',password);
+function addLoginUser(id, username, password, email) {
+  localStorage.setItem('id', id)
+  localStorage.setItem('username', username);
+  localStorage.setItem('password', password);
+  localStorage.setItem('email', email)
 }
 
 function redirectMypage() {
@@ -225,13 +226,9 @@ function logout() {
     showLoginBtn();
     hideLogoutBtn();
     clearLoginUser();
-    // removeLoginUser();
   }, 1000);
 }
 
-// function removeLoginUser(){
-//  localStorage.removeItem(loginUser)
-// }
 
 function showLoginBtn() {
   signUpBtn.style.display = "block";
@@ -241,8 +238,9 @@ function hideLogoutBtn() {
   logoutBtn.style.display = "none";
   mypageBtn.style.display = "none";
 }
+
 function clearLoginUser() {
-  localStorage.removeItem("loginUsers");
+  localStorage.clear()
 }
 //Check validate sign up
 let usernameErr = document.getElementById("username-err");
@@ -373,23 +371,22 @@ loadLocations();
 // Search function section end
 
 //Check login
-// async function checkLoginUser() {
-//   const res = await fetch("https://webtravel-server.herokuapp.com/loginUsers");
-//   let loginUsers = await res.json();
-//   console.log(loginUsers)
-//   if (loginUsers.length === 0) {
-//     loginBtn.style.display = "block";
-//     signUpBtn.style.display = "block";
-//     logoutBtn.style.display = "none";
-//     mypageBtn.style.display = "none";
-//   } else {
-//     loginBtn.style.display = "none";
-//     signUpBtn.style.display = "none";
-//     logoutBtn.style.display = "block";
-//     mypageBtn.style.display = "block";
-//   }
-// }
-// checkLoginUser();
+async function checkLoginUser() {
+  console.log(localStorage)
+  if (localStorage.length === 0) {
+    loginBtn.style.display = "block";
+    signUpBtn.style.display = "block";
+    logoutBtn.style.display = "none";
+    mypageBtn.style.display = "none";
+  } else {
+    loginBtn.style.display = "none";
+    signUpBtn.style.display = "none";
+    logoutBtn.style.display = "block";
+    mypageBtn.style.display = "block";
+  }
+}
+
+checkLoginUser();
 mypageBtn.addEventListener("click", redirectMypage);
 
 //loadingpage
