@@ -409,3 +409,30 @@ function getSlide() {
     console.log("3");
   }
 }
+// Feedback section
+const feedback1 = document.getElementById("feedback-1");
+const feedback2 = document.getElementById("feedback-2");
+const feedback3 = document.getElementById("feedback-3");
+
+let jsonComment = ["so1","so2","so3","so4","so5"];
+// Comment dang array, chua connect
+
+function randomFeed() {
+    let randomNum1 = Math.floor(Math.random() * jsonComment.length);
+    let randomNum2 = Math.floor(Math.random() * jsonComment.length);
+    let randomNum3 = Math.floor(Math.random() * jsonComment.length);
+    if (randomNum1 == randomNum2 || randomNum3 == randomNum1 || randomNum2 == randomNum3) {
+        return randomFeed()
+    }
+    else {
+        
+        let randomFeedback1 = jsonComment[randomNum1];
+        let randomFeedback2 = jsonComment[randomNum2];
+        let randomFeedback3 = jsonComment[randomNum3];
+
+        feedback1.innerHTML = "<p>" + (randomFeedback1) + "</p>";
+        feedback2.innerHTML = "<p>" + (randomFeedback2) + "</p>";
+        feedback3.innerHTML = "<p>" + (randomFeedback3) + "</p>"
+    }
+}
+randomFeed();
