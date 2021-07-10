@@ -6,9 +6,10 @@ function getLoginUsers () {
     let loginUsers = JSON.parse(loginUserStr);
     console.log(loginUsers);
 }
-function showUsername(){
-    let loginUserStr = localStorage.getItem('loginUsers');
-    let loginUsers = JSON.parse(loginUserStr);
+async function showUsername(){
+    let res = await fetch("https://webtravel-server.herokuapp.com/users");
+    loginUsers = await res.json();
+    console.log(loginUsers)
     usernameMypage.innerHTML = "Welcome back, " +loginUsers[0].username;
     usernameMyaccount.innerHTML = "Username: " + loginUsers[0].username;
 }
@@ -17,16 +18,16 @@ showUsername();
 //Show email address
 //get loginUser, get user, tìm index của object user có username trùng với login user, hiển thị email address 
 let emailMyaccount = document.getElementById('myaccount-email')
-function showEmail(){
-    let userStr = localStorage.getItem('users');
-    let users = JSON.parse(userStr);
-    let loginUserStr = localStorage.getItem('loginUsers');
-    let loginUsers = JSON.parse(loginUserStr);
-    let index = users.findIndex(x => x.username === loginUsers[0].username);
-    console.log(index);
-    emailMyaccount.innerHTML = "Email address: " + users[index].email;
-}
-showEmail();
+// function showEmail(){
+//     let userStr = localStorage.getItem('users');
+//     let users = JSON.parse(userStr);
+//     let loginUserStr = localStorage.getItem('loginUsers');
+//     let loginUsers = JSON.parse(loginUserStr);
+//     let index = users.findIndex(x => x.username === loginUsers[0].username);
+//     console.log(index);
+//     emailMyaccount.innerHTML = "Email address: " + users[index].email;
+// }
+// showEmail();
 //Logout
 let logoutBtn = document.getElementById('logout-btn');
 let logoutNotice = document.getElementById('logout-notice');

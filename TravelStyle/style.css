@@ -40,16 +40,20 @@ html {
 
 /* Header */
   
+/* Navbar */
 .navbar{
-    width: 100vw;
-    position: fixed;
-    padding-left: 40px;
-    padding-right: 40px;
-  }
+  width: 100vw;
+  height: 10vh;
+  position: fixed;
+  padding-left: 40px;
+  padding-right: 40px;
+}
 
-  .navbar #logo {
-    width: 65px;
- }
+.navbar #logo {
+  width: 56px;
+  height: 52px;
+}
+
   .navbar-start {
     flex-grow: 1; 
     justify-content: center;
@@ -87,8 +91,7 @@ html {
  #banner {
     width: 100%;
     height: 100vh;
-    background: url(https://images.hdqwalls.com/wallpapers/nature-beach-wallpaper.jpg) no-repeat center;
-    background-size: 100%;
+    background-size: 100% !important;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -124,6 +127,7 @@ html {
     margin: 0 auto;
     text-align: justify;
     font-family: Arial, Helvetica, sans-serif;
+    padding: 40px 0px;
   }
   
   #overview-content iframe {
@@ -134,28 +138,31 @@ html {
 
   #overview-content img {
       width: 100%;
-      height: 300px;
+      height: 400px;
       margin: 10px 0px;
   }
   
   #overview-content h2{
-    font-size: 22px;
+    font-size: 18px;
     line-height: 29px;
     opacity: 0.8;
   }
   
-  #overview-content p{
+  #overview-content p {
     margin: 15px 0px;
-  }
+    font-size: 15px;
+    opacity: 0.8;
+}
   
   #overview-content strong{
     color: #128aa8;
   }
   
   #overview-content h1{
-    font-size: 30px;
+    font-size: 25px;
     line-height: 29px;
     letter-spacing: 1px;
+    padding: 20px 0px;
   }
   
   /*Gallery */
@@ -235,6 +242,8 @@ html {
 /* Places in style */
 #places-content {
   display: none;
+  width: 95%;
+  margin: 30px auto;
 }
   .image {
     opacity: 1;
@@ -261,7 +270,7 @@ html {
   }
   
   .card:hover .middle {
-    opacity: 1;
+    opacity: 0.8;
     cursor: pointer;
   }
 

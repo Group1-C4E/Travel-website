@@ -1,4 +1,5 @@
 
+
 // Weather
 function getCityName(){
 const urlParams = new URLSearchParams(window.location.search);
@@ -61,23 +62,23 @@ let feedback = document.getElementById("feedback");
 let galleryContent = document.getElementById("gallery-content");
 let overviewContent = document.getElementById("overview-content");
 let feedbackContent = document.getElementById("feedback-content");
+let feedbackForm = document.querySelector(".feedback-form")
 
 gallery.addEventListener("click", (e) => {
     feedback.classList.remove("is-active");
     overview.classList.remove("is-active");
     gallery.classList.add("is-active");
-    galleryContent.style.display = "block"
-    overviewContent.style.display = "none"
-    feedbackContent.style.display = "none"
+    galleryContent.style.display = "block";
+    overviewContent.style.display = "none";
 });
 
 overview.addEventListener("click", (e) => {
     feedback.classList.remove("is-active");
     overview.classList.add("is-active");
     gallery.classList.remove("is-active");
-    galleryContent.style.display = "none"
-    overviewContent.style.display = "block"
-    feedbackContent.style.display = "none"
+    galleryContent.style.display = "none";
+    overviewContent.style.display = "block";
+    feedbackContent.style.display = "none";
 });
 
 feedback.addEventListener("click", (e) => {
@@ -89,37 +90,6 @@ feedback.addEventListener("click", (e) => {
     feedbackContent.style.display = "block"
 })
 
-//Render Feedback 
-let feedbackSection = document.getElementById("feedback-section");
-let inputFeedback = document.getElementById("input-fb");
-let btnFeedback = document.getElementById("btn-fb")
-inputFeedback.addEventListener("click",(e) => {
-    btnFeedback.style.display = "block";
-});
-
-inputFeedback.addEventListener("input",(e) => {
-    btnFeedback.removeAttribute("disabled")
-})
-
-let feedbackEl;
-btnFeedback.addEventListener("click",(e) => {
-    feedbackEl = `
-    <div class = "cmt">
-        <div class="user-cmt">
-        <figure class="image">
-        <img class="is-rounded avatar" src="https://2sao.vietnamnetjsc.vn/images/2020/07/07/15/13/Rose.jpg">
-            </figure>
-            <h2><strong>Rose</strong></h2>
-        </div>
-        <div>
-            <p>${inputFeedback.value}</p>
-        </div>
-    </div>`
-    feedbackSection .insertAdjacentHTML("afterbegin", feedbackEl)
-    btnFeedback.style.display = "none";
-    inputFeedback.value = "";
-});
-
 //Detail Post
 async function getDetailPost(location){
     let res = await fetch(`https://webtravel-server.herokuapp.com/posts?location=${location}`);
@@ -127,11 +97,10 @@ async function getDetailPost(location){
     return posts[0];
 }
 
-let imgbanner
-
 async function renderPost(dataWeather){
 
     const post = await getDetailPost(realLocation);
+    console.log(post)
 
     //render Image Banner 
     let imgBanner = post.banner;
@@ -149,9 +118,8 @@ async function renderPost(dataWeather){
 
     //render Sub-location-Name
     let subCityName = post.subName; 
-    let subCityNamehtml = JSON.parse(subCityName);
-    console.log(subCityNamehtml);
-    document.querySelector(".sub-city-name").innerHTML = subCityNamehtml; 
+    console.log(subCityName);
+    document.querySelector(".sub-city-name").innerHTML = subCityName; 
 
     // render overview
     let overview = post.overview;
@@ -217,19 +185,37 @@ function validateForm() {
     }
 };
 
+function createUser(data) {
+    let options = {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    };
+    fetch("https://webtravel-server.herokuapp.com/users", options)
+      .then(function (response) {
+        response.json();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }  
+
 function saveUserData() {
-    users.push({
-        username: username.value,
-        password: password.value,
-        email: email.value
-    })
-    //Lưu vào local storage
-    localStorage.setItem('users', JSON.stringify(users));
+    let newUser = {
+      username: username.value,
+      password: password.value,
+      email: email.value
+    };
+    createUser(newUser);
     closeSignUpForm();
     setTimeout(function () {
-        notice.style.display = "block";
+      notice.style.display = "block";
     }, 1000);
-}
+  }
+
 successBtn.addEventListener('click', function () {
     notice.style.display = "none";
 });
@@ -250,58 +236,95 @@ function validateLogin(){
         checkLogin()
     }
 }
-function checkLogin() {
-    let userStr = localStorage.getItem('users');
-    let users = JSON.parse(userStr);
-    console.log(users);
-    if (users.some(user => user.username === usernameLogin.value && user.password === passwordLogin.value)) {
+async function checkLogin() {
 
+    let res = await fetch("https://webtravel-server.herokuapp.com/users");
+    users = await res.json();
+    if (
+        users.some((user) =>
+          user.username === usernameLogin.value &&
+          user.password === passwordLogin.value)) 
+        {
+        let loginUser = {
+          username: usernameLogin.value,
+          password: passwordLogin.value
+        }
+        addLoginUser(loginUser)
         closeLoginForm();
-        setTimeout(function () {
-            saveLoginUser()
-            noticeText.innerHTML = "Login success";
-            notice.style.display = "block";
-            successBtn.addEventListener('click', redirectMypage)           
-            //hideLoginBtn();
-            //showLogoutBtn();
-        }, 1000);
-
+        noticeText.innerHTML = "Login success";
+        notice.style.display = "block";
+        showLogoutBtn();
+        hideLoginBtn();
+        // successBtn.addEventListener("click", redirectMypage);
     } else {
-        alert('Wrong username/password');
+      alert("Wrong username/password");
     }
-}
+  }
+  
 
 function redirectMypage() {
     window.location.href = "../MyPage/index.html"
 }
+
 //save login user data
-function saveLoginUser() {
-    loginUsers.push({
-        username: usernameLogin.value,
+function addLoginUser(data) {
+  let options = {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+  };
+  fetch("https://webtravel-server.herokuapp.com/loginUsers", options)
+    .then(function (response) {
+      return response.json();
     })
-    //Lưu vào local storage
-    localStorage.setItem('loginUsers', JSON.stringify(loginUsers));
+    .catch((err) => {
+      console.log(err);
+    });
 }
+
 function hideLoginBtn() {
     signUpBtn.style.display = "none"
     loginBtn.style.display = "none";
 }
 let logoutBtn = document.getElementById('logout-btn');
 let mypageBtn = document.getElementById('mypage-btn');
+
 function showLogoutBtn() {
     logoutBtn.style.display = "block"
     mypageBtn.style.display = "block";
 }
 //Logout
-logoutBtn.addEventListener('click', logout);
+logoutBtn.addEventListener("click", logout);
+
 function logout() {
-    setTimeout(function () {
-        alert('Logout success');
-        showLoginBtn()
-        hideLogoutBtn()
-        clearLoginUser()
-    }, 1000);
+  setTimeout(function () {
+    alert("Logout success");
+    showLoginBtn();
+    hideLogoutBtn();
+    removeLoginUser();
+  }, 1000);
 }
+function removeLoginUser(){
+    let options = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    };
+
+    fetch(`https://webtravel-server.herokuapp.com/loginUsers/1`, options)
+      .then(function(response){
+        response.json();
+      })
+      .catch(err=>{
+        console.log(err)
+      })
+  }
+
 function showLoginBtn() {
     signUpBtn.style.display = "block"
     loginBtn.style.display = "block";
@@ -310,9 +333,7 @@ function hideLogoutBtn() {
     logoutBtn.style.display = "none"
     mypageBtn.style.display = "none";
 }
-function clearLoginUser() {
-    localStorage.removeItem('loginUsers');
-};
+
 //Check validate sign up
 let usernameErr = document.getElementById('username-err');
 let passwordErr = document.getElementById('password-err');
@@ -384,25 +405,25 @@ function validateUserPW() {
 
 //Check loginUser
 let heartBtn = document.getElementById('heart-btn');
-function checkLoginUser() {
-    let loginUserStr = localStorage.getItem('loginUsers');
-    let loginUsers = JSON.parse(loginUserStr);
-    if (loginUsers === null) {
-        loginBtn.style.display = "block";
-        signUpBtn.style.display = "block";
-        logoutBtn.style.display = "none";
-        mypageBtn.style.display = "none";
-        heartBtn.style.display = "none";
-    } else {   
-        loginBtn.style.display = "none";
-        signUpBtn.style.display = "none";
-        logoutBtn.style.display = "block";
-        mypageBtn.style.display = "block";
-        heartBtn.style.display = "block";
 
+async function checkLoginUser() {
+    let res = await fetch("https://webtravel-server.herokuapp.com/loginUsers");
+    let loginUsers = await res.json()
+    console.log(loginUsers)
+    if (loginUsers.length === 0) {
+      loginBtn.style.display = "block";
+      signUpBtn.style.display = "block";
+      hideLogoutBtn();
+      heartBtn.style.display = "none";
+    } else {
+      hideLoginBtn();
+      logoutBtn.style.display = "block";
+      mypageBtn.style.display = "block";
+      heartBtn.style.display = "block";
     }
-}
-checkLoginUser();
+  }
+  checkLoginUser();
+
 mypageBtn.addEventListener('click', redirectMypage);
 
 //Add to favorite function
@@ -448,3 +469,33 @@ window.addEventListener("load",loadingPage)
 function loadingPage(){
     loading.style.display = "none"
 }
+
+//Render Feedback 
+let feedbackSection = document.getElementById("feedback-section");
+let inputFeedback = document.getElementById("input-fb");
+let btnFeedback = document.getElementById("btn-fb")
+inputFeedback.addEventListener("click",(e) => {
+    btnFeedback.style.display = "block";
+});
+
+
+
+let feedbackEl;
+btnFeedback.addEventListener("click",(e) => {
+    feedbackEl = `
+    <div class = "cmt">
+        <div class="user-cmt">
+        <figure class="image">
+        <img class="is-rounded avatar" src="https://2sao.vietnamnetjsc.vn/images/2020/07/07/15/13/Rose.jpg">
+            </figure>
+            <h2><strong>Rose</strong></h2>
+        </div>
+        <div>
+            <p>${inputFeedback.value}</p>
+        </div>
+    </div>`
+    feedbackSection .insertAdjacentHTML("afterbegin", feedbackEl)
+    btnFeedback.style.display = "none";
+    inputFeedback.value = "";
+});
+

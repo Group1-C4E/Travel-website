@@ -32,7 +32,7 @@
   height: 100vh;
   background: #fff url(/assets/Spinner-1s-800px.gif) no-repeat center;
   background-size: 10%;
-  z-index: 9999;
+  z-index: 9999 ;
 }
 
 
