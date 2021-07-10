@@ -141,8 +141,7 @@ html {
   max-width: 700px;
   margin: 0 auto;
   text-align: justify;
-  font-family: Arial, Helvetica, sans-serif;
-  padding: 40px 0px;
+  font-family:'Open Sans', sans-serif;
 }
 
 #overview-content iframe,
@@ -165,7 +164,8 @@ html {
 }
 
 #overview-content strong{
-  color: #128aa8;
+  color: #fca311;
+  font-family: 'Oswald', sans-serif;
 }
 
 #overview-content h1{
