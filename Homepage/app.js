@@ -173,28 +173,27 @@ async function checkLogin() {
   users = await res.json();
 
   if (
-      users.some((user) =>
-        user.username === usernameLogin.value &&
-        user.password === passwordLogin.value)) 
-      {
-      console.log(users)
-      let loginUser =  users.find((user) =>
+    users.some((user) =>
+      user.username === usernameLogin.value &&
+      user.password === passwordLogin.value)) {
+    console.log(users)
+    let loginUser = users.find((user) =>
       user.username === usernameLogin.value &&
       user.password === passwordLogin.value)
-      console.log(loginUser);
+    console.log(loginUser);
 
-      addLoginUser(loginUser.id,loginUser.username,loginUser.password, loginUser.email)
-      closeLoginForm();
-      noticeText.innerHTML = "Login success";
-      notice.style.display = "block";
-      showLogoutBtn();
-      hideLoginBtn();
-      // successBtn.addEventListener("click", redirectMypage);
+    addLoginUser(loginUser.id, loginUser.username, loginUser.password, loginUser.email)
+    closeLoginForm();
+    noticeText.innerHTML = "Login success";
+    notice.style.display = "block";
+    showLogoutBtn();
+    hideLoginBtn();
+    successBtn.addEventListener("click", redirectMypage);
   } else {
     alert("Wrong username/password");
   }
 }
- 
+
 function addLoginUser(id, username, password, email) {
   localStorage.setItem('id', id)
   localStorage.setItem('username', username);
@@ -221,14 +220,18 @@ function showLogoutBtn() {
 //Logout
 logoutBtn.addEventListener("click", logout);
 function logout() {
-  setTimeout(function () {
-    alert("Logout success");
+  setTimeout(function () {  
+    noticeText.innerHTML = "Logout success";
+    notice.style.display = "block" 
+    successBtn.addEventListener('click', redirectHomepage);
     showLoginBtn();
     hideLogoutBtn();
     clearLoginUser();
   }, 1000);
 }
-
+function redirectHomepage() {
+  window.location.href = "../Homepage/index.html";
+}
 
 function showLoginBtn() {
   signUpBtn.style.display = "block";
@@ -342,9 +345,7 @@ searchBar.addEventListener("keyup", (e) => {
 
 const loadLocations = async () => {
   try {
-    const res = await fetch(
-      "https://travel-website-search-fuction.herokuapp.com/travel"
-    );
+    const res = await fetch("https://travel-website-search-fuction.herokuapp.com/travel");
     locationsVi = await res.json();
   } catch (err) {
     console.error(err);
@@ -409,3 +410,41 @@ function getSlide() {
     console.log("3");
   }
 }
+// Feedback section
+const feedback1 = document.getElementById("feedback-1");
+const feedback2 = document.getElementById("feedback-2");
+const feedback3 = document.getElementById("feedback-3");
+
+let jsonComment = [];
+
+const loadFeedback = async () => {
+  try {
+    const res = await fetch("https://webtravel-server.herokuapp.com/feedbacks");
+    jsonComment = await res.json();
+    jsonComment = jsonComment.map((comment => comment.content));
+    console.log(jsonComment);
+  } catch (err) {
+    console.error(err);
+  }
+  function randomFeed() {
+    let randomNum1 = Math.floor(Math.random() * jsonComment.length);
+    let randomNum2 = Math.floor(Math.random() * jsonComment.length);
+    let randomNum3 = Math.floor(Math.random() * jsonComment.length);
+    if (randomNum1 == randomNum2 || randomNum3 == randomNum1 || randomNum2 == randomNum3) {
+      return randomFeed()
+    }
+    else {
+  
+      let randomFeedback1 = jsonComment[randomNum1];
+      let randomFeedback2 = jsonComment[randomNum2];
+      let randomFeedback3 = jsonComment[randomNum3];
+  
+      feedback1.innerHTML = "<p>" + (randomFeedback1) + "</p>";
+      feedback2.innerHTML = "<p>" + (randomFeedback2) + "</p>";
+      feedback3.innerHTML = "<p>" + (randomFeedback3) + "</p>"
+    }
+  }
+  randomFeed()
+};
+loadFeedback();
+// End section
