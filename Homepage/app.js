@@ -135,10 +135,11 @@ function createUser(data) {
 }
 
 function saveUserData() {
-  let newUser = {
+  let newUser = {     
     username: username.value,
     password: password.value,
-    email: email.value
+    email: email.value,
+    avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8JyScJ3XAm0g9mNMQ1Ws7EI6LoVgs7_HDXg&usqp=CAU"
   };
   createUser(newUser);
   closeSignUpForm();

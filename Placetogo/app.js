@@ -202,7 +202,7 @@ function createUser(data) {
   }  
 
 function saveUserData() {
-    let newUser = {  
+    let newUser = {     
       username: username.value,
       password: password.value,
       email: email.value,
