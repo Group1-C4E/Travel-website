@@ -221,14 +221,18 @@ function showLogoutBtn() {
 //Logout
 logoutBtn.addEventListener("click", logout);
 function logout() {
-  setTimeout(function () {
-    alert("Logout success");
+  setTimeout(function () {  
+    noticeText.innerHTML = "Logout success";
+    notice.style.display = "block" 
+    successBtn.addEventListener('click', redirectHomepage);
     showLoginBtn();
     hideLogoutBtn();
     clearLoginUser();
   }, 1000);
 }
-
+function redirectHomepage() {
+  window.location.href = "../Homepage/index.html";
+}
 
 function showLoginBtn() {
   signUpBtn.style.display = "block";
