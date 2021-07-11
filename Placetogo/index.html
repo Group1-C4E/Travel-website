@@ -346,21 +346,20 @@
             <!-- Begin feedback content -->
             <div id="feedback-content">
                 <h1><strong> Comment</strong></h1>
-                <div class="feedback-form">
+                <div id="feedback-form" style="display:none">
                     <div class="user-cmt">
                         <figure class="image">
-                            <img class="is-rounded avatar"
-                                src="https://2sao.vietnamnetjsc.vn/images/2020/07/07/15/13/Rose.jpg">
+                            <img class="avatarfb">
                         </figure>
-                        <h2><strong>Rose</strong></h2>
+                        <h2 class="usernamefb"><strong></strong></h2>
                     </div>
                     <textarea class="textarea is-small" id="input-fb" placeholder="Enter your feedback"></textarea>
-                    <button disabled class="button is-normal is-outlined" id="btn-fb">Feedback</button>
+                    <button class="button is-normal is-outlined" id="btn-fb">Feedback</button>
+                    <p style="color: red;" id="notice-fb"></p>
                     <div class="clear"></div>
                 </div>
                 <div id="feedback-section">
                 </div>
-
             </div>
         </div>
         <!-- End Content -->

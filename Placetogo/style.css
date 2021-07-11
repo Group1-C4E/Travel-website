@@ -262,9 +262,15 @@ html {
   align-items: center;
 }
 
-.avatar {
-  padding: 10px;
-  max-width: 80px;
+.avatarfb {
+  margin: 10px 0px !important;
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50%;
+}
+
+.usernamefb {
+  margin: 0px 10px;
 }
 
 .feedback-section .cmt {
@@ -290,6 +296,8 @@ display: none;
 
 #btn-fb {
   float: right;
+  display: none;
+  margin-top: 10px;
 }
   /* Footer */
 .footer {

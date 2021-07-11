@@ -57,11 +57,10 @@ function renderWeather(dataWeather){
 let gallery = document.getElementById("gallery");
 let overview = document.getElementById("overview");
 let feedback = document.getElementById("feedback");
-
+let feedbackForm = document.getElementById("feedback-form");
 let galleryContent = document.getElementById("gallery-content");
 let overviewContent = document.getElementById("overview-content");
 let feedbackContent = document.getElementById("feedback-content");
-let feedbackForm = document.querySelector(".feedback-form")
 
 gallery.addEventListener("click", (e) => {
     feedback.classList.remove("is-active");
@@ -222,7 +221,6 @@ console.log(users);
 
 //Check login function in common.js
 //Check login function
-let loginUsers = [];
 let submitLogin = document.getElementById('submit-login');
 let usernameLogin = document.getElementById('login-username')
 let passwordLogin = document.getElementById('login-password')
@@ -251,18 +249,21 @@ async function checkLogin() {
         user.username === usernameLogin.value &&
         user.password === passwordLogin.value)
         console.log(loginUser);
-  
         addLoginUser(loginUser.id,loginUser.username,loginUser.password,loginUser.email)
         closeLoginForm();
         noticeText.innerHTML = "Login success";
         notice.style.display = "block";
         showLogoutBtn();
         hideLoginBtn();
-        // successBtn.addEventListener("click", redirectMypage);
+        checkLoginUser()
+        renderFeedbackForm()
+        successBtn.addEventListener("click", redirectMypage);
     } else {
       alert("Wrong username/password");
     }
-  }
+  };
+
+let userId = localStorage.getItem("id");
 
 function redirectMypage() {
     window.location.href = "../MyPage/index.html"
@@ -275,6 +276,7 @@ function addLoginUser(id, username, password, email) {
     localStorage.setItem('password', password);
     localStorage.setItem('email', email)
   }
+  
 
 function hideLoginBtn() {
     signUpBtn.style.display = "none"
@@ -296,6 +298,8 @@ function logout() {
     showLoginBtn();
     hideLogoutBtn();
     clearLoginUser()
+    checkLoginUser()
+    renderFeedbackForm()
   }, 1000);
 }
 
@@ -385,7 +389,7 @@ function validateUserPW() {
 let heartBtn = document.getElementById('heart-btn');
 
 async function checkLoginUser() {
-    console.log(localStorage)
+    
     if (localStorage.length === 0) {
       loginBtn.style.display = "block";
       signUpBtn.style.display = "block";
@@ -396,10 +400,11 @@ async function checkLoginUser() {
       signUpBtn.style.display = "none";
       logoutBtn.style.display = "block";
       mypageBtn.style.display = "block";
+      heartBtn.style.display = "block";
+      feedbackForm.style.display ="block";
     }
   }
-  checkLoginUser();
-
+checkLoginUser()
 mypageBtn.addEventListener('click', redirectMypage);
 
 //Add to favorite function
@@ -456,22 +461,114 @@ inputFeedback.addEventListener("click",(e) => {
 
 
 
-let feedbackEl;
-btnFeedback.addEventListener("click",(e) => {
-    feedbackEl = `
-    <div class = "cmt">
+// let feedbackEl;
+// btnFeedback.addEventListener("click",(e) => {
+//     feedbackEl = `
+//     <div class = "cmt">
+//         <div class="user-cmt">
+//         <figure class="image">
+//         <img class="is-rounded avatar" src="https://2sao.vietnamnetjsc.vn/images/2020/07/07/15/13/Rose.jpg">
+//             </figure>
+//             <h2><strong>Rose</strong></h2>
+//         </div>
+//         <div>
+//             <p>${inputFeedback.value}</p>
+//         </div>
+//     </div>`
+//     feedbackSection .insertAdjacentHTML("afterbegin", feedbackEl)
+//     btnFeedback.style.display = "none";
+//     inputFeedback.value = "";
+// });
+
+//render Feedback Form
+ async function renderFeedbackForm(){
+     let res = await fetch("https://webtravel-server.herokuapp.com/users");
+     let user = await res.json();
+     if (localStorage.length === 0) {
+         feedbackForm.style.display = "none";
+     } else {
+     userNameFb.innerHTML = user[userId].username;
+     avatarFb.setAttribute("src",user[userId].avatar);  
+    }
+    renderFeedback(user)
+ };
+
+renderFeedbackForm()
+
+//post feedback  
+
+  let noticeFb = document.getElementById("notice-fb")
+
+  btnFeedback.addEventListener("click", function(e){
+    if(inputFeedback.value === ""){
+        noticeFb.innerText= "Feedback cannot be blank !";
+    } else {
+        let dataFb = {
+          "content": inputFeedback.value,
+          "location": realLocation,
+          "userId": userId
+      }
+      Postfb(dataFb);
+      renderFeedback()
+      btnFeedback.style.display = "none";
+      inputFeedback.value = "";
+      noticeFb.innerHTML = ""
+    }
+  })
+
+  function Postfb(datafb){
+    let options = {
+                method: "POST",
+                body: JSON.stringify(datafb),
+                headers: {
+                  "Content-Type": "application/json",
+                  // 'Content-Type': 'application/x-www-form-urlencoded',
+                },
+              };
+              fetch("https://webtravel-server.herokuapp.com/feedbacks", options)
+              .then(function(response){
+                  response.json();
+              })
+              .catch((err) => {
+              console.log(err)
+          }) 
+  }     
+
+//render feedback
+
+async function renderFeedback(users){
+    let res =await fetch("https://webtravel-server.herokuapp.com/feedbacks")
+    let feedbacks = await res.json();
+    console.log(feedbacks)
+    let feedback = feedbacks.filter((feedback) => feedback.location === realLocation);
+    let feedbackWithUsers = []
+    for( let i = 0; i < feedback.length; i++){
+        let userfb = users.filter((user) => user.id == feedback[i].userId)[0];
+        let fb = {
+            content: feedback[i].content,
+            avatar: userfb ? userfb.avatar : "",
+            username: userfb ? userfb.username : ""
+        }
+        console.log(fb)
+        feedbackWithUsers.push(fb);
+    }
+    // input: mảng users [{ id, avatar, name }] + mảng feedback [{ id, content, user_id}]
+    // output: feedbackWithUsers = [{ content, user: { avatar, name }, }]
+    // sol: feedback => feedbackWithUsers => doms => html => insert
+    let feedbackEl = feedbackWithUsers.map((feedback) => 
+    `<div class = "cmt">
         <div class="user-cmt">
         <figure class="image">
-        <img class="is-rounded avatar" src="https://2sao.vietnamnetjsc.vn/images/2020/07/07/15/13/Rose.jpg">
+        <img class="avatarfb" src=${feedback.avatar}>
             </figure>
-            <h2><strong>Rose</strong></h2>
+            <h2 class = "usernamefb"><strong>${feedback.username}</strong></h2>
         </div>
         <div>
-            <p>${inputFeedback.value}</p>
+            <p>${feedback.content}</p>
         </div>
-    </div>`
-    feedbackSection .insertAdjacentHTML("afterbegin", feedbackEl)
-    btnFeedback.style.display = "none";
-    inputFeedback.value = "";
-});
+    </div>`).join("")
+     feedbackSection .insertAdjacentHTML("beforebegin", feedbackEl);
+}
 
+   let userNameFb = document.querySelector(".usernamefb");
+   let avatarFb = document.querySelector(".avatarfb");
