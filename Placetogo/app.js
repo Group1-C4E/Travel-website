@@ -391,11 +391,13 @@ async function checkLoginUser() {
       signUpBtn.style.display = "block";
       logoutBtn.style.display = "none";
       mypageBtn.style.display = "none";
+      heartBtn.style.display = "none";
     } else {
       loginBtn.style.display = "none";
       signUpBtn.style.display = "none";
       logoutBtn.style.display = "block";
       mypageBtn.style.display = "block";
+      heartBtn.style.display = "block";
     }
   }
   checkLoginUser();
@@ -404,40 +406,73 @@ mypageBtn.addEventListener('click', redirectMypage);
 
 //Add to favorite function
 let heartIcon = document.getElementById('heart-icon');
-let favoritePlaces = [];
 heartBtn.addEventListener('click', addFavorite);
+let userIdStr = localStorage.getItem('id');
+async function createFavPost() {
+    const post = await getDetailPost(realLocation);
+    console.log(post)
+
+    let data = {
+        userId: userIdStr,
+        postId: post.id,
+        location: realLocation,
+        image: post.banner.sunny,
+    }
+    const response = await fetch("https://webtravel-server.herokuapp.com/fav_posts", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+        });
+        const jsonResponse = await response.json();
+        console.log(jsonResponse);
+    }
 function addFavorite() {
     if(heartIcon.style.color === "white") {
         heartIcon.style.color = "#fca311";
-        let loginUserStr = localStorage.getItem('loginUsers');
-        let loginUsers = JSON.parse(loginUserStr);
-        favoritePlaces.push({
-            location: cityName,
-            username: loginUsers[0].username,
-            image: "https://znews-photo.zadn.vn/w1920/Uploaded/mdf_kxrxdf/2018_12_07/3_2.jpg"
-        })
-        localStorage.setItem('favoritePlaces', JSON.stringify(favoritePlaces));
+        createFavPost();
 
     } else {
         heartIcon.style.color = "white";
-        clearFavoritePlaces();
+        clearFavPost();
     }    
 }
-function clearFavoritePlaces() {
-    localStorage.removeItem('favoritePlaces');
-};
+
+async function clearFavPost() {
+    //get id cua fav_Post co userId va PostId tuong ung
+    const post = await getDetailPost(realLocation);
+    console.log(post)//object
+    const favPosts =await fetch("https://webtravel-server.herokuapp.com/fav_posts");
+    const jsonFavPosts = await favPosts.json();
+    console.log(jsonFavPosts);
+    //Tim index cua mang jsonFavPosts
+    let index = jsonFavPosts.findIndex(x => x.userId === userIdStr && x.postId === post.id) 
+    let deleteId = jsonFavPosts[index].id;
+    console.log(deleteId);
+    const response = await fetch(`https://webtravel-server.herokuapp.com/fav_posts/${deleteId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        });
+        console.log(jsonFavPosts);
+}
 
 //Check heartBtn
-function checkHeartBtn() {
-    let favoritePlacesStr = localStorage.getItem('favoritePlaces');
-    let favoritePlaces = JSON.parse(favoritePlacesStr);
-    if (favoritePlaces === null) {
-        heartIcon.style.color === "white";
-    } else {
+async function getFavPosts() {
+    const favPosts = await fetch('https://webtravel-server.herokuapp.com/fav_posts');
+    const jsonFavPosts = await favPosts.json();  
+    console.log(jsonFavPosts);
+    const post = await getDetailPost(realLocation);
+    console.log(post)
+    if (jsonFavPosts.some(jsonFavPost => jsonFavPost.userId === userIdStr && jsonFavPost.postId === post.id )){
         heartIcon.style.color = "#fca311";
+    } else{
+        heartIcon.style.color === "white";
     }
 }
-checkHeartBtn();
+getFavPosts()
 
 //loadingpage
 let loading = document.getElementById("loading-page");
