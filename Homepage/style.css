@@ -154,8 +154,7 @@ html {
   }
 
   .navbar #logo {
-    width: 56px;
-    height: 52px;
+    width: 80.55px;
 }
 
   .navbar-start {
@@ -314,7 +313,9 @@ ul {
   max-height: calc(100vh - 40px);
   width: 767px;
 }
-
+.location p{
+  font-size: 80%;
+}
 /* End section */
 #login-notice {
   padding-top: 70px;
