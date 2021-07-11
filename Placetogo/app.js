@@ -202,10 +202,11 @@ function createUser(data) {
   }  
 
 function saveUserData() {
-    let newUser = {
+    let newUser = {  
       username: username.value,
       password: password.value,
-      email: email.value
+      email: email.value,
+      avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8JyScJ3XAm0g9mNMQ1Ws7EI6LoVgs7_HDXg&usqp=CAU"
     };
     createUser(newUser);
     closeSignUpForm();
@@ -291,11 +292,10 @@ function showLogoutBtn() {
 }
 //Logout
 logoutBtn.addEventListener("click", logout);
+
 function logout() {
-  setTimeout(function () {  
-    noticeText.innerHTML = "Logout success";
-    notice.style.display = "block" 
-    successBtn.addEventListener('click', redirectHomepage);
+  setTimeout(function () {
+    alert("Logout success");
     showLoginBtn();
     hideLogoutBtn();
     clearLoginUser()
@@ -303,21 +303,18 @@ function logout() {
     renderFeedbackForm()
   }, 1000);
 }
-function redirectHomepage() {
-  window.location.href = "../Homepage/index.html";
-}
-
-function showLoginBtn() {
-  signUpBtn.style.display = "block";
-  loginBtn.style.display = "block";
-}
-function hideLogoutBtn() {
-  logoutBtn.style.display = "none";
-  mypageBtn.style.display = "none";
-}
 
 function clearLoginUser() {
-  localStorage.clear()
+    localStorage.clear()
+  }
+
+function showLoginBtn() {
+    signUpBtn.style.display = "block"
+    loginBtn.style.display = "block";
+}
+function hideLogoutBtn() {
+    logoutBtn.style.display = "none"
+    mypageBtn.style.display = "none";
 }
 
 //Check validate sign up
@@ -399,7 +396,6 @@ async function checkLoginUser() {
       signUpBtn.style.display = "block";
       logoutBtn.style.display = "none";
       mypageBtn.style.display = "none";
-      heartBtn.style.display = "none";
     } else {
       loginBtn.style.display = "none";
       signUpBtn.style.display = "none";
@@ -414,73 +410,40 @@ mypageBtn.addEventListener('click', redirectMypage);
 
 //Add to favorite function
 let heartIcon = document.getElementById('heart-icon');
+let favoritePlaces = [];
 heartBtn.addEventListener('click', addFavorite);
-let userIdStr = localStorage.getItem('id');
-async function createFavPost() {
-    const post = await getDetailPost(realLocation);
-    console.log(post)
-
-    let data = {
-        userId: userIdStr,
-        postId: post.id,
-        location: realLocation,
-        image: post.banner.sunny,
-    }
-    const response = await fetch("https://webtravel-server.herokuapp.com/fav_posts", {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-        });
-        const jsonResponse = await response.json();
-        console.log(jsonResponse);
-    }
 function addFavorite() {
     if(heartIcon.style.color === "white") {
         heartIcon.style.color = "#fca311";
-        createFavPost();
+        let loginUserStr = localStorage.getItem('loginUsers');
+        let loginUsers = JSON.parse(loginUserStr);
+        favoritePlaces.push({
+            location: cityName,
+            username: loginUsers[0].username,
+            image: "https://znews-photo.zadn.vn/w1920/Uploaded/mdf_kxrxdf/2018_12_07/3_2.jpg"
+        })
+        localStorage.setItem('favoritePlaces', JSON.stringify(favoritePlaces));
 
     } else {
         heartIcon.style.color = "white";
-        clearFavPost();
+        clearFavoritePlaces();
     }    
 }
-
-async function clearFavPost() {
-    //get id cua fav_Post co userId va PostId tuong ung
-    const post = await getDetailPost(realLocation);
-    console.log(post)//object
-    const favPosts =await fetch("https://webtravel-server.herokuapp.com/fav_posts");
-    const jsonFavPosts = await favPosts.json();
-    console.log(jsonFavPosts);
-    //Tim index cua mang jsonFavPosts
-    let index = jsonFavPosts.findIndex(x => x.userId === userIdStr && x.postId === post.id) 
-    let deleteId = jsonFavPosts[index].id;
-    console.log(deleteId);
-    const response = await fetch(`https://webtravel-server.herokuapp.com/fav_posts/${deleteId}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        });
-        console.log(jsonFavPosts);
-}
+function clearFavoritePlaces() {
+    localStorage.removeItem('favoritePlaces');
+};
 
 //Check heartBtn
-async function getFavPosts() {
-    const favPosts = await fetch('https://webtravel-server.herokuapp.com/fav_posts');
-    const jsonFavPosts = await favPosts.json();  
-    console.log(jsonFavPosts);
-    const post = await getDetailPost(realLocation);
-    console.log(post)
-    if (jsonFavPosts.some(jsonFavPost => jsonFavPost.userId === userIdStr && jsonFavPost.postId === post.id )){
-        heartIcon.style.color = "#fca311";
-    } else{
+function checkHeartBtn() {
+    let favoritePlacesStr = localStorage.getItem('favoritePlaces');
+    let favoritePlaces = JSON.parse(favoritePlacesStr);
+    if (favoritePlaces === null) {
         heartIcon.style.color === "white";
+    } else {
+        heartIcon.style.color = "#fca311";
     }
 }
-getFavPosts()
+checkHeartBtn();
 
 //loadingpage
 let loading = document.getElementById("loading-page");
@@ -489,71 +452,62 @@ function loadingPage(){
     loading.style.display = "none"
 }
 
+
+//Feedback
+
+
 //Render Feedback 
 let feedbackSection = document.getElementById("feedback-section");
 let inputFeedback = document.getElementById("input-fb");
-let btnFeedback = document.getElementById("btn-fb")
+let btnFeedback = document.getElementById("btn-fb");
+let userNameFb = document.querySelector(".usernamefb");
+let avatarFb = document.querySelector(".avatarfb");
 inputFeedback.addEventListener("click",(e) => {
     btnFeedback.style.display = "block";
 });
 
-
-
-// let feedbackEl;
-// btnFeedback.addEventListener("click",(e) => {
-//     feedbackEl = `
-//     <div class = "cmt">
-//         <div class="user-cmt">
-//         <figure class="image">
-//         <img class="is-rounded avatar" src="https://2sao.vietnamnetjsc.vn/images/2020/07/07/15/13/Rose.jpg">
-//             </figure>
-//             <h2><strong>Rose</strong></h2>
-//         </div>
-//         <div>
-//             <p>${inputFeedback.value}</p>
-//         </div>
-//     </div>`
-//     feedbackSection .insertAdjacentHTML("afterbegin", feedbackEl)
-//     btnFeedback.style.display = "none";
-//     inputFeedback.value = "";
-// });
+//click feedback
+btnFeedback.onclick = function clickBtnFb(){
+    renderFeedbackForm();
+    checkFb();
+    renderFeedback();
+    
+}
 
 //render Feedback Form
- async function renderFeedbackForm(){
-     let res = await fetch("https://webtravel-server.herokuapp.com/users");
-     let user = await res.json();
-     if (localStorage.length === 0) {
-         feedbackForm.style.display = "none";
-     } else {
-     userNameFb.innerHTML = user[userId].username;
-     avatarFb.setAttribute("src",user[userId].avatar);  
-    }
-    renderFeedback(user)
- };
-
+async function renderFeedbackForm(){
+    let res = await fetch("https://webtravel-server.herokuapp.com/users");
+    let user = await res.json();
+    if (localStorage.length === 0) {
+        feedbackForm.style.display = "none";
+    } else {
+    userNameFb.innerHTML = user[userId].username;
+    avatarFb.setAttribute("src",user[userId].avatar);  
+   }
+   renderFeedback(user)
+};
 renderFeedbackForm()
 
-//post feedback  
-
-  let noticeFb = document.getElementById("notice-fb")
-
-  btnFeedback.addEventListener("click", function(e){
+//check Fb
+let noticeFb = document.getElementById("notice-fb")
+let feedbackWithUsers = [];
+function checkFb(){
     if(inputFeedback.value === ""){
         noticeFb.innerText= "Feedback cannot be blank !";
     } else {
         let dataFb = {
-          "content": inputFeedback.value,
-          "location": realLocation,
-          "userId": userId
-      }
-      Postfb(dataFb);
-      renderFeedback()
-      btnFeedback.style.display = "none";
-      inputFeedback.value = "";
-      noticeFb.innerHTML = ""
+            "content": inputFeedback.value,
+            "location": realLocation,
+            "userId": userId
+        }
+        Postfb(dataFb);
+        btnFeedback.style.display = "none";
+        inputFeedback.value = "";
+        noticeFb.innerHTML = ""
     }
-  })
+}
 
+//post feedback  
   function Postfb(datafb){
     let options = {
                 method: "POST",
@@ -577,14 +531,13 @@ renderFeedbackForm()
 async function renderFeedback(users){
     let res =await fetch("https://webtravel-server.herokuapp.com/feedbacks")
     let feedbacks = await res.json();
-    console.log(feedbacks)
     let feedback = feedbacks.filter((feedback) => feedback.location === realLocation);
-    let feedbackWithUsers = []
+    console.log(users)
     for( let i = 0; i < feedback.length; i++){
-        let userfb = users.filter((user) => user.id == feedback[i].userId)[0];
+        let userfb = users.find((user) => user.id == feedback[i].userId);
         let fb = {
             content: feedback[i].content,
-            avatar: userfb ? userfb.avatar : "",
+            avatar: userfb ? userfb.avatar : "  ",
             username: userfb ? userfb.username : ""
         }
         console.log(fb)
@@ -605,8 +558,7 @@ async function renderFeedback(users){
             <p>${feedback.content}</p>
         </div>
     </div>`).join("")
-     feedbackSection .insertAdjacentHTML("beforebegin", feedbackEl);
+     feedbackSection.innerHTML = feedbackEl;
 }
 
-   let userNameFb = document.querySelector(".usernamefb");
-   let avatarFb = document.querySelector(".avatarfb");
+   
