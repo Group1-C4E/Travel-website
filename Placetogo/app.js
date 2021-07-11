@@ -289,27 +289,31 @@ function showLogoutBtn() {
 }
 //Logout
 logoutBtn.addEventListener("click", logout);
-
 function logout() {
-  setTimeout(function () {
-    alert("Logout success");
+  setTimeout(function () {  
+    noticeText.innerHTML = "Logout success";
+    notice.style.display = "block" 
+    successBtn.addEventListener('click', redirectHomepage);
     showLoginBtn();
     hideLogoutBtn();
-    clearLoginUser()
+    clearLoginUser();
   }, 1000);
+}
+function redirectHomepage() {
+  window.location.href = "../Homepage/index.html";
+}
+
+function showLoginBtn() {
+  signUpBtn.style.display = "block";
+  loginBtn.style.display = "block";
+}
+function hideLogoutBtn() {
+  logoutBtn.style.display = "none";
+  mypageBtn.style.display = "none";
 }
 
 function clearLoginUser() {
-    localStorage.clear()
-  }
-
-function showLoginBtn() {
-    signUpBtn.style.display = "block"
-    loginBtn.style.display = "block";
-}
-function hideLogoutBtn() {
-    logoutBtn.style.display = "none"
-    mypageBtn.style.display = "none";
+  localStorage.clear()
 }
 
 //Check validate sign up
