@@ -98,6 +98,8 @@ html {
   padding-right: 50px;
   display: flex;   
   justify-content: space-evenly; 
+  flex-wrap: wrap;
+
 }
 .card {
   width: 300px;
