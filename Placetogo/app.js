@@ -265,6 +265,7 @@ async function checkLogin() {
   };
 
 let userId = localStorage.getItem("id");
+let userName = localStorage.getItem("username")
 
 function redirectMypage() {
     window.location.href = "../MyPage/index.html"
@@ -499,14 +500,6 @@ inputFeedback.addEventListener("click",(e) => {
     btnFeedback.style.display = "block";
 });
 
-//click feedback
-btnFeedback.onclick = function clickBtnFb(){
-    renderFeedbackForm();
-    checkFb();
-    renderFeedback();
-    
-}
-
 //render Feedback Form
 async function renderFeedbackForm(){
     let res = await fetch("https://webtravel-server.herokuapp.com/users");
@@ -521,77 +514,122 @@ async function renderFeedbackForm(){
 };
 renderFeedbackForm()
 
-//check Fb
-let noticeFb = document.getElementById("notice-fb")
-let feedbackWithUsers = [];
-function checkFb(){
-    if(inputFeedback.value === ""){
-        noticeFb.innerText= "Feedback cannot be blank !";
-    } else {
-        let dataFb = {
-            "content": inputFeedback.value,
-            "location": realLocation,
-            "userId": userId
-        }
-        Postfb(dataFb);
-        btnFeedback.style.display = "none";
-        inputFeedback.value = "";
-        noticeFb.innerHTML = ""
-    }
-}
 
 //post feedback  
-  function Postfb(datafb){
-    let options = {
-                method: "POST",
-                body: JSON.stringify(datafb),
-                headers: {
-                  "Content-Type": "application/json",
-                  // 'Content-Type': 'application/x-www-form-urlencoded',
-                },
-              };
-              fetch("https://webtravel-server.herokuapp.com/feedbacks", options)
-              .then(function(response){
-                  response.json();
-              })
-              .catch((err) => {
-              console.log(err)
-          }) 
-  }     
+ let noticeFb = document.getElementById("notice-fb")
+
+ btnFeedback.addEventListener("click", function(e){
+   if(inputFeedback.value === ""){
+       noticeFb.innerText= "Feedback cannot be blank !";
+   } else {
+       let dataFb = {
+         "content": inputFeedback.value,
+         "location": realLocation,
+         "userId": userId
+     }
+     Postfb(dataFb);
+     renderFeedback()
+     newFb(inputFeedback.value)
+     btnFeedback.style.display = "none";
+     inputFeedback.value = "";
+     noticeFb.innerHTML = ""
+   }
+ })
+
+
+ function Postfb(datafb){
+   let options = {
+               method: "POST",
+               body: JSON.stringify(datafb),
+               headers: {
+                 "Content-Type": "application/json",
+                 // 'Content-Type': 'application/x-www-form-urlencoded',
+               },
+             };
+             fetch("https://webtravel-server.herokuapp.com/feedbacks", options)
+             .then(function(response){
+                 response.json();
+             })
+             .catch((err) => {
+             console.log(err)
+         }) 
+ }     
 
 //render feedback
-
 async function renderFeedback(users){
-    let res =await fetch("https://webtravel-server.herokuapp.com/feedbacks")
-    let feedbacks = await res.json();
-    let feedback = feedbacks.filter((feedback) => feedback.location === realLocation);
-    console.log(users)
-    for( let i = 0; i < feedback.length; i++){
-        let userfb = users.find((user) => user.id == feedback[i].userId);
-        let fb = {
-            content: feedback[i].content,
-            avatar: userfb ? userfb.avatar : "  ",
-            username: userfb ? userfb.username : ""
-        }
-        console.log(fb)
-        feedbackWithUsers.push(fb);
-    }
-    // input: mảng users [{ id, avatar, name }] + mảng feedback [{ id, content, user_id}]
-    // output: feedbackWithUsers = [{ content, user: { avatar, name }, }]
-    // sol: feedback => feedbackWithUsers => doms => html => insert
-    let feedbackEl = feedbackWithUsers.map((feedback) => 
-    `<div class = "cmt">
-        <div class="user-cmt">
-        <figure class="image">
-        <img class="avatarfb" src=${feedback.avatar}>
-            </figure>
-            <h2 class = "usernamefb"><strong>${feedback.username}</strong></h2>
-        </div>
-        <div>
-            <p>${feedback.content}</p>
-        </div>
-    </div>`).join("")
-     feedbackSection.innerHTML = feedbackEl;
+   let res =await fetch("https://webtravel-server.herokuapp.com/feedbacks")
+   let feedbacks = await res.json();
+   let feedback = feedbacks.filter((feedback) => feedback.location === realLocation);
+   let feedbackWithUsers = []
+   for( let i = 0; i < feedback.length; i++){
+       let userfb = users.filter((user) => user.id == feedback[i].userId)[0];
+       let fb = {
+           content: feedback[i].content,
+           avatar: userfb ? userfb.avatar : "",
+           username: userfb ? userfb.username : ""
+       }
+       console.log(fb)
+       feedbackWithUsers.push(fb);
+   }
+   // input: mảng users [{ id, avatar, name }] + mảng feedback [{ id, content, user_id}]
+   // output: feedbackWithUsers = [{ content, user: { avatar, name }, }]
+   // sol: feedback => feedbackWithUsers => doms => html => insert
+   let feedbackEl = feedbackWithUsers.map((feedback) => 
+   `<div class = "notification cmt">
+       <div class="user-cmt">
+       <figure class="image">
+       <img class="avatarfb" src=${feedback.avatar}>
+           </figure>
+           <h2 class = "usernamefb"><strong>${feedback.username}</strong></h2>
+       </div>
+       <div>
+           <p>${feedback.content}</p>
+       </div>
+       <button style="display: none" class="button is-light edit-btn-${feedback.userId}">Edit</button>
+       <button style="display: none" class="button is-light del-btn-${feedback.userId}">Delete</button>
+   </div>`).join("")
+    feedbackSection .insertAdjacentHTML("beforebegin", feedbackEl);
+    showEditBtn(feedback)
 }
 
-   
+//render newFeedback
+
+let newFbSection = document.getElementById("new-fb-section"); 
+async function newFb(feedbackvalue){
+    let res = await fetch("https://webtravel-server.herokuapp.com/users");
+    let users = await res.json()
+    let user = users.find((user) => user.username == userName )
+    let newfeedback = {
+    username: user.username,    
+    avatar: user.avatar,
+    content: feedbackvalue
+    }
+    let newfeedbackEl = `<div class = "notification cmt">
+             <div class="user-cmt">
+             <figure class="image">
+             <img class="avatarfb" src="${newfeedback.avatar}">
+                 </figure>
+                 <h2 class = "usernamefb"><strong>${newfeedback.username}</strong></h2>
+             </div>
+             <div>
+                 <p>${feedbackvalue}</p>
+             </div>
+             <button style="display: none" class="button is-light edit-btn-${userId}">Edit</button>
+             <button style="display: none" class="button is-light del-btn-${userId}">Delete</button>
+         </div>`
+         console.log(inputFeedback.value)
+    newFbSection.innerHTML = newfeedbackEl
+}
+
+function showEditBtn(feedback){
+    for(let i = 0; i < feedback.length; i++){
+        if(userId == feedback[i].userId){
+            let editBtn = document.querySelectorAll(`.edit-btn-${feedback[i].userId}`);
+            let delBtn = document.querySelectorAll(`.del-btn-${feedback[i].userId}`);
+            console.log(feedback[i])
+            console.log(feedback[i].userId)
+            console.log(editBtn) 
+            editBtn[i].style.display = "block";
+            delBtn[i].style.display = "block";    
+} }
+}

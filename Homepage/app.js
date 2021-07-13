@@ -231,7 +231,7 @@ function logout() {
   }, 1000);
 }
 function redirectHomepage() {
-  window.location.href = "../Homepage/index.html";
+  window.location.href = "/index.html";
 }
 
 function showLoginBtn() {
