@@ -137,3 +137,7 @@ html {
 .card-image:hover .middle {
   opacity: 1;
 }
+
+#change-avatar {
+  width: 400px;
+}

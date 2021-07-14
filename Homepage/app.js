@@ -183,7 +183,7 @@ async function checkLogin() {
       user.password === passwordLogin.value)
     console.log(loginUser);
 
-    addLoginUser(loginUser.id, loginUser.username, loginUser.password, loginUser.email)
+    addLoginUser(loginUser.id, loginUser.username, loginUser.password, loginUser.email, loginUser.avatar)
     closeLoginForm();
     noticeText.innerHTML = "Login success";
     notice.style.display = "block";
@@ -195,11 +195,12 @@ async function checkLogin() {
   }
 }
 
-function addLoginUser(id, username, password, email) {
+function addLoginUser(id, username, password, email, avatar) {
   localStorage.setItem('id', id)
   localStorage.setItem('username', username);
   localStorage.setItem('password', password);
-  localStorage.setItem('email', email)
+  localStorage.setItem('email', email);
+  localStorage.setItem('avatar', avatar);
 }
 
 function redirectMypage() {

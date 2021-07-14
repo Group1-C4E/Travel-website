@@ -2,6 +2,9 @@
 let loginUserStr = localStorage.getItem('username');
 let emailStr = localStorage.getItem('email');
 let userId = localStorage.getItem('id');
+let userPW = localStorage.getItem('password');
+let loginAvatar = localStorage.getItem('avatar');
+let userAvatar =document.getElementById('user-avatar');
 let usernameMypage = document.getElementById('username-mypage')
 let usernameMyaccount = document.getElementById('myaccount-username')
 let emailMyaccount = document.getElementById('myaccount-email')
@@ -11,6 +14,7 @@ function showUsername(){
     usernameMypage.innerHTML = "Welcome back, " + loginUserStr;
     usernameMyaccount.innerHTML = "Username: " + loginUserStr;
     emailMyaccount.innerHTML = "Email address: " + emailStr;
+    userAvatar.src = loginAvatar;
 }
 showUsername();
 
@@ -222,5 +226,62 @@ let avatars = [
     },
     {
         image:"https://images.unsplash.com/photo-1559582930-bb01987cf4dd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=994&q=80"
-    }
+    },
+    {
+        image:"https://images.unsplash.com/photo-1596957901846-a0722f546502?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=964&q=80"
+    },
+    {
+        image:"https://images.unsplash.com/photo-1590586029974-2c90c0718449?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+    },
+    {
+        image:"https://images.unsplash.com/photo-1497994139250-caecb78f9df9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+    },
+    {
+        image:"https://images.unsplash.com/flagged/photo-1556151994-b611e5ab3675?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+    },
 ]
+let changeAvatarForm =document.getElementById('change-avatar-form');
+let closeAvatarBtn =document.getElementById('close-btn-avatar');
+let nextAvatarBtn =document.getElementById('next-avatar-btn');
+let saveAvatarBtn =document.getElementById('save-avatar-btn');
+let changeAvatarBtn =document.getElementById('change-avatar-btn');
+let avatar =document.getElementById('avatar-img');
+
+changeAvatarBtn.addEventListener('click', openChangeAvatar);
+closeAvatarBtn.addEventListener('click', closeChangeAvatar);
+nextAvatarBtn.addEventListener('click', renderAvatar);
+saveAvatarBtn.addEventListener('click', saveAvatar);
+function openChangeAvatar() {
+    changeAvatarForm.style.display="flex";
+}
+
+function closeChangeAvatar() {
+    changeAvatarForm.style.display="none";
+}
+
+function renderAvatar() {
+    let randomAvatar = avatars[Math.floor(Math.random() * avatars.length)]
+    console.log(randomAvatar);  
+    avatar.src = randomAvatar.image;
+
+}
+
+async function saveAvatar() {
+    userAvatar.src = avatar.src;
+    
+    changeAvatarForm.style.display="none";
+    let res = await fetch(`https://webtravel-server.herokuapp.com/users/${userId}`, {
+        method: 'PUT',
+        headers: {
+           'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            username: loginUserStr,
+            password: userPW,
+            email: emailStr,
+            avatar: userAvatar.src
+        })
+    }); 
+
+    
+}

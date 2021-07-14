@@ -109,8 +109,13 @@
         <div class="avatar-section">
             <div class="avatar-image">
                 <figure class="image is-128x128">
-                    <img class="is-rounded" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80">
-                  </figure>
+                    <img class="is-rounded" id = "user-avatar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8JyScJ3XAm0g9mNMQ1Ws7EI6LoVgs7_HDXg&usqp=CAU">
+                </figure>
+            </div>
+            <div class="change-avatar">
+                <a class="button is-light is-small" id="change-avatar-btn">
+                    Change avatar
+                </a>
             </div>
             <div class="avatar-name">
                 <p id="username-mypage" style="color:white; font-size: 30px;">Username</p>
@@ -125,6 +130,29 @@
             </div>
         </div>
         <!-- End avatar section -->
+        <!--Begin avatar modal -->
+        <div id="change-avatar-form" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card" id="change-avatar">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Choose avatar</p>
+                    <button class="delete" id="close-btn-avatar" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <div class="field">
+                        <figure class="image is-square">
+                            <img width="200" id ="avatar-img" src="https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80">
+                        </figure>
+                        
+                    </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-light" id="next-avatar-btn">Next</button>
+                    <button class="button is-light"  id="save-avatar-btn">Choose this!</button>
+                </footer>
+            </div>
+        </div>
+        <!--End avatar modal -->
         <!--Begin Login notice -->
         <div id="logout-notice" class="modal">
             <div class="modal-card" id="modal-notice">
