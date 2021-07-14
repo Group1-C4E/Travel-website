@@ -68,6 +68,7 @@ gallery.addEventListener("click", (e) => {
     gallery.classList.add("is-active");
     galleryContent.style.display = "block";
     overviewContent.style.display = "none";
+    feedbackForm.style.display = "none"
 });
 
 overview.addEventListener("click", (e) => {
@@ -77,6 +78,7 @@ overview.addEventListener("click", (e) => {
     galleryContent.style.display = "none";
     overviewContent.style.display = "block";
     feedbackContent.style.display = "none";
+    feedbackForm.style.display = "none"
 });
 
 feedback.addEventListener("click", (e) => {
@@ -86,6 +88,7 @@ feedback.addEventListener("click", (e) => {
     galleryContent.style.display = "none"
     overviewContent.style.display = "none"
     feedbackContent.style.display = "block"
+    feedbackForm.style.display ="block"
 })
 
 //Detail Post
@@ -257,7 +260,6 @@ async function checkLogin() {
         showLogoutBtn();
         hideLoginBtn();
         checkLoginUser()
-        renderFeedbackForm()
         successBtn.addEventListener("click", redirectMypage);
     } else {
       alert("Wrong username/password");
@@ -507,6 +509,7 @@ async function renderFeedbackForm(){
     if (localStorage.length === 0) {
         feedbackForm.style.display = "none";
     } else {
+    feedbackForm.style.display = "block"    
     userNameFb.innerHTML = user[userId].username;
     avatarFb.setAttribute("src",user[userId].avatar);  
    }
@@ -585,8 +588,6 @@ async function renderFeedback(users){
        <div>
            <p>${feedback.content}</p>
        </div>
-       <button style="display: none" class="button is-light edit-btn-${feedback.userId}">Edit</button>
-       <button style="display: none" class="button is-light del-btn-${feedback.userId}">Delete</button>
    </div>`).join("")
     feedbackSection .insertAdjacentHTML("beforebegin", feedbackEl);
     showEditBtn(feedback)
@@ -614,22 +615,7 @@ async function newFb(feedbackvalue){
              <div>
                  <p>${feedbackvalue}</p>
              </div>
-             <button style="display: none" class="button is-light edit-btn-${userId}">Edit</button>
-             <button style="display: none" class="button is-light del-btn-${userId}">Delete</button>
          </div>`
          console.log(inputFeedback.value)
     newFbSection.innerHTML = newfeedbackEl
-}
-
-function showEditBtn(feedback){
-    for(let i = 0; i < feedback.length; i++){
-        if(userId == feedback[i].userId){
-            let editBtn = document.querySelectorAll(`.edit-btn-${feedback[i].userId}`);
-            let delBtn = document.querySelectorAll(`.del-btn-${feedback[i].userId}`);
-            console.log(feedback[i])
-            console.log(feedback[i].userId)
-            console.log(editBtn) 
-            editBtn[i].style.display = "block";
-            delBtn[i].style.display = "block";    
-} }
 }
