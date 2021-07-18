@@ -212,7 +212,7 @@ async function checkLogin() {
       notice.style.display = "block";
       showLogoutBtn();
       hideLoginBtn();
-      // successBtn.addEventListener("click", redirectMypage);
+      successBtn.addEventListener("click", redirectMypage);
   } else {
     alert("Wrong username/password");
   }
