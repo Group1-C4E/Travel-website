@@ -50,7 +50,7 @@ html {
 }
 
 .navbar #logo {
-  width: 67px;
+  width: 67gitpx;
 }
 
   .navbar-start {
@@ -337,4 +337,7 @@ html {
     display: none;
   }
   
+  #modal-notice {
+    width: 400px;
+  }
 
