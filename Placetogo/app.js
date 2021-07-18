@@ -299,7 +299,8 @@ logoutBtn.addEventListener("click", logout);
 
 function logout() {
   setTimeout(function () {
-    alert("Logout success");
+    noticeText.innerHTML = "Logout success";
+    notice.style.display = "block" 
     showLoginBtn();
     hideLogoutBtn();
     clearLoginUser()
@@ -591,7 +592,6 @@ async function renderFeedback(users){
        </div>
    </div>`).join("")
     feedbackSection .insertAdjacentHTML("beforebegin", feedbackEl);
-    showEditBtn(feedback)
 }
 
 //render newFeedback

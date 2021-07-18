@@ -246,7 +246,8 @@ function showLogoutBtn() {
 logoutBtn.addEventListener("click", logout);
 function logout() {
   setTimeout(function () {
-    alert("Logout success");
+    noticeText.innerHTML = "Logout success";
+    notice.style.display = "block" 
     showLoginBtn();
     hideLogoutBtn();
     clearLoginUser();

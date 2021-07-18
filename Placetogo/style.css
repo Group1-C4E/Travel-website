@@ -52,8 +52,7 @@ html {
   }
 
   .navbar #logo {
-    width: 58px;
-    height: 56px;
+    width: 67px;
 }
   .navbar-start {
     flex-grow: 1; 
