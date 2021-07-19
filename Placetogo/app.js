@@ -68,7 +68,6 @@ gallery.addEventListener("click", (e) => {
     gallery.classList.add("is-active");
     galleryContent.style.display = "block";
     overviewContent.style.display = "none";
-    feedbackForm.style.display = "none"
 });
 
 overview.addEventListener("click", (e) => {
@@ -78,7 +77,6 @@ overview.addEventListener("click", (e) => {
     galleryContent.style.display = "none";
     overviewContent.style.display = "block";
     feedbackContent.style.display = "none";
-    feedbackForm.style.display = "none"
 });
 
 feedback.addEventListener("click", (e) => {
@@ -88,7 +86,6 @@ feedback.addEventListener("click", (e) => {
     galleryContent.style.display = "none"
     overviewContent.style.display = "none"
     feedbackContent.style.display = "block"
-    feedbackForm.style.display ="block"
 })
 
 //Detail Post
@@ -591,7 +588,6 @@ async function renderFeedback(users){
        </div>
    </div>`).join("")
     feedbackSection .insertAdjacentHTML("beforebegin", feedbackEl);
-    showEditBtn(feedback)
 }
 
 //render newFeedback
