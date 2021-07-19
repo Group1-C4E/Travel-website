@@ -212,7 +212,7 @@ async function checkLogin() {
       notice.style.display = "block";
       showLogoutBtn();
       hideLoginBtn();
-      // successBtn.addEventListener("click", redirectMypage);
+      successBtn.addEventListener("click", redirectMypage);
   } else {
     alert("Wrong username/password");
   }
@@ -246,7 +246,8 @@ function showLogoutBtn() {
 logoutBtn.addEventListener("click", logout);
 function logout() {
   setTimeout(function () {
-    alert("Logout success");
+    noticeText.innerHTML = "Logout success";
+    notice.style.display = "block" 
     showLoginBtn();
     hideLogoutBtn();
     clearLoginUser();
